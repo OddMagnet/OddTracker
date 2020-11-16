@@ -1,0 +1,56 @@
+//
+//  ProjectsView.swift
+//  OddTracker
+//
+//  Created by Michael Brünen on 16.11.20.
+//
+
+import SwiftUI
+
+struct ProjectsView: View {
+    let showClosedProjects: Bool
+    let projects: FetchRequest<Project>
+
+    init(showClosedProjects: Bool) {
+        self.showClosedProjects = showClosedProjects
+
+        // manually create a FetchRequest, sort by creationDate
+        // only fetch items where 'isClosed' == 'showClosedProjects'
+        projects = FetchRequest<Project>(entity: Project.entity(),
+                                         sortDescriptors: [
+                                            NSSortDescriptor(keyPath: \Project.creationDate,
+                                                             ascending: false)
+                                         ],
+                                         predicate: NSPredicate(format: "isClosed = %d", showClosedProjects)
+        )
+    }
+
+    var body: some View {
+        NavigationView {
+            List {
+                // wrappedValue is needed since the FetchRequest was created manually
+                ForEach(projects.wrappedValue) { project in
+                    Section(header: Text(project.title ?? "")) {
+                        // CoreData stores items as a (objective-c) set rather than an array
+                        // which is why .allObjects returns an array of Any, hence the typecast
+                        ForEach(project.items?.allObjects as? [Item] ?? []) { item in
+                            Text(item.title ?? "")
+                        }
+                    }
+                }
+            }
+            .listStyle(InsetGroupedListStyle())
+            .navigationTitle(showClosedProjects ? "Closed Projects" : "Open Projects")
+        }
+    }
+}
+
+struct ProjectsView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
+
+    static var previews: some View {
+        ProjectsView(showClosedProjects: false)
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(dataController)
+    }
+}
