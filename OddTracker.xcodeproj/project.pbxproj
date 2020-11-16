@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C91DCF725617BB300A0A108 /* OddTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */; };
 		4C91DCF925617BB300A0A108 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DCF825617BB300A0A108 /* ContentView.swift */; };
 		4C91DCFB25617BB600A0A108 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C91DCFA25617BB600A0A108 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C91DCF325617BB300A0A108 /* OddTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OddTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerApp.swift; sourceTree = "<group>"; };
 		4C91DCF825617BB300A0A108 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -24,6 +26,7 @@
 		4C91DCFF25617BB600A0A108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C91DD0725617FDD00A0A108 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		4C91DD0A2561825F00A0A108 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		4CAE5F882562CA7D00BC698E /* OddTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OddTracker.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +34,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C4C37672562D0C000D3EA28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C4C37682562D0C000D3EA28 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4C91DCEA25617BB300A0A108 = {
 			isa = PBXGroup;
 			children = (
 				4C91DCF525617BB300A0A108 /* OddTracker */,
 				4C91DCF425617BB300A0A108 /* Products */,
+				4C4C37672562D0C000D3EA28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +69,7 @@
 		4C91DCF525617BB300A0A108 /* OddTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4CAE5F882562CA7D00BC698E /* OddTracker.entitlements */,
 				4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */,
 				4C91DCF825617BB300A0A108 /* ContentView.swift */,
 				4C91DD0A2561825F00A0A108 /* DataController.swift */,
@@ -275,6 +289,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OddTracker/OddTracker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"OddTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;
@@ -287,6 +303,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.oddmagnet.OddTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -297,6 +314,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OddTracker/OddTracker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"OddTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;
@@ -309,6 +328,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.oddmagnet.OddTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
