@@ -30,11 +30,9 @@ struct ProjectsView: View {
             List {
                 // wrappedValue is needed since the FetchRequest was created manually
                 ForEach(projects.wrappedValue) { project in
-                    Section(header: Text(project.title ?? "")) {
-                        // CoreData stores items as a (objective-c) set rather than an array
-                        // which is why .allObjects returns an array of Any, hence the typecast
-                        ForEach(project.items?.allObjects as? [Item] ?? []) { item in
-                            Text(item.title ?? "")
+                    Section(header: Text(project.projectTitle)) {
+                        ForEach(project.projectItems) { item in
+                            Text(item.itemTitle)
                         }
                     }
                 }
