@@ -16,6 +16,7 @@
 		4C91DCFE25617BB600A0A108 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C91DCFD25617BB600A0A108 /* Preview Assets.xcassets */; };
 		4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */; };
 		4C91DD0B2561825F00A0A108 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0A2561825F00A0A108 /* DataController.swift */; };
+		4CCD12552564226400F66350 /* Item-CoreDataHelpers.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		4C91DD0725617FDD00A0A108 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		4C91DD0A2561825F00A0A108 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4CAE5F882562CA7D00BC698E /* OddTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OddTracker.entitlements; sourceTree = "<group>"; };
+		4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item-CoreDataHelpers.swift.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */,
 				4C91DD0A2561825F00A0A108 /* DataController.swift */,
 				4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */,
+				4CCD12532564224500F66350 /* Helper */,
 				4C91DCFA25617BB600A0A108 /* Assets.xcassets */,
 				4C91DCFF25617BB600A0A108 /* Info.plist */,
 				4C91DCFC25617BB600A0A108 /* Preview Content */,
@@ -93,6 +96,14 @@
 				4C91DCFD25617BB600A0A108 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4CCD12532564224500F66350 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 			files = (
 				4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */,
 				4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */,
+				4CCD12552564226400F66350 /* Item-CoreDataHelpers.swift.swift in Sources */,
 				4C91DD0B2561825F00A0A108 /* DataController.swift in Sources */,
 				4C91DCF925617BB300A0A108 /* ContentView.swift in Sources */,
 				4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */,
