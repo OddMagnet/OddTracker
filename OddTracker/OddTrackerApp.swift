@@ -21,6 +21,11 @@ struct OddTrackerApp: App {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: save)
         }
+    }
+
+    func save(_ notification: Notification) {
+        dataController.save()
     }
 }
