@@ -33,7 +33,7 @@ struct ProjectsView: View {
             List {
                 // wrappedValue is needed since the FetchRequest was created manually
                 ForEach(projects.wrappedValue) { project in
-                    Section(header: Text(project.projectTitle)) {
+                    Section(header: ProjectHeaderView(project: project)) {
                         ForEach(project.projectItems) { item in
                             ItemRowView(item: item)
                         }
