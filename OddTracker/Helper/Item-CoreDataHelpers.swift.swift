@@ -5,7 +5,7 @@
 //  Created by Michael Brünen on 17.11.20.
 //
 
-import Foundation
+import SwiftUI
 
 extension Item {
     /// Returns the items title, or an empty string if the title was nil
@@ -35,7 +35,9 @@ extension Project {
     /// Returns the projects detail, or an empty string if the detail was nil
     var projectDetail: String { detail ?? "" }
     /// Returns the projects color, or 'Light Blue' as a default if the color was nil
-    var projectColor: String { color ?? "Light Blue" }
+    var projectColor: Color { Color(color ?? "Light Blue") }
+    /// Returns the projects color string, or 'Light Blue' as a default if the color string was nil
+    var projectColorString: String { color ?? "Light Blue" }
 
     /// Provides example data for previewing purposes
     static var example: Project {
