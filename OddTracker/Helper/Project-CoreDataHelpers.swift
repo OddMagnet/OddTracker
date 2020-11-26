@@ -30,6 +30,9 @@ extension Project {
         return project
     }
 
+    /// Provide names for the colors in the Colors.xcassets catalog
+    static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green", "Teal", "Light Blue", "Dark Blue", "Midnight", "Dark Gray", "Gray"]
+
     /// Returns the projects items as an array, sorted by (in order) completion, priority and creation date
     var projectItems: [Item] {
         let itemsArray = items?.allObjects as? [Item] ?? []
