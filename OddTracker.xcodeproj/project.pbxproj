@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C0512E4256BEF1400167684 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0512E3256BEF1400167684 /* EditItemView.swift */; };
 		4C0512E8256BF37300167684 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0512E7256BF37300167684 /* ItemRowView.swift */; };
+		4C088C42256FF7E100684D19 /* EditProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C41256FF7E100684D19 /* EditProjectView.swift */; };
 		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C376B2562D3DB00D3EA28 /* HomeView.swift */; };
 		4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		4C0512E3256BEF1400167684 /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		4C0512E7256BF37300167684 /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
+		4C088C41256FF7E100684D19 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				4CC7B372256E9D250036E5AF /* ProjectHeaderView.swift */,
 				4C0512E7256BF37300167684 /* ItemRowView.swift */,
 				4C0512E3256BEF1400167684 /* EditItemView.swift */,
+				4C088C41256FF7E100684D19 /* EditProjectView.swift */,
 				4C91DD0A2561825F00A0A108 /* DataController.swift */,
 				4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */,
 				4CCD12532564224500F66350 /* Helper */,
@@ -199,6 +202,7 @@
 				4CCD12552564226400F66350 /* Item-CoreDataHelpers.swift.swift in Sources */,
 				4C91DD0B2561825F00A0A108 /* DataController.swift in Sources */,
 				4C91DCF925617BB300A0A108 /* ContentView.swift in Sources */,
+				4C088C42256FF7E100684D19 /* EditProjectView.swift in Sources */,
 				4C0512E4256BEF1400167684 /* EditItemView.swift in Sources */,
 				4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */,
 				4C91DCF725617BB300A0A108 /* OddTrackerApp.swift in Sources */,
