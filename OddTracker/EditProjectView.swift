@@ -22,7 +22,6 @@ struct EditProjectView: View {
     @State private var color: String
     @State private var showingDeleteConfirm = false
 
-
     init(project: Project) {
         self.project = project
 
@@ -35,7 +34,7 @@ struct EditProjectView: View {
         Form {
             Section(header: Text("Basic Settings")) {
                 TextField("Project name", text: $title.onChange(update))
-                TextField("Description of this project", text: $title.onChange(update))
+                TextField("Description of this project", text: $detail.onChange(update))
             }
 
             Section(header: Text("Custom project color")) {
