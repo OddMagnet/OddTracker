@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Item {
     /// Returns the items title, or an empty string if the title was nil
-    var itemTitle: String { title ?? "" }
+    var itemTitle: String { title ?? "New Item" }
     /// Returns the items detail, or an empty string if the detail was nil
     var itemDetail: String { detail ?? "" }
     /// Returns the items creationDate, or the current date if the creationDate was nil

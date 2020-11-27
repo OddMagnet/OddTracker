@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditItemView: View {
     let item: Item
+    
     @EnvironmentObject var dataController: DataController
 
     @State private var title: String
