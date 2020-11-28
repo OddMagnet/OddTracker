@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    // Tag for the TabView in `ContentView.swift`
     static let tag: String? = "Home"
     
     @EnvironmentObject var dataController: DataController

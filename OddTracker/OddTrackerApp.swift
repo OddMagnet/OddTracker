@@ -13,6 +13,11 @@ struct OddTrackerApp: App {
 
     init() {
         let dataController = DataController()
+
+        // self.value = value is not possible here
+        // this is because no property wrappers have been created before
+        // so instead a property is wrapped in state by using `StateObject(wrappedValue:)`
+        // the `_value = ...` is needed to assign property wrapper itself instead of assigning to the wrapped value
         _dataController = StateObject(wrappedValue: dataController)
     }
 

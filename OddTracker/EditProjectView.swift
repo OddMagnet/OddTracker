@@ -25,6 +25,10 @@ struct EditProjectView: View {
     init(project: Project) {
         self.project = project
 
+        // self.value = value is not possible here
+        // this is because no property wrappers have been created before
+        // so instead a property is wrapped in state by using `State(wrappedValue:)`
+        // the `_value = ...` is needed to assign property wrapper itself instead of assigning to the wrapped value
         _title = State(wrappedValue: project.projectTitle)
         _detail = State(wrappedValue: project.projectDetail)
         _color = State(wrappedValue: project.projectColorString)

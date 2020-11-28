@@ -20,6 +20,10 @@ struct EditItemView: View {
     init(item: Item) {
         self.item = item
 
+        // self.value = value is not possible here
+        // this is because no property wrappers have been created before
+        // so instead a property is wrapped in state by using `State(wrappedValue:)`
+        // the `_value = ...` is needed to assign property wrapper itself instead of assigning to the wrapped value
         _title = State(wrappedValue: item.itemTitle)
         _detail = State(wrappedValue: item.itemDetail)
         _priority = State(wrappedValue: Int(item.priority))

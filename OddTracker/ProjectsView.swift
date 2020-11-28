@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProjectsView: View {
+    // Tags for the TabView in `ContentView.swift`
     static let openTag: String? = "Open"
     static let closedTag: String? = "Closed"
     
