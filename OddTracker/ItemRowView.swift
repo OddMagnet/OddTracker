@@ -10,6 +10,11 @@ import SwiftUI
 struct ItemRowView: View {
     @ObservedObject var item: Item
 
+    // initializer only for readability when using this View
+    init(for item: Item) {
+        _item = ObservedObject(wrappedValue: item)
+    }
+
     var body: some View {
         NavigationLink(destination: EditItemView(item: item)) {
             Text(item.itemTitle)
@@ -19,6 +24,6 @@ struct ItemRowView: View {
 
 struct ItemRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemRowView(item: Item.example)
+        ItemRowView(for: Item.example)
     }
 }

@@ -10,6 +10,11 @@ import SwiftUI
 struct ProjectHeaderView: View {
     @ObservedObject var project: Project
 
+    // initializer only for readability when using this View
+    init(for project: Project) {
+        _project = ObservedObject(wrappedValue: project)
+    }
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -33,7 +38,7 @@ struct ProjectHeaderView: View {
 struct ProjectHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ProjectHeaderView(project: Project.example)
+            ProjectHeaderView(for: Project.example)
         }
     }
 }
