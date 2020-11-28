@@ -12,7 +12,7 @@ struct ProjectsView: View {
     static let closedTag: String? = "Closed"
     
     let showClosedProjects: Bool
-    let projects: FetchRequest<Project>
+    @FetchRequest var projects: FetchedResults<Project>
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -22,7 +22,7 @@ struct ProjectsView: View {
 
         // manually create a FetchRequest, sort by creationDate
         // only fetch items where 'isClosed' == 'showClosedProjects'
-        projects = FetchRequest<Project>(entity: Project.entity(),
+        _projects = FetchRequest<Project>(entity: Project.entity(),
                                          sortDescriptors: [
                                             NSSortDescriptor(keyPath: \Project.creationDate,
                                                              ascending: false)
@@ -34,11 +34,10 @@ struct ProjectsView: View {
     var body: some View {
         NavigationView {
             List {
-                // wrappedValue is needed since the FetchRequest was created manually
-                ForEach(projects.wrappedValue) { project in
-                    Section(header: ProjectHeaderView(project: project)) {
+                ForEach(projects) { project in
+                    Section(header: ProjectHeaderView(for: project)) {
                         ForEach(project.projectItems) { item in
-                            ItemRowView(item: item)
+                            ItemRowView(for: item)
                         }
                         .onDelete { indexSet in
                             let allItems = project.projectItems
