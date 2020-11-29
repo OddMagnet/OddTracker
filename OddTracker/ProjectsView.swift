@@ -37,28 +37,25 @@ struct ProjectsView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(projects) { project in
-                    Section(header: ProjectHeaderView(for: project)) {
-                        ForEach(project.projectItems(using: sortOrder)) { item in
-                            ItemRowView(for: item)
-                        }
-                        .onDelete { indexSet in
-                            let allItems = project.projectItems
+            Group {
+                if projects.count == 0 {
+                    Text("There's nothing to see here right now.")
+                        .foregroundColor(.secondary)
+                } else {
+                    List {
+                        ForEach(projects) { project in
+                            Section(header: ProjectHeaderView(for: project)) {
+                                ForEach(project.projectItems(using: sortOrder)) { item in
+                                    ItemRowView(for: item, in: project)
+                                }
+                                .onDelete { indexSet in
+                                    let allItems = project.projectItems(using: sortOrder)
 
-                            for index in indexSet {
-                                let item = allItems[index]
-                                dataController.delete(item)
-                            }
+                                    for index in indexSet {
+                                        let item = allItems[index]
+                                        dataController.delete(item)
+                                    }
 
-                            dataController.save()
-                        }
-                        if showClosedProjects == false {
-                            Button {
-                                withAnimation {
-                                    let item = Item(context: managedObjectContext)
-                                    item.project = project
-                                    item.creationDate = Date()
                                     dataController.save()
                                 }
                                 if showClosedProjects == false {
