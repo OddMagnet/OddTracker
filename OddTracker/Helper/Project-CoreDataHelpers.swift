@@ -33,11 +33,13 @@ extension Project {
     /// Provide names for the colors in the Colors.xcassets catalog
     static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green", "Teal", "Light Blue", "Dark Blue", "Midnight", "Dark Gray", "Gray"]
 
-    /// Returns the projects items as an array, sorted by (in order) completion, priority and creation date
+    /// Returns the projects items as an array
     var projectItems: [Item] {
-        let itemsArray = items?.allObjects as? [Item] ?? []
+        items?.allObjects as? [Item] ?? []
+    }
 
-        return itemsArray.sorted { first, second in
+    var projectItemsDefaultSorted: [Item] {
+        projectItems.sorted { first, second in
             // First attempt to sort by completion, completed items come last
             if !first.isCompleted && second.isCompleted { return true }
             if first.isCompleted && !second.isCompleted { return false }

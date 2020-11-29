@@ -15,6 +15,14 @@ extension Item {
     /// Returns the items creationDate, or the current date if the creationDate was nil
     var itemCreationDate: Date { creationDate ?? Date() }
 
+    /// Sorting Orders for Items
+    /// Optimized: Uses completion, priority and date
+    /// Title: Only sorts by title
+    /// CreationDate: Only sorts by creation date
+    enum SortOrder {
+        case optimized, title, creationDate
+    }
+
     /// Provides example data for previewing purposes
     static var example: Item {
         let controller = DataController(inMemory: true)
