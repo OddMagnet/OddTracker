@@ -53,6 +53,17 @@ extension Project {
         }
     }
 
+    func projectItems(using sortOrder: Item.SortOrder) -> [Item] {
+        switch sortOrder {
+            case .optimized:
+                return projectItemsDefaultSorted
+            case .creationDate:
+                return projectItems.sorted { $0.itemCreationDate < $1.itemCreationDate }
+            case .title:
+                return projectItems.sorted { $0.itemTitle < $1.itemTitle }
+        }
+    }
+
     /// Returns a completion amount for the project, if the project has no items 0 is returned
     var completionAmount: Double {
         let allItems = items?.allObjects as? [Item] ?? []

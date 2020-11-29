@@ -40,7 +40,7 @@ struct ProjectsView: View {
             List {
                 ForEach(projects) { project in
                     Section(header: ProjectHeaderView(for: project)) {
-                        ForEach(items(for: project)) { item in
+                        ForEach(project.projectItems(using: sortOrder)) { item in
                             ItemRowView(for: item)
                         }
                         .onDelete { indexSet in
@@ -101,17 +101,6 @@ struct ProjectsView: View {
                 .default(Text("Creation Date")) { sortOrder = .creationDate },
                 .default(Text("Title")) { sortOrder = .title }
             ])
-        }
-    }
-
-    func items(for project: Project) -> [Item] {
-        switch sortOrder {
-            case .optimized:
-                return project.projectItemsDefaultSorted
-            case .creationDate:
-                return project.projectItems.sorted { $0.itemCreationDate < $1.itemCreationDate }
-            case .title:
-                return project.projectItems.sorted { $0.itemTitle < $1.itemTitle }
         }
     }
 }
