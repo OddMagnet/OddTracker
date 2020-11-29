@@ -14,13 +14,17 @@ extension Item {
     var itemDetail: String { detail ?? "" }
     /// Returns the items creationDate, or the current date if the creationDate was nil
     var itemCreationDate: Date { creationDate ?? Date() }
+    /// Returns the items project, should realistically never return nil
+    var itemProject: Project { project! }
 
     /// Sorting Orders for Items
     /// Optimized: Uses completion, priority and date
     /// Title: Only sorts by title
     /// CreationDate: Only sorts by creation date
-    enum SortOrder {
-        case optimized, title, creationDate
+    enum SortOrder: String {
+        case optimized = "Optimized"
+        case title = "Title"
+        case creationDate = "Creation Date"
     }
 
     /// Provides example data for previewing purposes
@@ -32,6 +36,7 @@ extension Item {
         item.title = "Example Item Title"
         item.detail = "This is a example item detail"
         item.priority = 3
+        item.project = Project.example
         item.creationDate = Date()
         return item
     }
