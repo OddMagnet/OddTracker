@@ -61,14 +61,24 @@ struct ProjectsView: View {
                                     item.creationDate = Date()
                                     dataController.save()
                                 }
-                            } label: {
-                                Label("Add New Item", systemImage: "plus")
+                                if showClosedProjects == false {
+                                    Button {
+                                        withAnimation {
+                                            let item = Item(context: managedObjectContext)
+                                            item.project = project
+                                            item.creationDate = Date()
+                                            dataController.save()
+                                        }
+                                    } label: {
+                                        Label("Add New Item", systemImage: "plus")
+                                    }
+                                }
                             }
                         }
                     }
+                    .listStyle(InsetGroupedListStyle())
                 }
             }
-            .listStyle(InsetGroupedListStyle())
             .navigationTitle(showClosedProjects ? "Closed Projects" : "Open Projects")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -94,6 +104,9 @@ struct ProjectsView: View {
                     }
                 }
             }
+
+            // Show this in landscape, if no project is selected
+            SelectSomethingView()
         }
         .actionSheet(isPresented: $showingSortOrder) {
             ActionSheet(title: Text("Sort Items"), message: nil, buttons: [
