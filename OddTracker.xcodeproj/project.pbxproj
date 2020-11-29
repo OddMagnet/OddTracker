@@ -17,6 +17,8 @@
 		4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */; };
 		4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */; };
 		4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C810BDC2573A5B700008F53 /* Bundle-Decodable.swift */; };
+		4C810BE02573A86200008F53 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C810BDF2573A86200008F53 /* Awards.json */; };
+		4C810BE32573A8BF00008F53 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C810BE22573A8BF00008F53 /* Award.swift */; };
 		4C91DCF725617BB300A0A108 /* OddTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */; };
 		4C91DCF925617BB300A0A108 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DCF825617BB300A0A108 /* ContentView.swift */; };
 		4C91DCFB25617BB600A0A108 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C91DCFA25617BB600A0A108 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
 		4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift.swift"; sourceTree = "<group>"; };
 		4C810BDC2573A5B700008F53 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		4C810BDF2573A86200008F53 /* Awards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Awards.json; sourceTree = "<group>"; };
+		4C810BE22573A8BF00008F53 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		4C91DCF325617BB300A0A108 /* OddTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OddTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerApp.swift; sourceTree = "<group>"; };
 		4C91DCF825617BB300A0A108 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				4C0512E3256BEF1400167684 /* EditItemView.swift */,
 				4C088C41256FF7E100684D19 /* EditProjectView.swift */,
 				4C91DD0A2561825F00A0A108 /* DataController.swift */,
+				4C810BE22573A8BF00008F53 /* Award.swift */,
+				4C810BDF2573A86200008F53 /* Awards.json */,
 				4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */,
 				4CCD12532564224500F66350 /* Helper */,
 				4C91DCFA25617BB600A0A108 /* Assets.xcassets */,
@@ -191,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC7B377256EA1B20036E5AF /* Colors.xcassets in Resources */,
+				4C810BE02573A86200008F53 /* Awards.json in Resources */,
 				4C91DCFE25617BB600A0A108 /* Preview Assets.xcassets in Resources */,
 				4C91DCFB25617BB600A0A108 /* Assets.xcassets in Resources */,
 			);
@@ -208,6 +215,7 @@
 				4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */,
 				4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */,
 				4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */,
+				4C810BE32573A8BF00008F53 /* Award.swift in Sources */,
 				4C0512E8256BF37300167684 /* ItemRowView.swift in Sources */,
 				4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */,
 				4CC7B373256E9D250036E5AF /* ProjectHeaderView.swift in Sources */,
