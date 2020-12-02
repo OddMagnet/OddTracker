@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Project {
     /// Returns the projects title, or an empty string if the title was nil
-    var projectTitle: String { title ?? "New Project" }
+    var projectTitle: String { title ?? NSLocalizedString("New Project", comment: "Create a new project") }
     /// Returns the projects detail, or an empty string if the detail was nil
     var projectDetail: String { detail ?? "" }
     /// Returns the projects color, or 'Light Blue' as a default if the color was nil
