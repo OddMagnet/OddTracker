@@ -52,21 +52,17 @@ struct HomeView: View {
                                     ProgressView(value: project.completionAmount)
                                         .accentColor(project.projectColor)
                                 }
-                                .padding()
-                                .background(Color.secondarySystemGroupedBackground)
-                                .cornerRadius(10)
-                                .shadow(color: Color.black.opacity(0.2), radius: 5)
+                                .padding([.horizontal, .top])
+                                .fixedSize(horizontal: false, vertical: true)
                             }
-                        }
-                        .padding([.horizontal, .top])
-                        .fixedSize(horizontal: false, vertical: true)
-                    }
 
-                    VStack(alignment: .leading) {
-                        list("Up next", for: items.wrappedValue.prefix(3))
-                        list("More to explore", for: items.wrappedValue.dropFirst(3))
+                            VStack(alignment: .leading) {
+                                list("Up next", for: items.wrappedValue.prefix(3))
+                                list("More to explore", for: items.wrappedValue.dropFirst(3))
+                            }
+                            .padding(.horizontal)
+                        }
                     }
-                    .padding(.horizontal)
                 }
             }
             .background(Color.systemGroupedBackground.ignoresSafeArea())
