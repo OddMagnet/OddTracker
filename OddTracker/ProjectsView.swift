@@ -107,17 +107,11 @@ struct ProjectsView: View {
         }
         .actionSheet(isPresented: $showingSortOrder) {
             ActionSheet(title: Text("Sort Items"), message: nil, buttons: [
-                .default(Text(sortingText(for: .optimized))) { sortOrder = .optimized },
-                .default(Text(sortingText(for: .creationDate))) { sortOrder = .creationDate },
-                .default(Text(sortingText(for: .title))) { sortOrder = .title }
+                .default(Text(Item.SortOrder.optimized.rawValue)) { sortOrder = .optimized },
+                .default(Text(Item.SortOrder.creationDate.rawValue)) { sortOrder = .creationDate },
+                .default(Text(Item.SortOrder.title.rawValue)) { sortOrder = .title }
             ])
         }
-    }
-
-    func sortingText(for order: Item.SortOrder) -> String {
-        order == sortOrder
-            ? order.rawValue + " ✓"
-            : order.rawValue
     }
 }
 

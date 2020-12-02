@@ -21,7 +21,7 @@ extension Item {
     /// Optimized: Uses completion, priority and date
     /// Title: Only sorts by title
     /// CreationDate: Only sorts by creation date
-    enum SortOrder: String {
+    enum SortOrder: LocalizedStringKey {
         case optimized = "Optimized"
         case title = "Title"
         case creationDate = "Creation Date"
