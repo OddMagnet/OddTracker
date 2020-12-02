@@ -72,7 +72,7 @@
         "image": "checkmark.shield.fill"
     },
     {
-        "name": "Weiter so",
+        "name": "Dabei bleiben",
         "description": "Schließe 10 Einträge ab.",
         "color": "Orange",
         "criterion": "complete",
