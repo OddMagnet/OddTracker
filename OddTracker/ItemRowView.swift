@@ -24,6 +24,16 @@ struct ItemRowView: View {
         }
     }
 
+    var label: Text {
+        if item.isCompleted {
+            return Text("\(item.itemTitle), completed")
+        } else if item.priority == 3 {
+            return Text("\(item.itemTitle), high priority")
+        } else {
+            return Text(item.itemTitle)
+        }
+    }
+
     // initializer only for readability when using this View
     init(for item: Item, in project: Project) {
         _project = ObservedObject(wrappedValue: project)
@@ -37,6 +47,7 @@ struct ItemRowView: View {
             } icon: {
                 icon
             }
+            .accessibilityLabel(label)
         }
     }
 }
