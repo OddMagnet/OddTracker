@@ -8,6 +8,10 @@
 import SwiftUI
 
 extension Project {
+    /// Returns the Label for  the project
+    var label: LocalizedStringKey {
+        LocalizedStringKey("\(projectTitle), \(projectItems.count) items, \(completionAmount * 100, specifier: "%g")% complete.")
+    }
     /// Returns the projects title, or an empty string if the title was nil
     var projectTitle: String { title ?? NSLocalizedString("New Project", comment: "Create a new project") }
     /// Returns the projects detail, or an empty string if the detail was nil

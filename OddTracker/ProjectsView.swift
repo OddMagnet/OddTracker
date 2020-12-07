@@ -35,6 +35,31 @@ struct ProjectsView: View {
         )
     }
 
+    // MARK: - projectsList view
+    var projectsList: some View {
+        List {
+            ForEach(projects) { project in
+                Section(header: ProjectHeaderView(for: project)) {
+                    ForEach(project.projectItems(using: sortOrder)) { item in
+                        ItemRowView(for: item, in: project)
+                    }
+                    .onDelete { indexSet in
+                        delete(indexSet, from: project)
+                    }
+                    if showClosedProjects == false {
+                        Button {
+                            addItem(to: project)
+                        } label: {
+                            Label("Add New Item", systemImage: "plus")
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(InsetGroupedListStyle())
+    }
+
+    // MARK: - body view
     var body: some View {
         NavigationView {
             Group {
@@ -42,68 +67,13 @@ struct ProjectsView: View {
                     Text("There's nothing to see here right now.")
                         .foregroundColor(.secondary)
                 } else {
-                    List {
-                        ForEach(projects) { project in
-                            Section(header: ProjectHeaderView(for: project)) {
-                                ForEach(project.projectItems(using: sortOrder)) { item in
-                                    ItemRowView(for: item, in: project)
-                                }
-                                .onDelete { indexSet in
-                                    let allItems = project.projectItems(using: sortOrder)
-
-                                    for index in indexSet {
-                                        let item = allItems[index]
-                                        dataController.delete(item)
-                                    }
-
-                                    dataController.save()
-                                }
-                                if showClosedProjects == false {
-                                    Button {
-                                        withAnimation {
-                                            let item = Item(context: managedObjectContext)
-                                            item.project = project
-                                            item.creationDate = Date()
-                                            dataController.save()
-                                        }
-                                    } label: {
-                                        Label("Add New Item", systemImage: "plus")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .listStyle(InsetGroupedListStyle())
+                    projectsList
                 }
             }
             .navigationTitle(showClosedProjects ? "Closed Projects" : "Open Projects")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if showClosedProjects == false {
-                        Button {
-                            withAnimation {
-                                let project = Project(context: managedObjectContext)
-                                project.isClosed = false
-                                project.creationDate = Date()
-                                dataController.save()
-                            }
-                        } label: {
-                            if UIAccessibility.isVoiceOverRunning {
-                                Text("Add New Project")
-                            } else {
-                                Label("Add New Project", systemImage: "plus")
-                            }
-                        }
-                    }
-                }
-
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        showingSortOrder.toggle()
-                    } label: {
-                        Label("Sort", systemImage: "arrow.up.arrow.down")
-                    }
-                }
+                addProjectToolbarItem
+                sortOrderToolbarItem
             }
 
             // Show this in landscape, if no project is selected
@@ -117,6 +87,62 @@ struct ProjectsView: View {
             ])
         }
     }
+
+    // MARK: - addProject toolbar item
+    var addProjectToolbarItem: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            if showClosedProjects == false {
+                Button(action: addProject) {
+                    if UIAccessibility.isVoiceOverRunning {
+                        Text("Add New Project")
+                    } else {
+                        Label("Add New Project", systemImage: "plus")
+                    }
+                }
+            }
+        }
+    }
+
+    // MARK: - sortOrder toolbar item
+    var sortOrderToolbarItem: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Button {
+                showingSortOrder.toggle()
+            } label: {
+                Label("Sort", systemImage: "arrow.up.arrow.down")
+            }
+        }
+    }
+
+
+    // MARK: - Functions
+    func addItem(to project: Project) {
+        withAnimation {
+            let item = Item(context: managedObjectContext)
+            item.project = project
+            item.creationDate = Date()
+            dataController.save()
+        }
+    }
+    func addProject() {
+        withAnimation {
+            let project = Project(context: managedObjectContext)
+            project.isClosed = false
+            project.creationDate = Date()
+            dataController.save()
+        }
+    }
+    func delete(_ indexSet: IndexSet, from project: Project) {
+        let allItems = project.projectItems(using: sortOrder)
+
+        for index in indexSet {
+            let item = allItems[index]
+            dataController.delete(item)
+        }
+
+        dataController.save()
+    }
+
 }
 
 struct ProjectsView_Previews: PreviewProvider {
