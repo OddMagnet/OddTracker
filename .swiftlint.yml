@@ -1,0 +1,11 @@
+switch_case_alignment:
+  indented_cases: true
+
+identifier_name:
+  excluded:
+    - id
+
+line_length:
+    warning: 180
+    error: 200
+

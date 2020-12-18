@@ -16,7 +16,6 @@ struct EditProjectView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.presentationMode) var presentationMode
 
-
     @State private var title: String
     @State private var detail: String
     @State private var color: String
@@ -63,10 +62,12 @@ struct EditProjectView: View {
         .navigationTitle("Edit Project")
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirm) {
-            Alert(title: Text("Delete project?"),
-                  message: Text("Are you sure you want to delete this project? You will also delete all the items it contains."),
-                  primaryButton: .default(Text("Delete"), action: delete),
-                  secondaryButton: .cancel())
+            Alert(
+                title: Text("Delete project?"),
+                message: Text("Are you sure you want to delete this project? You will also delete all the items it contains."),
+                primaryButton: .default(Text("Delete"), action: delete),
+                secondaryButton: .cancel()
+            )
         }
     }
 

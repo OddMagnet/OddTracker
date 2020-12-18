@@ -11,7 +11,7 @@ struct ProjectsView: View {
     // Tags for the TabView in `ContentView.swift`
     static let openTag: String? = "Open"
     static let closedTag: String? = "Closed"
-    
+
     let showClosedProjects: Bool
     @FetchRequest var projects: FetchedResults<Project>
 
@@ -113,7 +113,6 @@ struct ProjectsView: View {
             }
         }
     }
-
 
     // MARK: - Functions
     func addItem(to project: Project) {

@@ -34,7 +34,7 @@ class DataController: ObservableObject {
         }
 
         // load the actual data, crash if there is an error
-        container.loadPersistentStores { storeDescription, error in
+        container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
@@ -45,18 +45,18 @@ class DataController: ObservableObject {
         // get the context from the container
         let viewContext = container.viewContext
 
-        for i in 1...5 {
+        for projectCounter in 1...5 {
             // create sample projects in the containers context
             let project = Project(context: viewContext)
-            project.title = "Sample-Project \(i)"
+            project.title = "Sample-Project \(projectCounter)"
             project.items = []
             project.creationDate = Date()
             project.isClosed = Bool.random()
 
-            for j in 1...10 {
+            for itemCounter in 1...10 {
                 // add sample items to the sample project in the containers context
                 let item = Item(context: viewContext)
-                item.title = "Sample item \(i).\(j)"
+                item.title = "Sample item \(projectCounter).\(itemCounter)"
                 item.creationDate = Date()
                 item.isCompleted = project.isClosed ? true : Bool.random()  // always true if project is closed, otherwise random
                 item.project = project
@@ -107,7 +107,7 @@ class DataController: ObservableObject {
                 return awardCount >= award.value
 
             default:
-                //fatalError("Unknown award criterion \(award.criterion).")
+                // fatalError("Unknown award criterion \(award.criterion).")
                 return false
         }
     }
