@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A struct containing data related to an Award
 struct Award: Decodable, Identifiable {
     var id: String { name }
     let name: String

@@ -26,7 +26,14 @@ struct OddTrackerApp: App {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: save)
+                .onReceive(
+                    // Automatically save when the app is no longer in the foreground app
+                    // `onReceive` is used over `onChange(of: scenePhase`,
+                    // so the app can be ported to macOS as well
+                    // since scene phase won't detect the app losing focus there
+                    NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification),
+                    perform: save
+                )
         }
     }
 

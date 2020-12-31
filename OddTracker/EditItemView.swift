@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View that shows the editing options for an Item
 struct EditItemView: View {
     let item: Item
 

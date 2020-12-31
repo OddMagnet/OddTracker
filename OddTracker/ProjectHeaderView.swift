@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View that shows a header for a Project
 struct ProjectHeaderView: View {
     @ObservedObject var project: Project
 

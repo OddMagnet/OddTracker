@@ -42,7 +42,8 @@ extension Project {
         items?.allObjects as? [Item] ?? []
     }
 
-    var projectItemsDefaultSorted: [Item] {
+    /// Returns the projects items sorted by default
+    private var projectItemsDefaultSorted: [Item] {
         projectItems.sorted { first, second in
             // First attempt to sort by completion, completed items come last
             if !first.isCompleted && second.isCompleted { return true }
@@ -57,6 +58,9 @@ extension Project {
         }
     }
 
+    /// Returns the projects items sorted
+    /// - Parameter sortOrder: The sort order used
+    /// - Returns: An array containing the projects items sorted
     func projectItems(using sortOrder: Item.SortOrder) -> [Item] {
         switch sortOrder {
             case .optimized:

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View that shows an overview of Projects, used for both open and closed projects
 struct ProjectsView: View {
     // Tags for the TabView in `ContentView.swift`
     static let openTag: String? = "Open"
@@ -93,6 +94,10 @@ struct ProjectsView: View {
         ToolbarItem(placement: .navigationBarTrailing) {
             if showClosedProjects == false {
                 Button(action: addProject) {
+                    // In iOS 14.3 VoiceOver has a bug that reads the label
+                    // "Add New Project" as "Add" no matter what accessibility label
+                    // is give to this button when using a label.
+                    // For better accessibility, a Text view is used when VoiceOver is running
                     if UIAccessibility.isVoiceOverRunning {
                         Text("Add New Project")
                     } else {

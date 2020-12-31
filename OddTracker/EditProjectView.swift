@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View that shows the editing options for a Project
 struct EditProjectView: View {
     let project: Project
     let colorColumns = [

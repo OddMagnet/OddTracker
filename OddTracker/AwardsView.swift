@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View that shows a Grid of Awards
 struct AwardsView: View {
     // Tag for the TabView in `ContentView.swift`
     static let tag: String? = "Awards"

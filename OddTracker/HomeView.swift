@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 
+/// A View that shows Home Screen
 struct HomeView: View {
     // Tag for the TabView in `ContentView.swift`
     static let tag: String? = "Home"
@@ -26,25 +27,20 @@ struct HomeView: View {
     }
 
     init() {
-        // Create Item request
+        // Construct a fetch request to show the 10 highest-priority, incomplete items from open projects.
         let request: NSFetchRequest<Item> = Item.fetchRequest()
-
         // Create Predicate to only show unfinished Items in open Projects
         let unfinishedPredicate = NSPredicate(format: "isCompleted = false")
         let openPredicate = NSPredicate(format: "project.isClosed = false")
         let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [unfinishedPredicate, openPredicate])
-
         // add the predicate to the request
         request.predicate = compoundPredicate
-
         // add sorting to the request
         request.sortDescriptors = [
             NSSortDescriptor(keyPath: \Item.priority, ascending: false)
         ]
-
         // limit the amount of fetched items
         request.fetchLimit = 10
-
         // finally, assign the fetched items
         items = FetchRequest(fetchRequest: request)
     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View that shows the summary of a Project
 struct ProjectSummaryView: View {
     @ObservedObject var project: Project
 

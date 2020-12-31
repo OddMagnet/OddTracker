@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View that represents a row for an Item
 struct ItemRowView: View {
     @ObservedObject var project: Project
     @ObservedObject var item: Item

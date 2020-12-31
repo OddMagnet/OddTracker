@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View purely to prompt the user to select an entry in the menu, in case nothing is selected
 struct SelectSomethingView: View {
     var body: some View {
         Text("Please select something from the menu to begin.")

@@ -8,8 +8,10 @@
 import CoreData
 import SwiftUI
 
+/// An environment singleton responsible for managing the Core Data stack, including handling saving,
+/// counting fetch requests, tracking awards, and dealing with sample data.
 class DataController: ObservableObject {
-    // CloudKitContainer for easy iCloud sync
+    /// The lone CloudKit container used to store all data.
     let container: NSPersistentCloudKitContainer
 
     static var preview: DataController = {
@@ -25,11 +27,18 @@ class DataController: ObservableObject {
         return dataController
     }()
 
+    /// Initializes a data controller, either in memory (for temporary use such as testing and previewing),
+    /// or on permanent storage (for use in regular app runs)
+    ///
+    /// Defaults to permanent storage
+    /// - Parameter inMemory: Whether to store this data in temporary memory or not
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Main")
 
+        // For testing and previewing purposes, create a temporary,
+        // in-memory database by writing to /dev/null
+        // data is destroyed after the app finishes running
         if inMemory {
-            // if set to true, only create the data in memory instead of on disk
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
 
@@ -41,6 +50,8 @@ class DataController: ObservableObject {
         }
     }
 
+    /// Creates example projects and items for manual testing
+    /// - Throws: An NSError sent from calling `save()` on the NSManagedObjectContext
     func createSampleDate() throws {
         // get the context from the container
         let viewContext = container.viewContext
@@ -68,6 +79,8 @@ class DataController: ObservableObject {
         try viewContext.save()
     }
 
+    /// Saves the Core Data context iff there are changes. This silently ignores
+    /// any errors caused by saving, but this should be fine because all attributes are optional.
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
@@ -93,22 +106,23 @@ class DataController: ObservableObject {
     }
 
     func hasEarned(award: Award) -> Bool {
-        // manually creating fetchrequests for testing later on
         switch award.criterion {
             case "items":
+                // returns true if they added a certain number of items
                 let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: "Item")
                 let awardCount = count(for: fetchRequest)
                 return awardCount >= award.value
 
             case "complete":
+                // returns true if they completed a certain number of items
                 let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: "Item")
                 fetchRequest.predicate = NSPredicate(format: "isCompleted = true")
                 let awardCount = count(for: fetchRequest)
                 return awardCount >= award.value
 
             default:
-                // fatalError("Unknown award criterion \(award.criterion).")
-                return false
+                // an unknown award criterion; this should never be allowed
+                fatalError("Unknown award criterion \(award.criterion).")
         }
     }
 }
