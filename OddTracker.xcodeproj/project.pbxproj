@@ -89,7 +89,6 @@
 		4C48FD692577907900494CDA /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				4CB3BA442577D383009F94C0 /* Awards.json */,
 				4CB3BA392577CC77009F94C0 /* Localizable.strings */,
 				4CB3BA3E2577CD69009F94C0 /* Localizable.stringsdict */,
 			);
@@ -104,45 +103,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4C7F24F625AC76A3003C4FDA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4C4C376B2562D3DB00D3EA28 /* HomeView.swift */,
-				4CFAAA52257E60B70072DA26 /* ProjectSummaryView.swift */,
-				4CFAAA4F257E5EFC0072DA26 /* ItemListView.swift */,
-				4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */,
-				4C12D0172573951F00F532C9 /* SelectSomethingView.swift */,
-				4C0512E7256BF37300167684 /* ItemRowView.swift */,
-				4C91DCF825617BB300A0A108 /* ContentView.swift */,
-				4C0512E3256BEF1400167684 /* EditItemView.swift */,
-				4CC7B372256E9D250036E5AF /* ProjectHeaderView.swift */,
-				4C088C41256FF7E100684D19 /* EditProjectView.swift */,
-				4C810BE52573A92100008F53 /* AwardsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		4C7F24F725AC76ED003C4FDA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */,
-				4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */,
-				4C810BE22573A8BF00008F53 /* Award.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		4C7F24F825AC7709003C4FDA /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				4C91DD0A2561825F00A0A108 /* DataController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		4C7F24F925AC771D003C4FDA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4C7F250525AC8584003C4FDA /* CoreData */,
 				4C810BDC2573A5B700008F53 /* Bundle-Decodable.swift */,
 				4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */,
 				4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */,
@@ -159,6 +123,59 @@
 				4C91DCFF25617BB600A0A108 /* Info.plist */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		4C7F250125AC8462003C4FDA /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				4C91DCF825617BB300A0A108 /* ContentView.swift */,
+				4C7F250225AC846E003C4FDA /* Home */,
+				4C7F250325AC8474003C4FDA /* Project */,
+				4C7F250425AC847E003C4FDA /* Awards */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		4C7F250225AC846E003C4FDA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4C4C376B2562D3DB00D3EA28 /* HomeView.swift */,
+				4CFAAA4F257E5EFC0072DA26 /* ItemListView.swift */,
+				4CFAAA52257E60B70072DA26 /* ProjectSummaryView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4C7F250325AC8474003C4FDA /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				4C12D0172573951F00F532C9 /* SelectSomethingView.swift */,
+				4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */,
+				4CC7B372256E9D250036E5AF /* ProjectHeaderView.swift */,
+				4C0512E7256BF37300167684 /* ItemRowView.swift */,
+				4C088C41256FF7E100684D19 /* EditProjectView.swift */,
+				4C0512E3256BEF1400167684 /* EditItemView.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		4C7F250425AC847E003C4FDA /* Awards */ = {
+			isa = PBXGroup;
+			children = (
+				4C810BE52573A92100008F53 /* AwardsView.swift */,
+				4C810BE22573A8BF00008F53 /* Award.swift */,
+				4CB3BA442577D383009F94C0 /* Awards.json */,
+			);
+			path = Awards;
+			sourceTree = "<group>";
+		};
+		4C7F250525AC8584003C4FDA /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */,
+				4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		4C91DCEA25617BB300A0A108 = {
@@ -182,9 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */,
-				4C7F24F625AC76A3003C4FDA /* Views */,
-				4C7F24F725AC76ED003C4FDA /* Models */,
-				4C7F24F825AC7709003C4FDA /* Controllers */,
+				4C91DD0A2561825F00A0A108 /* DataController.swift */,
+				4C7F250125AC8462003C4FDA /* Activities */,
 				4C7F24F925AC771D003C4FDA /* Extensions */,
 				4C48FD692577907900494CDA /* Localization */,
 				4C7F24FA25AC7763003C4FDA /* Configuration */,
