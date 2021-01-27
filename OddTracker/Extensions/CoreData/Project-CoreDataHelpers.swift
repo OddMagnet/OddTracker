@@ -23,7 +23,7 @@ extension Project {
 
     /// Provides example data for previewing purposes
     static var example: Project {
-        let controller = DataController(inMemory: true)
+        let controller = DataController.preview
         let viewContext = controller.container.viewContext
 
         let project = Project(context: viewContext)
