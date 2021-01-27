@@ -24,19 +24,14 @@ class AwardTests: BaseTestCase {
         }
     }
 
-    func testItemAwards() throws {
+    func testAddingItems() throws {
         let values = [1, 10, 20, 50, 100, 250, 500, 1000]
 
         // for each possible item count value that unlocks an awards
         for (count, value) in values.enumerated() {
-            // create an empty array
-            var items = [Item]()
-
             // create the amount of items needed to unlock the corresponding awards
-            // and add them to the array
             for _ in 0 ..< value {
-                let item = Item(context: managedObjectContext)
-                items.append(item)
+                _ = Item(context: managedObjectContext)
             }
 
             // create an array that contains all awards that have the 'item' criterion and are earned
@@ -47,9 +42,7 @@ class AwardTests: BaseTestCase {
             // this should result in the filtered array having the same amount of awards that the x'th place in the array should unlock
             XCTAssertEqual(matches.count, count + 1, "Adding \(value) items should unlock \(count + 1) awards.")
 
-            for item in items {
-                dataController.delete(item)
-            }
+            dataController.deleteAll()
         }
     }
 
@@ -58,15 +51,10 @@ class AwardTests: BaseTestCase {
 
         // for each possible item count value that unlocks an awards
         for (count, value) in values.enumerated() {
-            // create an empty array
-            var items = [Item]()
-
             // create and complete the amount of items needed to unlock the corresponding awards
-            // and add them to the array
             for _ in 0 ..< value {
                 let item = Item(context: managedObjectContext)
                 item.isCompleted = true
-                items.append(item)
             }
 
             // create an array that contains all awards that have the 'completed' criterion and are earned
@@ -77,9 +65,7 @@ class AwardTests: BaseTestCase {
             // this should result in the filtered array having the same amount of awards that the x'th place in the array should unlock
             XCTAssertEqual(matches.count, count + 1, "Completing \(value) items should unlock \(count + 1) awards.")
 
-            for item in items {
-                dataController.delete(item)
-            }
+            dataController.deleteAll()
         }
     }
 }
