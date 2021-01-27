@@ -27,13 +27,28 @@ class DataController: ObservableObject {
         return dataController
     }()
 
+    /// A static model used for tests, so the NSPersistentCloudKitContainer doesn't find multiple `Item` entities
+    static let model: NSManagedObjectModel = {
+        guard let url = Bundle.main.url(forResource: "Main", withExtension: "momd") else {
+            fatalError("Failed to locate model file")
+        }
+
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: url) else {
+            fatalError("Failed to load model file")
+        }
+
+        return managedObjectModel
+    }()
+
     /// Initializes a data controller, either in memory (for temporary use such as testing and previewing),
     /// or on permanent storage (for use in regular app runs)
     ///
     /// Defaults to permanent storage
     /// - Parameter inMemory: Whether to store this data in temporary memory or not
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Main")
+        // make use of the static model, so there won't be 2 models loaded when testing
+        // and multiple containers can make use of the same model
+        container = NSPersistentCloudKitContainer(name: "Main", managedObjectModel: Self.model)
 
         // For testing and previewing purposes, create a temporary,
         // in-memory database by writing to /dev/null
