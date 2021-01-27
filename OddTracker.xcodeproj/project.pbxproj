@@ -27,6 +27,7 @@
 		4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */; };
 		4C91DD0B2561825F00A0A108 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0A2561825F00A0A108 /* DataController.swift */; };
 		4C92274E2576C1FE00048FB8 /* Color-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92274D2576C1FE00048FB8 /* Color-Additions.swift */; };
+		4C9DCB4225C1BA1C000252C6 /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */; };
 		4CAB9C1A25BA1C81000FB4C1 /* OddTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */; };
 		4CAB9C2425BA1DEF000FB4C1 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C2325BA1DEF000FB4C1 /* AssetTests.swift */; };
 		4CB3BA372577CC77009F94C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA392577CC77009F94C0 /* Localizable.strings */; };
@@ -74,6 +75,7 @@
 		4C91DD0725617FDD00A0A108 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		4C91DD0A2561825F00A0A108 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4C92274D2576C1FE00048FB8 /* Color-Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Additions.swift"; sourceTree = "<group>"; };
+		4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 		4CAB9C1725BA1C81000FB4C1 /* OddTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OddTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerTests.swift; sourceTree = "<group>"; };
 		4CAB9C1B25BA1C81000FB4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */,
+				4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */,
 				4CAB9C2325BA1DEF000FB4C1 /* AssetTests.swift */,
 				4CEE08CE25BB52C4004F939C /* AwardTests.swift */,
 				4CEE08CA25BB504F004F939C /* ProjectTests.swift */,
@@ -418,6 +421,7 @@
 				4CEE08CF25BB52C4004F939C /* AwardTests.swift in Sources */,
 				4CAB9C1A25BA1C81000FB4C1 /* OddTrackerTests.swift in Sources */,
 				4CEE08CB25BB504F004F939C /* ProjectTests.swift in Sources */,
+				4C9DCB4225C1BA1C000252C6 /* DevelopmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
