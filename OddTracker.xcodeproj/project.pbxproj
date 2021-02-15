@@ -12,6 +12,7 @@
 		4C088C42256FF7E100684D19 /* EditProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C41256FF7E100684D19 /* EditProjectView.swift */; };
 		4C088C4A256FFA9B00684D19 /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */; };
 		4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0172573951F00F532C9 /* SelectSomethingView.swift */; };
+		4C152DC425DAD41E00D5269A /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C152DC325DAD41E00D5269A /* PerformanceTests.swift */; };
 		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C376B2562D3DB00D3EA28 /* HomeView.swift */; };
 		4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */; };
@@ -61,6 +62,7 @@
 		4C088C41256FF7E100684D19 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
 		4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project-CoreDataHelpers.swift"; sourceTree = "<group>"; };
 		4C12D0172573951F00F532C9 /* SelectSomethingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomethingView.swift; sourceTree = "<group>"; };
+		4C152DC325DAD41E00D5269A /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				4CAB9C2325BA1DEF000FB4C1 /* AssetTests.swift */,
 				4CEE08CE25BB52C4004F939C /* AwardTests.swift */,
 				4CEE08CA25BB504F004F939C /* ProjectTests.swift */,
+				4C152DC325DAD41E00D5269A /* PerformanceTests.swift */,
 				4CAB9C1B25BA1C81000FB4C1 /* Info.plist */,
 			);
 			path = OddTrackerTests;
@@ -436,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C152DC425DAD41E00D5269A /* PerformanceTests.swift in Sources */,
 				4CAB9C2425BA1DEF000FB4C1 /* AssetTests.swift in Sources */,
 				4CEE08CF25BB52C4004F939C /* AwardTests.swift in Sources */,
 				4CAB9C1A25BA1C81000FB4C1 /* OddTrackerTests.swift in Sources */,
