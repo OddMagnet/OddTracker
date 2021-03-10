@@ -49,6 +49,16 @@
                ReferencedContainer = "container:OddTracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4C9A61B125F9074D002AB33A"
+               BuildableName = "OddTrackerUITests.xctest"
+               BlueprintName = "OddTrackerUITests"
+               ReferencedContainer = "container:OddTracker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
