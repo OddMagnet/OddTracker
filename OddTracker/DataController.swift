@@ -63,9 +63,11 @@ class DataController: ObservableObject {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
 
+            // using `#if DEBUG` to ensure this code will never get executed in a live app
             #if DEBUG
             if CommandLine.arguments.contains("enable-testing") {
                 self.deleteAll()
+                UIView.setAnimationsEnabled(false)  // for faster UI testing
             }
             #endif
         }
