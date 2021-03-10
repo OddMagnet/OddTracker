@@ -62,6 +62,12 @@ class DataController: ObservableObject {
             if let error = error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
+
+            #if DEBUG
+            if CommandLine.arguments.contains("enable-testing") {
+                self.deleteAll()
+            }
+            #endif
         }
     }
 
@@ -102,10 +108,13 @@ class DataController: ObservableObject {
         }
     }
 
+    /// Deletes an object
+    /// - Parameter object: The object to delete
     func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
     }
 
+    /// Deletes all items on projects
     func deleteAll() {
         let fetchAllItems: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
         let batchDeleteAllItems = NSBatchDeleteRequest(fetchRequest: fetchAllItems)
@@ -116,10 +125,16 @@ class DataController: ObservableObject {
         _ = try? container.viewContext.execute(batchDeleteAllProjects)
     }
 
+    /// Returns the amount of items a given fetchRequest would return
+    /// - Parameter fetchRequest: The fetchRequest for which to count the items
+    /// - Returns: The amount of items the fetchRequest would produce
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
     }
 
+    /// Checks if a user has earned an award
+    /// - Parameter award: The award to check
+    /// - Returns: True if the user has earned it, false if not
     func hasEarned(award: Award) -> Bool {
         switch award.criterion {
             case "items":
