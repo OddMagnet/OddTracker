@@ -16,6 +16,7 @@
 		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C376B2562D3DB00D3EA28 /* HomeView.swift */; };
 		4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */; };
+		4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51934025FD048500C5F858 /* HomeViewModel.swift */; };
 		4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */; };
 		4C7F24FC25AC7F87003C4FDA /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */; };
 		4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C810BDC2573A5B700008F53 /* Bundle-Decodable.swift */; };
@@ -75,6 +76,7 @@
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		4C51934025FD048500C5F858 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift.swift"; sourceTree = "<group>"; };
 		4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
 		4C810BDC2573A5B700008F53 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		4CF9A14525FA3541009C1070 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4C51934025FD048500C5F858 /* HomeViewModel.swift */,
 				4CF9A14925FA35EF009C1070 /* ProjectsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -486,6 +489,7 @@
 				4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */,
 				4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */,
 				4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */,
+				4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */,
 				4CFAAA50257E5EFC0072DA26 /* ItemListView.swift in Sources */,
 				4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */,
 				4C810BE32573A8BF00008F53 /* Award.swift in Sources */,
