@@ -84,6 +84,9 @@ extension HomeView {
         }
 
         // MARK: - Functions
+        func deleteData() {
+            dataController.deleteAll()
+        }
         func addSampleData() {
             dataController.deleteAll()
             try? dataController.createSampleDate()
