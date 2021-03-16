@@ -36,6 +36,7 @@
 		4CB3BA372577CC77009F94C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA392577CC77009F94C0 /* Localizable.strings */; };
 		4CB3BA3C2577CD69009F94C0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA3E2577CD69009F94C0 /* Localizable.stringsdict */; };
 		4CB3BA422577D383009F94C0 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA442577D383009F94C0 /* Awards.json */; };
+		4CBCF91D260121E70048E4EF /* ItemRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCF91C260121E70048E4EF /* ItemRowViewModel.swift */; };
 		4CC3B32625CC69FB0061D42C /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC3B32525CC69FB0061D42C /* ExtensionTests.swift */; };
 		4CC3B32D25CC6CAE0061D42C /* DecodableDictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CC3B32C25CC6CAE0061D42C /* DecodableDictionary.json */; };
 		4CC3B33325CC6CDB0061D42C /* DecodableString.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CC3B33225CC6CDB0061D42C /* DecodableString.json */; };
@@ -106,6 +107,7 @@
 		4CB3BA402577CD73009F94C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		4CB3BA432577D383009F94C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/Awards.json; sourceTree = "<group>"; };
 		4CB3BA462577D387009F94C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = de; path = de.lproj/Awards.json; sourceTree = "<group>"; };
+		4CBCF91C260121E70048E4EF /* ItemRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowViewModel.swift; sourceTree = "<group>"; };
 		4CC3B32525CC69FB0061D42C /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		4CC3B32C25CC6CAE0061D42C /* DecodableDictionary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DecodableDictionary.json; sourceTree = "<group>"; };
 		4CC3B33225CC6CDB0061D42C /* DecodableString.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DecodableString.json; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			children = (
 				4C51934025FD048500C5F858 /* HomeViewModel.swift */,
 				4CF9A14925FA35EF009C1070 /* ProjectsViewModel.swift */,
+				4CBCF91C260121E70048E4EF /* ItemRowViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				4C91DCF925617BB300A0A108 /* ContentView.swift in Sources */,
 				4C088C42256FF7E100684D19 /* EditProjectView.swift in Sources */,
 				4C0512E4256BEF1400167684 /* EditItemView.swift in Sources */,
+				4CBCF91D260121E70048E4EF /* ItemRowViewModel.swift in Sources */,
 				4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */,
 				4CF9A14A25FA35EF009C1070 /* ProjectsViewModel.swift in Sources */,
 				4C91DCF725617BB300A0A108 /* OddTrackerApp.swift in Sources */,

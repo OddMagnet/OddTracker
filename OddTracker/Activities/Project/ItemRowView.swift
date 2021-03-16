@@ -9,46 +9,26 @@ import SwiftUI
 
 /// A View that represents a row for an Item
 struct ItemRowView: View {
-    @ObservedObject var project: Project
+    @StateObject var viewModel: ViewModel
     @ObservedObject var item: Item
-
-    var icon: some View {
-        if item.isCompleted {
-            return Image(systemName: "checkmark.circle")
-                .foregroundColor(project.projectColor)
-        } else if item.priority == 3 {
-            return Image(systemName: "exclamationmark.triangle")
-                .foregroundColor(project.projectColor)
-        } else {
-            return Image(systemName: "checkmark.circle")
-                .foregroundColor(.clear)    // clear image so items stay aligned
-        }
-    }
-
-    var label: Text {
-        if item.isCompleted {
-            return Text("\(item.itemTitle), completed")
-        } else if item.priority == 3 {
-            return Text("\(item.itemTitle), high priority")
-        } else {
-            return Text(item.itemTitle)
-        }
-    }
 
     // initializer only for readability when using this View
     init(for item: Item, in project: Project) {
-        _project = ObservedObject(wrappedValue: project)
-        _item = ObservedObject(wrappedValue: item)
+        let viewModel = ViewModel(for: item, in: project)
+        _viewModel = StateObject(wrappedValue: viewModel)
+
+        self.item = item
     }
 
     var body: some View {
         NavigationLink(destination: EditItemView(item: item)) {
             Label {
-                Text(item.itemTitle)
+                Text(viewModel.itemTitle)
             } icon: {
-                icon
+                Image(systemName: viewModel.icon)
+                    .foregroundColor(viewModel.color.map { Color($0) } ?? .clear)
             }
-            .accessibilityLabel(label)
+            .accessibilityLabel(viewModel.label)
         }
     }
 }
