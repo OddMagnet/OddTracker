@@ -49,3 +49,20 @@ struct ItemListView: View {
         }
     }
 }
+
+struct ItemListView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
+    static let items: [Item] = [.example, .example, .example]
+
+    static var previews: some View {
+        NavigationView {
+            VStack(alignment: .leading) {
+                ItemListView(
+                    title: "Preview",
+                    items: items.prefix(3)
+                )
+            }
+            .padding(.horizontal)
+        }
+    }
+}

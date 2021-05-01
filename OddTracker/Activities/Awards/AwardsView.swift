@@ -75,6 +75,8 @@ struct AwardsView: View {
 }
 
 struct AwardsView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
+
     static var previews: some View {
         TabView {
             AwardsView()
@@ -82,6 +84,7 @@ struct AwardsView_Previews: PreviewProvider {
                     Image(systemName: "rosette")
                     Text("Awards")
                 }
+                .environmentObject(dataController)
         }
     }
 }

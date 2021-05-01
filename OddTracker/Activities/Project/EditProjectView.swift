@@ -110,9 +110,12 @@ struct EditProjectView: View {
 }
 
 struct EditProjectView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
+
     static var previews: some View {
         NavigationView {
             EditProjectView(project: Project.example)
+                .environmentObject(dataController)
         }
     }
 }

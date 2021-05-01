@@ -67,10 +67,13 @@ struct EditItemView: View {
 }
 
 struct EditItemView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
+
     static var previews: some View {
         NavigationView {
             EditItemView(item: Item.example)
                 .preferredColorScheme(.dark)
+                .environmentObject(dataController)
         }
     }
 }
