@@ -142,7 +142,7 @@ struct EditProjectView: View {
                 )
 
                 // finally, create a player with the pattern, and play the haptics
-                let player = try engine?.makePlayer(with: pattern)
+                let player = try hapticEngine?.makePlayer(with: pattern)
                 try player?.start(atTime: 0)
             } catch {
 
