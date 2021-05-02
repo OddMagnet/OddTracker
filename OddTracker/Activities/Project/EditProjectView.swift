@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 /// A View that shows the editing options for a Project
 struct EditProjectView: View {
@@ -21,6 +22,7 @@ struct EditProjectView: View {
     @State private var detail: String
     @State private var color: String
     @State private var showingDeleteConfirm = false
+    @State private var hapticEngine = try? CHHapticEngine()
 
     init(project: Project) {
         self.project = project
@@ -49,10 +51,7 @@ struct EditProjectView: View {
             }
 
             Section(footer: Text("Closing a project moves it from the Open to Closed tab; deleting it removes the project completely.")) {
-                Button(project.isClosed ? "Reopen this project" : "Close this project") {
-                    project.isClosed.toggle()
-                    update()
-                }
+                Button(project.isClosed ? "Reopen this project" : "Close this project", action: toggleClosed)
 
                 Button("Delete this project") {
                     showingDeleteConfirm.toggle()
@@ -95,6 +94,60 @@ struct EditProjectView: View {
                 : .isButton
         )
         .accessibilityHint(LocalizedStringKey(item))
+    }
+
+    func toggleClosed() {
+        project.isClosed.toggle()
+        // on project close, play haptics effect
+        if project.isClosed {
+            do {
+                try hapticEngine?.start()
+
+                // Sharpness defines whether the effect is pronounced or dull, in this case dull
+                // while Intensity determines the strength of the vibration
+                let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0)
+                let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+
+                // define the parameter curves control points
+                // the values for the control points and time are relative to each others
+                let start = CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1)
+                let end = CHHapticParameterCurve.ControlPoint(relativeTime: 1, value: 0)
+
+                // then create the curve itself
+                let parameterCurve = CHHapticParameterCurve(
+                    parameterID: .hapticIntensityControl,
+                    controlPoints: [start, end],
+                    relativeTime: 0
+                )
+
+                // first event, a quick tap, strong and dull
+                let event1 = CHHapticEvent(
+                    eventType: .hapticTransient,
+                    parameters: [intensity, sharpness],
+                    relativeTime: 0
+                )
+
+                // second event, a buzz, strong and dull as well, lasting for 1 second
+                let event2 = CHHapticEvent(
+                    eventType: .hapticContinuous,
+                    parameters: [sharpness, intensity],
+                    relativeTime: 0.125,
+                    duration: 1
+                )
+
+                // create a pattern of events with the parameter curve
+                let pattern = try CHHapticPattern(
+                    events: [event1, event2],
+                    parameterCurves: [parameterCurve]
+                )
+
+                // finally, create a player with the pattern, and play the haptics
+                let player = try engine?.makePlayer(with: pattern)
+                try player?.start(atTime: 0)
+            } catch {
+
+            }
+        }
     }
 
     func update() {
