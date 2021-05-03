@@ -7,6 +7,7 @@
 
 import CoreData
 import SwiftUI
+import CoreSpotlight
 
 /// An environment singleton responsible for managing the Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
@@ -100,6 +101,32 @@ class DataController: ObservableObject {
 
         // save the sample data
         try viewContext.save()
+    }
+
+    /// Writes the items information to spotlight
+    /// - Parameter item: The item whose information should be written to spotlight
+    func update(_ item: Item) {
+        // Creating a unique identifier for the item
+        let itemID = item.objectID.uriRepresentation().absoluteString
+        let projectID = item.project?.objectID.uriRepresentation().absoluteString
+
+        // Set up the attributes to store in Spotlight
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+        attributeSet.title = item.itemTitle
+        attributeSet.contentDescription = item.itemDetail
+
+        // Wrap the identifier and attributes in a Spotlight record along with a domain identifier – a way to group certain pieces of data together
+        let searchableItem = CSSearchableItem(
+            uniqueIdentifier: itemID,
+            domainIdentifier: projectID,
+            attributeSet: attributeSet
+        )
+
+        // Send the record off to Spotlight for indexing
+        CSSearchableIndex.default().indexSearchableItems([searchableItem])
+
+        // ensure the changed data gets saved
+        save()
     }
 
     /// Saves the Core Data context iff there are changes. This silently ignores

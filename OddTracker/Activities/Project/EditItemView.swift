@@ -52,7 +52,7 @@ struct EditItemView: View {
             }
         }
         .navigationTitle("Edit Item")
-        .onDisappear(perform: dataController.save)
+        .onDisappear(perform: save)
     }
 
     func update() {
@@ -63,6 +63,10 @@ struct EditItemView: View {
 
         // ensure SwiftUI is aware of the change in state
         item.project?.objectWillChange.send()
+    }
+
+    func save() {
+        dataController.update(item)
     }
 }
 
