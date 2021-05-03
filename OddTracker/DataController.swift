@@ -111,9 +111,17 @@ class DataController: ObservableObject {
         }
     }
 
-    /// Deletes an object
-    /// - Parameter object: The object to delete
+    /// Deletes an object and it's spotlight record
+    /// - Parameter object: The object to delete and remove the spotlight record of
     func delete(_ object: NSManagedObject) {
+        let id = object.objectID.uriRepresentation().absoluteString
+
+        if object is Item { // Items use Identifiers for their spotlight record
+            CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [id])
+        } else {            // while Projects use the DomainIdentifiers
+            CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [id])
+        }
+        
         container.viewContext.delete(object)
     }
 
