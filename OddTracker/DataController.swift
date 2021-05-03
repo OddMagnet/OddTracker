@@ -187,4 +187,13 @@ class DataController: ObservableObject {
         // ensure the changed data gets saved
         save()
     }
+
+    func item(with uniqueIdentifier: String) -> Item? {
+        // ensure the uniqueIdentifier is a valid url
+        guard let url = URL(string: uniqueIdentifier) else { return nil }
+        // ensure there is an object for the url
+        guard let id = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url) else { return nil }
+
+        return try? container.viewContext.existingObject(with: id) as? Item
+    }
 }

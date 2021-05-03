@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CoreSpotlight
 
 /// A View that shows Home Screen
 struct HomeView: View {
@@ -32,6 +33,19 @@ struct HomeView: View {
                         .foregroundColor(.secondary)
                 } else {
                     ScrollView {
+                        // Check if the user opened the app by selected an item in Spotlight
+                        if let item = viewModel.selectedItem {
+                            // if so, create a NavigationLink to the item in EditItemView
+                            // the `selection` binding ensures it only triggers when the the binding changes
+                            // `tag` ensures that, if the item changes while the destination view is showing,
+                            // it will be refreshed
+                            NavigationLink(
+                                destination: EditItemView(item: item),
+                                tag: item,
+                                selection: $viewModel.selectedItem,
+                                label: EmptyView.init
+                            )
+                        }
                         VStack(alignment: .leading) {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHGrid(rows: projectRows) {
@@ -60,6 +74,15 @@ struct HomeView: View {
                     Button("Add Test Data", action: viewModel.addSampleData)
                 }
             }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
+        }
+    }
+
+    func loadSpotlightItem(_ userActivity: NSUserActivity) {
+        // check the NSUserActivity's data for a unique identifier
+        if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            // then check if there's an item for the uniqueIdentifier and select it
+            viewModel.selectItem(with: uniqueIdentifier)
         }
     }
 }

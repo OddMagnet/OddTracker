@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreSpotlight
 
 struct ContentView: View {
     @SceneStorage("selectedView") var selectedView: String?
@@ -41,6 +42,12 @@ struct ContentView: View {
                     Text("Awards")
                 }
         }
+        .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+    }
+
+    /// Changes the selected view to the HomeView, used for when the app is opened via spotlight
+    func moveToHome(_ input: Any) {
+        selectedView = HomeView.tag
     }
 }
 

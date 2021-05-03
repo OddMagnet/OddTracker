@@ -16,6 +16,7 @@ extension HomeView {
 
         @Published var projects = [Project]()
         @Published var items = [Item]()
+        @Published var selectedItem: Item?
         var dataController: DataController
 
         // MARK: - Computed Properties
@@ -90,6 +91,10 @@ extension HomeView {
         func addSampleData() {
             dataController.deleteAll()
             try? dataController.createSampleDate()
+        }
+
+        func selectItem(with identifier: String) {
+            selectedItem = dataController.item(with: identifier)
         }
 
         // MARK: - NSFetchedResultsController delegate methods
