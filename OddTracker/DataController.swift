@@ -217,6 +217,9 @@ class DataController: ObservableObject {
     /// Removes a notification for the given project
     /// - Parameter project: The project to remove the notification from
     func removeReminders(for project: Project) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        let id = project.objectID.uriRepresentation().absoluteString
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
     }
 
     /// Requests the permissions to show notifications from the user
