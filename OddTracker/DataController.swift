@@ -212,6 +212,29 @@ class DataController: ObservableObject {
     ///   - project: The project the notification is for
     ///   - completion: The completion handler
     func addReminders(for project: Project, completion: @escaping (Bool) -> Void) {
+        // we check our authorization status for local notifications
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        notificationCenter.getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+                case .notDetermined:
+                    self.requestNotifications { success in
+                        if success {
+                            self.placeReminders(for: project, completion: completion)
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(false)
+                            }
+                        }
+                    }
+                case .authorized:
+                    self.placeReminders(for: project, completion: completion)
+                default:
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+            }
+        }
     }
 
     /// Removes a notification for the given project
