@@ -95,8 +95,8 @@ struct EditProjectView: View {
         }
         .alert(isPresented: $showingNotificationsError) {
             Alert(
-                title: Text("Notification error"),
-                message: Text("There was a problem. Please check that notifications are enabled"),
+                title: Text("Oops!"),
+                message: Text("There was a problem. Please check you have notifications enabled."),
                 primaryButton: .default(Text("Check Settings"), action: showAppSettings),
                 secondaryButton: .cancel()
             )
