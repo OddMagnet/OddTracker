@@ -180,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				4CAE5F882562CA7D00BC698E /* OddTracker.entitlements */,
-				4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */,
 				4C91DCFF25617BB600A0A108 /* Info.plist */,
 			);
 			path = Configuration;
@@ -233,6 +232,7 @@
 		4C7F250525AC8584003C4FDA /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */,
 				4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */,
 				4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */,
 			);
