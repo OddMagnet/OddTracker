@@ -204,4 +204,30 @@ class DataController: ObservableObject {
 
         return try? container.viewContext.existingObject(with: id) as? Item
     }
+
+    // MARK: - Notifications
+    /// Adds a notification for the given project
+    /// - Parameters:
+    ///   - project: The project the notification is for
+    ///   - completion: The completion handler
+    func addReminders(for project: Project, completion: @escaping (Bool) -> Void) {
+    }
+
+    /// Removes a notification for the given project
+    /// - Parameter project: The project to remove the notification from
+    func removeReminders(for project: Project) {
+    }
+
+    /// Requests the permissions to show notifications from the user
+    /// - Parameter completion: The completion handler
+    private func requestNotifications(completion: @escaping (Bool) -> Void) {
+    }
+
+    /// Places a single notification for the given project
+    /// - Parameters:
+    ///   - project: The project to place the notification for
+    ///   - completion: The completion handler
+    private func placeReminders(for project: Project, completion: @escaping (Bool) -> Void) {
+    }
+
 }
