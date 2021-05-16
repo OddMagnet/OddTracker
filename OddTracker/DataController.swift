@@ -121,7 +121,7 @@ class DataController: ObservableObject {
         } else {            // while Projects use the DomainIdentifiers
             CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [id])
         }
-        
+
         container.viewContext.delete(object)
     }
 
