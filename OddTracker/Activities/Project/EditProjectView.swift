@@ -189,8 +189,18 @@ struct EditProjectView: View {
 
         if remindMe {
             project.reminderTime = reminderTime
+
+            dataController.addReminders(for: project) { success in
+                // if the adding of the reminder failed, reset the state and show an error
+                if success == false {
+                    project.reminderTime = nil          // ensure the project does not have an active reminder in place
+                    remindMe = false
+                    showingNotificationsError = true
+                }
+            }
         } else {
             project.reminderTime = nil
+            dataController.removeReminders(for: project)
         }
     }
 
