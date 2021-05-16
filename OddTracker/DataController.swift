@@ -237,6 +237,32 @@ class DataController: ObservableObject {
     ///   - project: The project to place the notification for
     ///   - completion: The completion handler
     private func placeReminders(for project: Project, completion: @escaping (Bool) -> Void) {
+        // content of the notification
+        let content = UNMutableNotificationContent()
+        content.sound = .default
+        content.title = project.projectTitle
+        if !project.projectDetail.isEmpty {
+            content.subtitle = project.projectDetail
+        }
+
+        // trigger for the notification
+        let components = Calendar.current.dateComponents([.hour, .minute], from: project.reminderTime ?? Date())
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+
+        // wrap up content and trigger with an id
+        let id = project.objectID.uriRepresentation().absoluteString
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+
+        // send the request off to iOS
+        UNUserNotificationCenter.current().add(request) { error in
+            DispatchQueue.main.async {
+                if error == nil {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
     }
 
 }
