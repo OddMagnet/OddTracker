@@ -24,6 +24,7 @@ struct EditProjectView: View {
     @State private var remindMe: Bool
     @State private var reminderTime: Date
     @State private var showingDeleteConfirm = false
+    @State private var showingNotificationsError = false
     @State private var hapticEngine = try? CHHapticEngine()
 
     init(project: Project) {
@@ -89,6 +90,14 @@ struct EditProjectView: View {
                 title: Text("Delete project?"),
                 message: Text("Are you sure you want to delete this project? You will also delete all the items it contains."),
                 primaryButton: .default(Text("Delete"), action: delete),
+                secondaryButton: .cancel()
+            )
+        }
+        .alert(isPresented: $showingNotificationsError) {
+            Alert(
+                title: Text("Notification error"),
+                message: Text("There was a problem. Please check that notifications are enabled"),
+                primaryButton: .default(Text("Check Settings"), action: showAppSettings),
                 secondaryButton: .cancel()
             )
         }
@@ -168,7 +177,7 @@ struct EditProjectView: View {
                 let player = try hapticEngine?.makePlayer(with: pattern)
                 try player?.start(atTime: 0)
             } catch {
-
+                // realistically, the haptic engine should not fail, and if it does it doesn't cause any issues
             }
         }
     }
@@ -188,6 +197,17 @@ struct EditProjectView: View {
     func delete() {
         dataController.delete(project)
         presentationMode.wrappedValue.dismiss()
+    }
+
+    /// Show the settings for the app, useful to help the user (re-)enable notifications etc
+    func showAppSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl)
+        }
     }
 }
 
