@@ -24,6 +24,9 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
     private let dataController: DataController
     private let request: SKProductsRequest
     private var loadedProducts = [SKProduct]()
+    var canMakePayments: Bool {
+        SKPaymentQueue.canMakePayments()
+    }
     @Published var requestState = RequestState.loading
 
     // MARK: - Init / Deinit
