@@ -40,6 +40,9 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
         // watch the payment queue
         SKPaymentQueue.default().add(self)
 
+        // check if the full version is already unlocked, return if it is
+        guard dataController.fullVersionUnlocked == false else { return }
+
         // set the delegate for when the product request completes
         request.delegate = self
 
