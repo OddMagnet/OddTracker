@@ -269,6 +269,7 @@
 			children = (
 				4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */,
 				4C91DD0A2561825F00A0A108 /* DataController.swift */,
+				4CB7B4E02652A9450059A9A4 /* UnlockManager.swift */,
 				4C7F250125AC8462003C4FDA /* Activities */,
 				4CF9A14525FA3541009C1070 /* ViewModels */,
 				4C7F24F925AC771D003C4FDA /* Extensions */,
@@ -277,7 +278,6 @@
 				4C91DCFA25617BB600A0A108 /* Assets.xcassets */,
 				4CC7B376256EA1B20036E5AF /* Colors.xcassets */,
 				4C91DCFC25617BB600A0A108 /* Preview Content */,
-				4CB7B4E02652A9450059A9A4 /* UnlockManager.swift */,
 			);
 			path = OddTracker;
 			sourceTree = "<group>";
