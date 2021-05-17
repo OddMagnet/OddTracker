@@ -11,11 +11,14 @@ import StoreKit
 
 class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, SKProductsRequestDelegate {
     enum RequestState {
-        case loading    // started the request, no response yet
-        case loaded     // successful response from Apple describing the products available for purchase
-        case failed     // something went wrong, either request for products or the attempt to purchase
-        case purchased  // user has successfully purchased or restored the IAP
-        case deferred   // current user can't make the purchase, e.g. a minor needs permission from his guardian
+        case loading            // started the request, no response yet
+        case loaded(SKProduct)  // successful response from Apple describing the products available for purchase
+        case failed(Error?)     // something went wrong, either request for products or the attempt to purchase
+        case purchased          // user has successfully purchased or restored the IAP
+        case deferred           // current user can't make the purchase, e.g. a minor needs permission from his guardian
+    }
+    private enum StoreError: Error {
+        case invalidIdentifiers, missingProduct
     }
 
     private let dataController: DataController
@@ -56,6 +59,26 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
 
     // MARK: - SKProductsRequestDelegate
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        // ensure to work on main thread since a `@Published` property gets updated, which means it may trigger SwiftUI views to be updated
+        DispatchQueue.main.async {
+            // store returned products
+            self.loadedProducts = response.products
 
+            // ensure a product was returned
+            guard let unlock = self.loadedProducts.first else {
+                self.requestState = .failed(StoreError.missingProduct)
+                return
+            }
+
+            // if there were invalid product identifiers
+            if response.invalidProductIdentifiers.isEmpty == false {
+                print("ALERT: Received invalid product identifiers: \(response.invalidProductIdentifiers)")
+                self.requestState = .failed(StoreError.invalidIdentifiers)
+                return
+            }
+
+            // otherwise set the request state to the loaded product
+            self.requestState = .loaded(unlock)
+        }
     }
 }
