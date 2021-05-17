@@ -71,7 +71,39 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
 
     // MARK: - SKPaymentTransactionObserver
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        // ensure to work on main thread since a `@Published` property gets updated, which means it may trigger SwiftUI views to be updated
+        DispatchQueue.main.async { [self] in
+            // for every transaction (should only be one, but future-proofing here)
+            for transaction in transactions {
+                // check the transactions state
+                switch transaction.transactionState {
+                    // if it's purchased or restored
+                    case .purchased, .restored:
+                        // ensure the full version is unlocked, set the new requestState and finish the transaction
+                        self.dataController.fullVersionUnlocked = true
+                        self.requestState = .purchased
+                        queue.finishTransaction(transaction)
 
+                    // if it's failed
+                    case .failed:
+                        // check if there was a product and set the requestState accordingly, then finish the transaction
+                        if let product = loadedProducts.first {
+                            self.requestState = .loaded(product)
+                        } else {
+                            self.requestState = .failed(transaction.error)
+                        }
+                        queue.finishTransaction(transaction)
+
+                    // if it's deferred
+                    case .deferred:
+                        // just update the requestState
+                        self.requestState = .deferred
+
+                    default:
+                        break
+                }
+            }
+        }
     }
 
     // MARK: - SKProductsRequestDelegate
