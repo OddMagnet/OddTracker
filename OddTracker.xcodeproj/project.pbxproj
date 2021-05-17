@@ -36,6 +36,7 @@
 		4CB3BA372577CC77009F94C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA392577CC77009F94C0 /* Localizable.strings */; };
 		4CB3BA3C2577CD69009F94C0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA3E2577CD69009F94C0 /* Localizable.stringsdict */; };
 		4CB3BA422577D383009F94C0 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA442577D383009F94C0 /* Awards.json */; };
+		4CB7B4E12652A9450059A9A4 /* UnlockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7B4E02652A9450059A9A4 /* UnlockManager.swift */; };
 		4CBCF91D260121E70048E4EF /* ItemRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCF91C260121E70048E4EF /* ItemRowViewModel.swift */; };
 		4CC3B32625CC69FB0061D42C /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC3B32525CC69FB0061D42C /* ExtensionTests.swift */; };
 		4CC3B32D25CC6CAE0061D42C /* DecodableDictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CC3B32C25CC6CAE0061D42C /* DecodableDictionary.json */; };
@@ -107,6 +108,8 @@
 		4CB3BA402577CD73009F94C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		4CB3BA432577D383009F94C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/Awards.json; sourceTree = "<group>"; };
 		4CB3BA462577D387009F94C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = de; path = de.lproj/Awards.json; sourceTree = "<group>"; };
+		4CB7B4E02652A9450059A9A4 /* UnlockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockManager.swift; sourceTree = "<group>"; };
+		4CB7B4E22652AC280059A9A4 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		4CBCF91C260121E70048E4EF /* ItemRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowViewModel.swift; sourceTree = "<group>"; };
 		4CC3B32525CC69FB0061D42C /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		4CC3B32C25CC6CAE0061D42C /* DecodableDictionary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DecodableDictionary.json; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAE5F882562CA7D00BC698E /* OddTracker.entitlements */,
+				4CB7B4E22652AC280059A9A4 /* Configuration.storekit */,
 				4C91DCFF25617BB600A0A108 /* Info.plist */,
 			);
 			path = Configuration;
@@ -273,6 +277,7 @@
 				4C91DCFA25617BB600A0A108 /* Assets.xcassets */,
 				4CC7B376256EA1B20036E5AF /* Colors.xcassets */,
 				4C91DCFC25617BB600A0A108 /* Preview Content */,
+				4CB7B4E02652A9450059A9A4 /* UnlockManager.swift */,
 			);
 			path = OddTracker;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */,
 				4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */,
 				4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */,
+				4CB7B4E12652A9450059A9A4 /* UnlockManager.swift in Sources */,
 				4CFAAA50257E5EFC0072DA26 /* ItemListView.swift in Sources */,
 				4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */,
 				4C810BE32573A8BF00008F53 /* Award.swift in Sources */,
