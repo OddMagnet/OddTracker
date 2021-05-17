@@ -26,6 +26,7 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
     private var loadedProducts = [SKProduct]()
     @Published var requestState = RequestState.loading
 
+    // MARK: - Init / Deinit
     init(dataController: DataController) {
         // store datacontroller
         self.dataController = dataController
@@ -50,6 +51,19 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
         // remove the delegate object (self) from the payment queue when the app is terminated
         // to avoid potential problems where iOS thinks the app has been notified about a purchase
         SKPaymentQueue.default().remove(self)
+    }
+
+    // MARK: - Functions
+    /// Starts the purchase process for a product
+    /// - Parameter product: The product
+    func buy(product: SKProduct) {
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
+    }
+
+    /// Restores purchased products
+    func restore() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
 
     // MARK: - SKPaymentTransactionObserver
