@@ -36,8 +36,10 @@ struct ProductView: View {
 }
 
 // Disabled since SKProduct can't be simulated here (yet)
-//struct ProductView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProductView()
-//    }
-//}
+/*
+struct ProductView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProductView()
+    }
+}
+ */
