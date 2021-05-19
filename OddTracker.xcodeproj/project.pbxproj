@@ -33,6 +33,7 @@
 		4C9BE362265557090006F776 /* SKProduct-LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE361265557090006F776 /* SKProduct-LocalizedPrice.swift */; };
 		4C9BE3652655583D0006F776 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE3642655583D0006F776 /* PurchaseButton.swift */; };
 		4C9BE367265559A40006F776 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE366265559A40006F776 /* ProductView.swift */; };
+		4C9BE36926555AB60006F776 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE36826555AB60006F776 /* UnlockView.swift */; };
 		4C9DCB4225C1BA1C000252C6 /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */; };
 		4CAB9C1A25BA1C81000FB4C1 /* OddTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */; };
 		4CAB9C2425BA1DEF000FB4C1 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C2325BA1DEF000FB4C1 /* AssetTests.swift */; };
@@ -102,6 +103,7 @@
 		4C9BE361265557090006F776 /* SKProduct-LocalizedPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct-LocalizedPrice.swift"; sourceTree = "<group>"; };
 		4C9BE3642655583D0006F776 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		4C9BE366265559A40006F776 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		4C9BE36826555AB60006F776 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 		4CAB9C1725BA1C81000FB4C1 /* OddTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OddTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerTests.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			children = (
 				4C9BE3642655583D0006F776 /* PurchaseButton.swift */,
 				4C9BE366265559A40006F776 /* ProductView.swift */,
+				4C9BE36826555AB60006F776 /* UnlockView.swift */,
 			);
 			path = FullVersionPurchase;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				4C7F24FC25AC7F87003C4FDA /* Sequence-Sorting.swift in Sources */,
 				4C0512E8256BF37300167684 /* ItemRowView.swift in Sources */,
 				4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */,
+				4C9BE36926555AB60006F776 /* UnlockView.swift in Sources */,
 				4CFAAA53257E60B70072DA26 /* ProjectSummaryView.swift in Sources */,
 				4CC7B373256E9D250036E5AF /* ProjectHeaderView.swift in Sources */,
 				4CCD12552564226400F66350 /* Item-CoreDataHelpers.swift.swift in Sources */,
