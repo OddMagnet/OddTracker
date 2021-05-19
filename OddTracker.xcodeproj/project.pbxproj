@@ -205,7 +205,7 @@
 				4C7F250225AC846E003C4FDA /* Home */,
 				4C7F250325AC8474003C4FDA /* Project */,
 				4C7F250425AC847E003C4FDA /* Awards */,
-				4C9BE363265557FE0006F776 /* FullVersionPurchase */,
+				4C9BE363265557FE0006F776 /* Unlock */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
@@ -309,14 +309,14 @@
 			path = OddTrackerUITests;
 			sourceTree = "<group>";
 		};
-		4C9BE363265557FE0006F776 /* FullVersionPurchase */ = {
+		4C9BE363265557FE0006F776 /* Unlock */ = {
 			isa = PBXGroup;
 			children = (
 				4C9BE3642655583D0006F776 /* PurchaseButton.swift */,
 				4C9BE366265559A40006F776 /* ProductView.swift */,
 				4C9BE36826555AB60006F776 /* UnlockView.swift */,
 			);
-			path = FullVersionPurchase;
+			path = Unlock;
 			sourceTree = "<group>";
 		};
 		4CAB9C1825BA1C81000FB4C1 /* OddTrackerTests */ = {
