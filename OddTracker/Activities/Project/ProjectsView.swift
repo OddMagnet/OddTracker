@@ -75,6 +75,9 @@ struct ProjectsView: View {
                 .default(Text(Item.SortOrder.title.rawValue)) { viewModel.sortOrder = .title }
             ])
         }
+        .sheet(isPresented: $viewModel.showingUnlockView) {
+            UnlockView()
+        }
     }
 
     // MARK: - addProject toolbar item

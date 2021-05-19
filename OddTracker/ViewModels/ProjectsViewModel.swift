@@ -12,6 +12,7 @@ import SwiftUI
 extension ProjectsView {
     class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
         // MARK: - Properties
+        @Published var showingUnlockView = false
         let showClosedProjects: Bool
         let dataController: DataController
         var sortOrder = Item.SortOrder.optimized
@@ -54,10 +55,16 @@ extension ProjectsView {
 
         // MARK: - Functions
         func addProject() {
-            let project = Project(context: dataController.container.viewContext)
-            project.isClosed = false
-            project.creationDate = Date()
-            dataController.save()
+            let canCreate = dataController.fullVersionUnlocked || dataController.count(for: Project.fetchRequest()) < 3
+
+            if canCreate {
+                let project = Project(context: dataController.container.viewContext)
+                project.isClosed = false
+                project.creationDate = Date()
+                dataController.save()
+            } else {
+                showingUnlockView.toggle()
+            }
         }
 
         func addItem(to project: Project) {
