@@ -31,6 +31,8 @@
 		4C92274E2576C1FE00048FB8 /* Color-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92274D2576C1FE00048FB8 /* Color-Additions.swift */; };
 		4C9A61B525F9074D002AB33A /* OddTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A61B425F9074D002AB33A /* OddTrackerUITests.swift */; };
 		4C9BE362265557090006F776 /* SKProduct-LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE361265557090006F776 /* SKProduct-LocalizedPrice.swift */; };
+		4C9BE3652655583D0006F776 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE3642655583D0006F776 /* PurchaseButton.swift */; };
+		4C9BE367265559A40006F776 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE366265559A40006F776 /* ProductView.swift */; };
 		4C9DCB4225C1BA1C000252C6 /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */; };
 		4CAB9C1A25BA1C81000FB4C1 /* OddTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */; };
 		4CAB9C2425BA1DEF000FB4C1 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C2325BA1DEF000FB4C1 /* AssetTests.swift */; };
@@ -98,6 +100,8 @@
 		4C9A61B425F9074D002AB33A /* OddTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerUITests.swift; sourceTree = "<group>"; };
 		4C9A61B625F9074D002AB33A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9BE361265557090006F776 /* SKProduct-LocalizedPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct-LocalizedPrice.swift"; sourceTree = "<group>"; };
+		4C9BE3642655583D0006F776 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
+		4C9BE366265559A40006F776 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 		4CAB9C1725BA1C81000FB4C1 /* OddTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OddTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerTests.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				4C7F250225AC846E003C4FDA /* Home */,
 				4C7F250325AC8474003C4FDA /* Project */,
 				4C7F250425AC847E003C4FDA /* Awards */,
+				4C9BE363265557FE0006F776 /* FullVersionPurchase */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
@@ -300,6 +305,15 @@
 				4C9A61B625F9074D002AB33A /* Info.plist */,
 			);
 			path = OddTrackerUITests;
+			sourceTree = "<group>";
+		};
+		4C9BE363265557FE0006F776 /* FullVersionPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				4C9BE3642655583D0006F776 /* PurchaseButton.swift */,
+				4C9BE366265559A40006F776 /* ProductView.swift */,
+			);
+			path = FullVersionPurchase;
 			sourceTree = "<group>";
 		};
 		4CAB9C1825BA1C81000FB4C1 /* OddTrackerTests */ = {
@@ -497,7 +511,9 @@
 			files = (
 				4C088C4A256FFA9B00684D19 /* Project-CoreDataHelpers.swift in Sources */,
 				4C92274E2576C1FE00048FB8 /* Color-Additions.swift in Sources */,
+				4C9BE3652655583D0006F776 /* PurchaseButton.swift in Sources */,
 				4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */,
+				4C9BE367265559A40006F776 /* ProductView.swift in Sources */,
 				4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */,
 				4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */,
 				4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */,
