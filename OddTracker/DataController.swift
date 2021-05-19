@@ -9,6 +9,7 @@ import CoreData
 import SwiftUI
 import CoreSpotlight
 import UserNotifications
+import StoreKit
 
 /// An environment singleton responsible for managing the Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
@@ -186,6 +187,18 @@ class DataController: ObservableObject {
                 // fatalError("Unknown award criterion \(award.criterion).")
                 print("TODO: Implement Awards for 'Chat' criterion")
                 return false
+        }
+    }
+
+    // MARK: - On App launch
+    func appLaunched() {
+        guard count(for: Project.fetchRequest()) >= 5 else { return }
+
+        let allScenes = UIApplication.shared.connectedScenes
+        let scene = allScenes.first { $0.activationState == .foregroundActive }
+
+        if let windowScene = scene as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: windowScene)
         }
     }
 
