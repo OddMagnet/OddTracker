@@ -81,18 +81,18 @@ struct EditProjectView: View {
                     showingDeleteConfirm.toggle()
                 }
                 .accentColor(.red)
+                .alert(isPresented: $showingDeleteConfirm) {
+                    Alert(
+                        title: Text("Delete project?"),
+                        message: Text("Are you sure you want to delete this project? You will also delete all the items it contains."),
+                        primaryButton: .default(Text("Delete"), action: delete),
+                        secondaryButton: .cancel()
+                    )
+                }
             }
         }
         .navigationTitle("Edit Project")
         .onDisappear(perform: dataController.save)
-        .alert(isPresented: $showingDeleteConfirm) {
-            Alert(
-                title: Text("Delete project?"),
-                message: Text("Are you sure you want to delete this project? You will also delete all the items it contains."),
-                primaryButton: .default(Text("Delete"), action: delete),
-                secondaryButton: .cancel()
-            )
-        }
         .alert(isPresented: $showingNotificationsError) {
             Alert(
                 title: Text("Oops!"),
