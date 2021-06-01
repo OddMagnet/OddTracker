@@ -25,6 +25,10 @@
 			<string></string>
 			<key>CFBundleURLName</key>
 			<string>io.github.oddmagnet.OddTracker</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>oddtracker://</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
