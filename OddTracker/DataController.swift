@@ -132,6 +132,21 @@ class DataController: ObservableObject {
         }
     }
 
+    /// Adds a new project
+    @discardableResult func addProject() -> Bool {
+        let canCreate = fullVersionUnlocked || count(for: Project.fetchRequest()) < 3
+
+        if canCreate {
+            let project = Project(context: container.viewContext)
+            project.isClosed = false
+            project.creationDate = Date()
+            save()
+            return true
+        } else {
+            return false
+        }
+    }
+
     /// Deletes an object and it's spotlight record
     /// - Parameter object: The object to delete and remove the spotlight record of
     func delete(_ object: NSManagedObject) {

@@ -55,14 +55,7 @@ extension ProjectsView {
 
         // MARK: - Functions
         func addProject() {
-            let canCreate = dataController.fullVersionUnlocked || dataController.count(for: Project.fetchRequest()) < 3
-
-            if canCreate {
-                let project = Project(context: dataController.container.viewContext)
-                project.isClosed = false
-                project.creationDate = Date()
-                dataController.save()
-            } else {
+            if dataController.addProject() == false {
                 showingUnlockView.toggle()
             }
         }
