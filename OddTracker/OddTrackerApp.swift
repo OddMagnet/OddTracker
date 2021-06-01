@@ -12,6 +12,8 @@ struct OddTrackerApp: App {
     @StateObject var dataController: DataController
     @StateObject var unlockManager: UnlockManager
 
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     init() {
         let dataController = DataController()
         let unlockManager = UnlockManager(dataController: dataController)
