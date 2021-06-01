@@ -43,11 +43,21 @@ struct ContentView: View {
                 }
         }
         .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+        .onOpenURL(perform: openURL)
     }
 
     /// Changes the selected view to the HomeView, used for when the app is opened via spotlight
     func moveToHome(_ input: Any) {
+        // currently only one possible input from spotlight, so no checks on it yet
         selectedView = HomeView.tag
+    }
+
+    /// Opens a url from a quick action
+    /// - Parameter url: The url to open
+    func openURL(_ url: URL) {
+        // currently only one url, so no need to check it yet
+        selectedView = ProjectsView.openTag
+        _ = dataController.addProject()
     }
 }
 
