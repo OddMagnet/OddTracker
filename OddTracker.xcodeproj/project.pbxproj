@@ -128,6 +128,7 @@
 		4C172D402678EFC6007BF71F /* DataController-Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Reminders.swift"; sourceTree = "<group>"; };
 		4C172D422678F0A3007BF71F /* DataController-Awards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Awards.swift"; sourceTree = "<group>"; };
 		4C172D442678F40D007BF71F /* DataController-IAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-IAP.swift"; sourceTree = "<group>"; };
+		4C172D482678F5DF007BF71F /* OddTrackerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OddTrackerWidgetExtension.entitlements; sourceTree = "<group>"; };
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
@@ -347,6 +348,7 @@
 		4C91DCEA25617BB300A0A108 = {
 			isa = PBXGroup;
 			children = (
+				4C172D482678F5DF007BF71F /* OddTrackerWidgetExtension.entitlements */,
 				4C91DCF525617BB300A0A108 /* OddTracker */,
 				4C172D2D2678ECF3007BF71F /* OddTrackerWidget */,
 				4CAB9C1825BA1C81000FB4C1 /* OddTrackerTests */,
@@ -766,6 +768,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = OddTrackerWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;
@@ -789,6 +792,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = OddTrackerWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;

@@ -8,8 +8,8 @@
 import CoreData
 import SwiftUI
 import CoreSpotlight
-import UserNotifications
 import StoreKit
+import WidgetKit
 
 /// An environment singleton responsible for managing the Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
@@ -75,8 +75,15 @@ class DataController: ObservableObject {
         // For testing and previewing purposes, create a temporary,
         // in-memory database by writing to /dev/null
         // data is destroyed after the app finishes running
+        // otherwise set the groupID and get the url for the App Group
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+        } else {
+            let groupID = "group.io.github.oddmagnet.OddTracker"
+
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID) {
+                container.persistentStoreDescriptions.first?.url = url.appendingPathComponent("Main.sqlite")
+            }
         }
 
         // load the actual data, crash if there is an error
@@ -129,6 +136,9 @@ class DataController: ObservableObject {
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
+
+            // ensure that widgets get updated as well
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 
