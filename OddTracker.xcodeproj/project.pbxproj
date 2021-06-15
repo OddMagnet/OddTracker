@@ -236,6 +236,17 @@
 			path = OddTrackerWidget;
 			sourceTree = "<group>";
 		};
+		4C172D472678F50D007BF71F /* DataController */ = {
+			isa = PBXGroup;
+			children = (
+				4C91DD0A2561825F00A0A108 /* DataController.swift */,
+				4C172D402678EFC6007BF71F /* DataController-Reminders.swift */,
+				4C172D422678F0A3007BF71F /* DataController-Awards.swift */,
+				4C172D442678F40D007BF71F /* DataController-IAP.swift */,
+			);
+			path = DataController;
+			sourceTree = "<group>";
+		};
 		4C48FD692577907900494CDA /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,10 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */,
-				4C91DD0A2561825F00A0A108 /* DataController.swift */,
-				4C172D402678EFC6007BF71F /* DataController-Reminders.swift */,
-				4C172D422678F0A3007BF71F /* DataController-Awards.swift */,
-				4C172D442678F40D007BF71F /* DataController-IAP.swift */,
+				4C172D472678F50D007BF71F /* DataController */,
 				4CB7B4E02652A9450059A9A4 /* UnlockManager.swift */,
 				4C7F250125AC8462003C4FDA /* Activities */,
 				4CF9A14525FA3541009C1070 /* ViewModels */,
