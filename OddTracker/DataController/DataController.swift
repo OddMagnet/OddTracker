@@ -232,8 +232,8 @@ class DataController: ObservableObject {
     func fetchRequestForTopItems(count: Int) -> NSFetchRequest<Item> {
         let itemRequest: NSFetchRequest<Item> = Item.fetchRequest()
 
-        let completedPredicate = NSPredicate(format: "completed = false")
-        let openPredicate = NSPredicate(format: "project.closed = false")
+        let completedPredicate = NSPredicate(format: "isCompleted = false")
+        let openPredicate = NSPredicate(format: "project.isClosed = false")
         let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
         itemRequest.predicate = compoundPredicate
 
