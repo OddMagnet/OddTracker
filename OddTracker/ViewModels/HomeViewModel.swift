@@ -47,16 +47,7 @@ extension HomeView {
             )
 
             // fetch request for the 10 highest priority incomplete items
-            let itemsRequest: NSFetchRequest<Item> = Item.fetchRequest()
-            itemsRequest.predicate = NSCompoundPredicate(
-                type: .and,
-                subpredicates: [    // only incomplete items in open projects
-                    NSPredicate(format: "isCompleted = false"),
-                    NSPredicate(format: "project.isClosed = false")
-                ]
-            )
-            itemsRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Item.priority, ascending: false)]
-            itemsRequest.fetchLimit = 10
+            let itemsRequest = dataController.fetchRequestForTopItems(count: 10)
 
             // initiate controller for items based on the request,
             // with the managedObjectContext to execute in (dataController.container.viewContext)
