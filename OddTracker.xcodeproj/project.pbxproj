@@ -15,6 +15,16 @@
 		4C088C4A256FFA9B00684D19 /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */; };
 		4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0172573951F00F532C9 /* SelectSomethingView.swift */; };
 		4C152DC425DAD41E00D5269A /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C152DC325DAD41E00D5269A /* PerformanceTests.swift */; };
+		4C172D2A2678ECF3007BF71F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C172D292678ECF3007BF71F /* WidgetKit.framework */; };
+		4C172D2C2678ECF3007BF71F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C172D2B2678ECF3007BF71F /* SwiftUI.framework */; };
+		4C172D2F2678ECF3007BF71F /* OddTrackerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D2E2678ECF3007BF71F /* OddTrackerWidget.swift */; };
+		4C172D322678ECF8007BF71F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C172D312678ECF8007BF71F /* Assets.xcassets */; };
+		4C172D342678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */; };
+		4C172D352678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */; };
+		4C172D382678ECF8007BF71F /* OddTrackerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4C172D282678ECF3007BF71F /* OddTrackerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4C172D3D2678EE8F007BF71F /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */; };
+		4C172D3E2678EE9A007BF71F /* Item-CoreDataHelpers.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */; };
+		4C172D3F2678EEAC007BF71F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0A2561825F00A0A108 /* DataController.swift */; };
 		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C376B2562D3DB00D3EA28 /* HomeView.swift */; };
 		4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */; };
@@ -58,6 +68,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4C172D362678ECF8007BF71F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C91DCEB25617BB300A0A108 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C172D272678ECF3007BF71F;
+			remoteInfo = OddTrackerWidgetExtension;
+		};
 		4C9A61B725F9074D002AB33A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C91DCEB25617BB300A0A108 /* Project object */;
@@ -74,6 +91,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4C172D392678ECF8007BF71F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4C172D382678ECF8007BF71F /* OddTrackerWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4C01CACB2666C38C00536EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C01CACD2666C39E00536EAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +114,13 @@
 		4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project-CoreDataHelpers.swift"; sourceTree = "<group>"; };
 		4C12D0172573951F00F532C9 /* SelectSomethingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomethingView.swift; sourceTree = "<group>"; };
 		4C152DC325DAD41E00D5269A /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		4C172D282678ECF3007BF71F /* OddTrackerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OddTrackerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C172D292678ECF3007BF71F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4C172D2B2678ECF3007BF71F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		4C172D2E2678ECF3007BF71F /* OddTrackerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerWidget.swift; sourceTree = "<group>"; };
+		4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = OddTrackerWidget.intentdefinition; sourceTree = "<group>"; };
+		4C172D312678ECF8007BF71F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C172D332678ECF8007BF71F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
@@ -137,6 +175,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4C172D252678ECF3007BF71F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C172D2C2678ECF3007BF71F /* SwiftUI.framework in Frameworks */,
+				4C172D2A2678ECF3007BF71F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4C91DCF025617BB300A0A108 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,6 +218,17 @@
 			path = UIKitDelegates;
 			sourceTree = "<group>";
 		};
+		4C172D2D2678ECF3007BF71F /* OddTrackerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				4C172D2E2678ECF3007BF71F /* OddTrackerWidget.swift */,
+				4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */,
+				4C172D312678ECF8007BF71F /* Assets.xcassets */,
+				4C172D332678ECF8007BF71F /* Info.plist */,
+			);
+			path = OddTrackerWidget;
+			sourceTree = "<group>";
+		};
 		4C48FD692577907900494CDA /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				4C4C37682562D0C000D3EA28 /* CloudKit.framework */,
+				4C172D292678ECF3007BF71F /* WidgetKit.framework */,
+				4C172D2B2678ECF3007BF71F /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -270,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				4C91DCF525617BB300A0A108 /* OddTracker */,
+				4C172D2D2678ECF3007BF71F /* OddTrackerWidget */,
 				4CAB9C1825BA1C81000FB4C1 /* OddTrackerTests */,
 				4C9A61B325F9074D002AB33A /* OddTrackerUITests */,
 				4C91DCF425617BB300A0A108 /* Products */,
@@ -283,6 +344,7 @@
 				4C91DCF325617BB300A0A108 /* OddTracker.app */,
 				4CAB9C1725BA1C81000FB4C1 /* OddTrackerTests.xctest */,
 				4C9A61B225F9074D002AB33A /* OddTrackerUITests.xctest */,
+				4C172D282678ECF3007BF71F /* OddTrackerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -371,6 +433,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4C172D272678ECF3007BF71F /* OddTrackerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C172D3C2678ECF8007BF71F /* Build configuration list for PBXNativeTarget "OddTrackerWidgetExtension" */;
+			buildPhases = (
+				4C172D242678ECF3007BF71F /* Sources */,
+				4C172D252678ECF3007BF71F /* Frameworks */,
+				4C172D262678ECF3007BF71F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OddTrackerWidgetExtension;
+			productName = OddTrackerWidgetExtension;
+			productReference = 4C172D282678ECF3007BF71F /* OddTrackerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4C91DCF225617BB300A0A108 /* OddTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C91DD0225617BB600A0A108 /* Build configuration list for PBXNativeTarget "OddTracker" */;
@@ -379,10 +458,12 @@
 				4C91DCF025617BB300A0A108 /* Frameworks */,
 				4C91DCF125617BB300A0A108 /* Resources */,
 				4CF3776A258D65A700A97C02 /* SwiftLint */,
+				4C172D392678ECF8007BF71F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4C172D372678ECF8007BF71F /* PBXTargetDependency */,
 			);
 			name = OddTracker;
 			productName = OddTracker;
@@ -431,9 +512,12 @@
 		4C91DCEB25617BB300A0A108 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					4C172D272678ECF3007BF71F = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					4C91DCF225617BB300A0A108 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -464,11 +548,20 @@
 				4C91DCF225617BB300A0A108 /* OddTracker */,
 				4CAB9C1625BA1C81000FB4C1 /* OddTrackerTests */,
 				4C9A61B125F9074D002AB33A /* OddTrackerUITests */,
+				4C172D272678ECF3007BF71F /* OddTrackerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4C172D262678ECF3007BF71F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C172D322678ECF8007BF71F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4C91DCF125617BB300A0A108 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -522,6 +615,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4C172D242678ECF3007BF71F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C172D3F2678EEAC007BF71F /* DataController.swift in Sources */,
+				4C172D3E2678EE9A007BF71F /* Item-CoreDataHelpers.swift.swift in Sources */,
+				4C172D3D2678EE8F007BF71F /* Main.xcdatamodeld in Sources */,
+				4C172D2F2678ECF3007BF71F /* OddTrackerWidget.swift in Sources */,
+				4C172D342678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4C91DCEF25617BB300A0A108 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -545,6 +650,7 @@
 				4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */,
 				4C9BE36926555AB60006F776 /* UnlockView.swift in Sources */,
 				4CFAAA53257E60B70072DA26 /* ProjectSummaryView.swift in Sources */,
+				4C172D352678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */,
 				4C01CACC2666C38C00536EAC /* AppDelegate.swift in Sources */,
 				4CC7B373256E9D250036E5AF /* ProjectHeaderView.swift in Sources */,
 				4CCD12552564226400F66350 /* Item-CoreDataHelpers.swift.swift in Sources */,
@@ -585,6 +691,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4C172D372678ECF8007BF71F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C172D272678ECF3007BF71F /* OddTrackerWidgetExtension */;
+			targetProxy = 4C172D362678ECF8007BF71F /* PBXContainerItemProxy */;
+		};
 		4C9A61B825F9074D002AB33A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4C91DCF225617BB300A0A108 /* OddTracker */;
@@ -628,6 +739,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4C172D3A2678ECF8007BF71F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5ZJLTFVCL;
+				INFOPLIST_FILE = OddTrackerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.oddmagnet.OddTracker.OddTrackerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C172D3B2678ECF8007BF71F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5ZJLTFVCL;
+				INFOPLIST_FILE = OddTrackerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.oddmagnet.OddTracker.OddTrackerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4C91DD0025617BB600A0A108 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -749,6 +906,7 @@
 		4C91DD0325617BB600A0A108 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = OddTracker/Configuration/OddTracker.entitlements;
@@ -774,6 +932,7 @@
 		4C91DD0425617BB600A0A108 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = OddTracker/Configuration/OddTracker.entitlements;
@@ -881,6 +1040,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4C172D3C2678ECF8007BF71F /* Build configuration list for PBXNativeTarget "OddTrackerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C172D3A2678ECF8007BF71F /* Debug */,
+				4C172D3B2678ECF8007BF71F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4C91DCEE25617BB300A0A108 /* Build configuration list for PBXProject "OddTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
