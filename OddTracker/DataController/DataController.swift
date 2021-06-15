@@ -244,4 +244,11 @@ class DataController: ObservableObject {
         itemRequest.fetchLimit = count
         return itemRequest
     }
+
+    /// Returns the results of a given NSFetchRequest
+    /// - Parameter fetchRequest: The request to get the results for
+    /// - Returns: The results of the request
+    func results<T: NSManagedObject>(for fetchRequest: NSFetchRequest<T>) -> [T] {
+        return (try? container.viewContext.fetch(fetchRequest)) ?? []
+    }
 }
