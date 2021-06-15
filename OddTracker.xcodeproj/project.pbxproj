@@ -25,6 +25,10 @@
 		4C172D3D2678EE8F007BF71F /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */; };
 		4C172D3E2678EE9A007BF71F /* Item-CoreDataHelpers.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */; };
 		4C172D3F2678EEAC007BF71F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0A2561825F00A0A108 /* DataController.swift */; };
+		4C172D412678EFC6007BF71F /* DataController-Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D402678EFC6007BF71F /* DataController-Reminders.swift */; };
+		4C172D432678F0A3007BF71F /* DataController-Awards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D422678F0A3007BF71F /* DataController-Awards.swift */; };
+		4C172D452678F40D007BF71F /* DataController-IAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D442678F40D007BF71F /* DataController-IAP.swift */; };
+		4C172D462678F48F007BF71F /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */; };
 		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C376B2562D3DB00D3EA28 /* HomeView.swift */; };
 		4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */; };
@@ -121,6 +125,9 @@
 		4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = OddTrackerWidget.intentdefinition; sourceTree = "<group>"; };
 		4C172D312678ECF8007BF71F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C172D332678ECF8007BF71F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C172D402678EFC6007BF71F /* DataController-Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Reminders.swift"; sourceTree = "<group>"; };
+		4C172D422678F0A3007BF71F /* DataController-Awards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Awards.swift"; sourceTree = "<group>"; };
+		4C172D442678F40D007BF71F /* DataController-IAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-IAP.swift"; sourceTree = "<group>"; };
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
@@ -354,6 +361,9 @@
 			children = (
 				4C91DCF625617BB300A0A108 /* OddTrackerApp.swift */,
 				4C91DD0A2561825F00A0A108 /* DataController.swift */,
+				4C172D402678EFC6007BF71F /* DataController-Reminders.swift */,
+				4C172D422678F0A3007BF71F /* DataController-Awards.swift */,
+				4C172D442678F40D007BF71F /* DataController-IAP.swift */,
 				4CB7B4E02652A9450059A9A4 /* UnlockManager.swift */,
 				4C7F250125AC8462003C4FDA /* Activities */,
 				4CF9A14525FA3541009C1070 /* ViewModels */,
@@ -619,6 +629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C172D462678F48F007BF71F /* Project-CoreDataHelpers.swift in Sources */,
 				4C172D3F2678EEAC007BF71F /* DataController.swift in Sources */,
 				4C172D3E2678EE9A007BF71F /* Item-CoreDataHelpers.swift.swift in Sources */,
 				4C172D3D2678EE8F007BF71F /* Main.xcdatamodeld in Sources */,
@@ -642,6 +653,7 @@
 				4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */,
 				4CB7B4E12652A9450059A9A4 /* UnlockManager.swift in Sources */,
 				4CFAAA50257E5EFC0072DA26 /* ItemListView.swift in Sources */,
+				4C172D452678F40D007BF71F /* DataController-IAP.swift in Sources */,
 				4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */,
 				4C810BE32573A8BF00008F53 /* Award.swift in Sources */,
 				4C810BE62573A92100008F53 /* AwardsView.swift in Sources */,
@@ -652,6 +664,7 @@
 				4CFAAA53257E60B70072DA26 /* ProjectSummaryView.swift in Sources */,
 				4C172D352678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */,
 				4C01CACC2666C38C00536EAC /* AppDelegate.swift in Sources */,
+				4C172D432678F0A3007BF71F /* DataController-Awards.swift in Sources */,
 				4CC7B373256E9D250036E5AF /* ProjectHeaderView.swift in Sources */,
 				4CCD12552564226400F66350 /* Item-CoreDataHelpers.swift.swift in Sources */,
 				4C91DD0B2561825F00A0A108 /* DataController.swift in Sources */,
@@ -661,6 +674,7 @@
 				4CBCF91D260121E70048E4EF /* ItemRowViewModel.swift in Sources */,
 				4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */,
 				4C9BE362265557090006F776 /* SKProduct-LocalizedPrice.swift in Sources */,
+				4C172D412678EFC6007BF71F /* DataController-Reminders.swift in Sources */,
 				4CF9A14A25FA35EF009C1070 /* ProjectsViewModel.swift in Sources */,
 				4C91DCF725617BB300A0A108 /* OddTrackerApp.swift in Sources */,
 			);
