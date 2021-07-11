@@ -19,8 +19,6 @@
 		4C172D2C2678ECF3007BF71F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C172D2B2678ECF3007BF71F /* SwiftUI.framework */; };
 		4C172D2F2678ECF3007BF71F /* OddTrackerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D2E2678ECF3007BF71F /* OddTrackerWidget.swift */; };
 		4C172D322678ECF8007BF71F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C172D312678ECF8007BF71F /* Assets.xcassets */; };
-		4C172D342678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */; };
-		4C172D352678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */; };
 		4C172D382678ECF8007BF71F /* OddTrackerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4C172D282678ECF3007BF71F /* OddTrackerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4C172D3D2678EE8F007BF71F /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0625617FDD00A0A108 /* Main.xcdatamodeld */; };
 		4C172D3E2678EE9A007BF71F /* Item-CoreDataHelpers.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD12542564226400F66350 /* Item-CoreDataHelpers.swift.swift */; };
@@ -122,7 +120,6 @@
 		4C172D292678ECF3007BF71F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4C172D2B2678ECF3007BF71F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4C172D2E2678ECF3007BF71F /* OddTrackerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerWidget.swift; sourceTree = "<group>"; };
-		4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = OddTrackerWidget.intentdefinition; sourceTree = "<group>"; };
 		4C172D312678ECF8007BF71F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C172D332678ECF8007BF71F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C172D402678EFC6007BF71F /* DataController-Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Reminders.swift"; sourceTree = "<group>"; };
@@ -230,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				4C172D2E2678ECF3007BF71F /* OddTrackerWidget.swift */,
-				4C172D302678ECF4007BF71F /* OddTrackerWidget.intentdefinition */,
 				4C172D312678ECF8007BF71F /* Assets.xcassets */,
 				4C172D332678ECF8007BF71F /* Info.plist */,
 			);
@@ -644,7 +640,6 @@
 				4C172D3E2678EE9A007BF71F /* Item-CoreDataHelpers.swift.swift in Sources */,
 				4C172D3D2678EE8F007BF71F /* Main.xcdatamodeld in Sources */,
 				4C172D2F2678ECF3007BF71F /* OddTrackerWidget.swift in Sources */,
-				4C172D342678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,7 +667,6 @@
 				4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */,
 				4C9BE36926555AB60006F776 /* UnlockView.swift in Sources */,
 				4CFAAA53257E60B70072DA26 /* ProjectSummaryView.swift in Sources */,
-				4C172D352678ECF8007BF71F /* OddTrackerWidget.intentdefinition in Sources */,
 				4C01CACC2666C38C00536EAC /* AppDelegate.swift in Sources */,
 				4C172D432678F0A3007BF71F /* DataController-Awards.swift in Sources */,
 				4CC7B373256E9D250036E5AF /* ProjectHeaderView.swift in Sources */,
@@ -773,7 +767,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;
 				INFOPLIST_FILE = OddTrackerWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -797,7 +791,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;
 				INFOPLIST_FILE = OddTrackerWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -863,7 +857,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -919,7 +913,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -942,7 +936,7 @@
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = OddTracker/Configuration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -968,7 +962,7 @@
 				DEVELOPMENT_TEAM = K5ZJLTFVCL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = OddTracker/Configuration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
