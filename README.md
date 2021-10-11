@@ -1,6 +1,15 @@
 # OddTracker
 
-A temportary readme, soon to be filled with more in-depth info about the app and the process of programming it
+An App to track projects and tasks, written in SwiftUI, for the purpose of demonstrating my skills and knowledge.
+
+The READMEs in this project will be used for myself to take notes about the things I learn(ed) while I program(med) this app. To avoid a massive README I decided to just link Sub-READMEs:
+
+## Sub-READMEs
 
 [Basics](Sub-READMEs/Basics.md)
 
+
+
+## Credits
+
+A big thanks goes to [hacking with swift (HWS)](https://www.hackingwithswift.com/), espically the "Ultimate Portfolio App" course, where I learned most of the things I know about iOS development, as well as the awesome people in the HWS forums for always being helpful when I needed help with a confusing error message.
