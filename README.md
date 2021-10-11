@@ -8,7 +8,21 @@ The READMEs in this project will be used for myself to take notes about the thin
 
 [Basics](Sub-READMEs/Basics.md)
 
+[Editing data](Sub-READMEs/EditingData.md)
 
+[Filling out functionality](Sub-READMEs/FillingFunctionality.md)
+
+[Cleaning Up](Sub-READMEs/CleanUp.md)
+
+[Testing](Sub-READMEs/Testing.md)
+
+[MVVM](Sub-READMEs/.MVVMmd)
+
+[Integrating with the system](Sub-READMEs/SystemIntegration.md)
+
+[Connecting to Apple](Sub-READMEs/ConnectingToApple.md)
+
+[Cross-plattform](Sub-READMEs/CrossPlattform.md)
 
 ## Credits
 
