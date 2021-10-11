@@ -1,3 +1,0 @@
-# Cross-plattform
-
-lorem ipsum

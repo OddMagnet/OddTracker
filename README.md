@@ -16,13 +16,13 @@ The READMEs in this project will be used for myself to take notes about the thin
 
 [Testing](Sub-READMEs/Testing.md)
 
-[MVVM](Sub-READMEs/.MVVMmd)
+[MVVM](Sub-READMEs/MVVM.md)
 
 [Integrating with the system](Sub-READMEs/SystemIntegration.md)
 
 [Connecting to Apple](Sub-READMEs/ConnectingToApple.md)
 
-[Cross-plattform](Sub-READMEs/CrossPlattform.md)
+[Cross-plattform (coming soon)](Sub-READMEs/CrossPlattform.md)
 
 ## Credits
 
