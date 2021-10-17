@@ -11,7 +11,7 @@ import CoreSpotlight
 import StoreKit
 import WidgetKit
 
-/// An environment singleton responsible for managing the Core Data stack, including handling saving,
+/// A class for managing the Core Data stack, including loading, saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
 class DataController: ObservableObject {
     /// The lone CloudKit container used to store all data.
