@@ -14,6 +14,8 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 ### Core App
 
+[Basics](Sub-READMEs/Basics.md)
+
 [Editing data](Sub-READMEs/EditingData.md)
 
 [Filling out functionality](Sub-READMEs/FillingFunctionality.md)
