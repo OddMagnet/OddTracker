@@ -10,6 +10,8 @@ Instead of having multiple apps that each only cover a few topics (for portfolio
 
 Additionally this repo contains reasons for some of the choices made as well as the solutions to some of the problems faced while programming this app. To avoid a massive README I decided to divide and conquer (creating and linking Sub-READMEs)
 
+**Important note**: the READMEs are written based on where the project was at that point in time, so when I write about a class and its methods, I'm only mentioning what was already there at that point in time, additions and changes to the class will be in later READMEs.
+
 ## Sub-READMEs
 
 ### Core App
