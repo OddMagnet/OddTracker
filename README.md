@@ -2,11 +2,17 @@
 
 An App to track projects and tasks, written in SwiftUI, for the purpose of demonstrating my skills and knowledge.
 
-The READMEs in this project will be used for myself to take notes about the things I learn(ed) while I program(med) this app. To avoid a massive README I decided to just link Sub-READMEs:
+Instead of having multiple apps that each only cover a few topics (for portfolio purposes), this app aims to cover a huge range of topics: 
+
+- Important frameworks: SwiftUI, Core Data and CloudKit
+- System Integration: Widgets, App Clips and Spotlight
+- Good programming practices: Testing, Architecture, Organization, Localization, Accessibility
+
+Additionally this repo contains reasons for some of the choices made as well as the solutions to some of the problems faced while programming this app. To avoid a massive README I decided to divide and conquer (creating and linking Sub-READMEs)
 
 ## Sub-READMEs
 
-[Basics](Sub-READMEs/Basics.md)
+### Core App
 
 [Editing data](Sub-READMEs/EditingData.md)
 
@@ -18,9 +24,13 @@ The READMEs in this project will be used for myself to take notes about the thin
 
 [MVVM](Sub-READMEs/MVVM.md)
 
+### Integrating with the system
+
 [Integrating with the system](Sub-READMEs/SystemIntegration.md)
 
 [Connecting to Apple](Sub-READMEs/ConnectingToApple.md)
+
+### Cross-plattform
 
 [Cross-plattform (coming soon)](Sub-READMEs/CrossPlattform.md)
 
