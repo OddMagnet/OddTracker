@@ -70,5 +70,12 @@ A better solution (and the one used for the app) is creating custom extensions f
 
 ## Storing tab selection
 
+To store the users tab selection and make it possible to programmatically switch tabs a few things are needed:
 
+- The tabs need tags, this can be anything that conforms to `Hashable`, in case of this app it's a `String?` value coming from the assigned view's static `tag` property
+- A property for the selection, `selectedView`, needs to be bound to the TabView, also a `String?` value, corrosponding to the tab's tag
+- Both are optional properties, `selectedView` so it can be nil initially and `tag` so that it can be compared to `selectedView`
 
+The static `tag` properties in views is used to avoid hard-coded strings as much as possible, this way there is only one place where the string is hard-coded while everywhere else the static property is used (eg: `ViewName.tag`).
+
+To keep the selected tabs between the apps runs the `@SceneStorage` property wrapper is used for the `selectedView` property. It automatically saves and reads its value to `UserDefaults`.
