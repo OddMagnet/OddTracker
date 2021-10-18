@@ -46,19 +46,27 @@ To make the `DataController` usable in the whole project, it is created in the `
 
 ### iCloud
 
-To sync information across devices the configuration in Xcode needs to request access to iCloud using CloudKit, for this, the 'iCloud' and 'Background Modes' capabilities are added to the configuration. In 'iCloud' the 'CloudKit' service is enabled and in 'Background Modes' the 'Remote Notifications' mode is enabled. Additionally for the CloudKit service the apps bundle ID is needed so  CloudKit knows where in the developer account the data should be stored.
+To sync information across devices the configuration in Xcode needs to request access to iCloud using CloudKit, for this, the 'iCloud' and 'Background Modes' capabilities are added to the configuration. In 'iCloud' the 'CloudKit' service is enabled and in 'Background Modes' the 'Remote Notifications' mode is enabled. Additionally for the CloudKit service the apps bundle ID is needed so CloudKit knows where in the developer account the data should be stored.
 
 ## First Steps in UI
 
+The UI of the app uses a few different tabs:
 
+- Home, for a summary of the user's progress
+- Open, for showing open projects
+- Closed, for showing closed projects
 
-## Storing the code safely
-
-
+Programmatically the 'Open' and 'Closed' tab are the same view (`ProjectsView`), with the difference being the data they present. This is accomplished by using its `showClosedProjects` property to filter the fetchrequest for projects. Depending on which tab ('Open' or 'Closed') is selected the property will be either `true` or `false`.
 
 ## Cleaning up Core Data
 
+Making a Core Data attribute non-optional only means that it needs to have some value by the time it is saved, while a non-optional property in Swift must always have a value. This can lead to problems, so I 'removed' the optionality from Core Data.
 
+One way to solve this would be removing it by hand, changing the `Codegen` in the model to 'None', then using the 'Create NSManagedObject Subclass' option in the 'Editor' menu and finally editing the code in the files that were generated. This is as simple as removing the `?` from the properties. 
+
+The aforementioned solution is problematic though, since it gives a false sense of certainty. The underlying data might still be nil and would be loaded as nil, forced into a non-nil container and used immediately. 
+
+A better solution (and the one used for the app) is creating custom extensions for `Project` and `Item`, which simply use nil-coalescing to ensure that there is a default value in case a property is nil. Additionally those extensions posess a static `example` property. `Project` also has two computed properties, `projectItems` for easy access to the project's items (sorted by priority, then creation date and putting completed items at the end) and `completionAmount` to quickly get the percentage of completed items.
 
 ## Storing tab selection
 
