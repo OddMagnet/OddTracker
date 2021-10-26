@@ -23,3 +23,9 @@ With this in place `onChange(update)` can be added to all bindings in the `EditI
 Finally, since the changes are now reflected instantly in the UI, the saving needs to be handled. Items should be changed when the user returns to the project list or exits the app after editing an item. For the first situation using the `onDisappear()` modifier to save changes (call `dataController.save()`) is good enough. For the second situation it's necessary to watch when the app is being moved to the background.
 
  The second situation is solved in the `OddTrackerApp.swift` file by using the `.onReceive()` modifier and watching for the `UIApplication.willResignActiveNotification` notification, this tells the app to watch for when it goes into the background and makes it possible to run some code before it does go into the background. Since the `perform` argument expects a function that receives a `Notification` it is not possible to directly call the data controllers `save()` function, instead a shim method `save(notification: Notification)` is used, its only purpose is the call `dataController.save()`.
+
+## Editing projects
+
+Editing projects is rather similiar to editing items, aside from the use of `LazyVGrid` to display selectable colors, in a `ZStack` so the current color can be marked, and `.onTapGesture` modifier to update the selected color.
+
+The saving is handled just as it is in the `EditItemView`, but the deleting of a project gets an extra confirmation so projects don't get deleted by accident. This is accomplished by having the delete button only toggle the `showDeleteConfirm` state, which triggers an `.alert()` modifier. Only when the user confirms the `delete()` function is actually called.
