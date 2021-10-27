@@ -26,3 +26,9 @@ The first one simply returns the items sorted by completion, then priority, then
 Other possible solution for sorting would've been key paths, which would take a lot of working around for little gain and `NSSortDescriptor`, which would've required the actual core data attributes instead of the non-optional wrappers.
 
 To change the sorting a `Button` is added to the `ProjectsView`, that toggles an actionsheet.
+
+## Finishing ProjectsView
+
+The rows for items in `ProjectsView` so far only showed the name of the item, to change that the text was changed to a `Label` view, tinted in the projects color, containing the items name and an icon to indicate status, either a checkmark, filled when the item is completed, clear when not, or a triangle with exclamation mark for high priority items.
+
+Additionally the views needed for a working landscape mode on bigger deviced were added. The app will now show some text when there are no items and show the text in the secondary view, telling the user to select a project from the primary view.
