@@ -20,23 +20,23 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 [Editing data](Sub-READMEs/EditingData.md)
 
-[Filling out functionality](Sub-READMEs/FillingFunctionality.md)
+[Filling out functionality](Sub-READMEs/FillingFunctionality.md) [WIP]
 
-[Cleaning Up](Sub-READMEs/CleanUp.md)
+[Cleaning Up](Sub-READMEs/CleanUp.md) [WIP]
 
-[Testing](Sub-READMEs/Testing.md)
+[Testing](Sub-READMEs/Testing.md) [WIP]
 
-[MVVM](Sub-READMEs/MVVM.md)
+[MVVM](Sub-READMEs/MVVM.md) [WIP]
 
 ### Integrating with the system
 
-[Integrating with the system](Sub-READMEs/SystemIntegration.md)
+[Integrating with the system](Sub-READMEs/SystemIntegration.md) [WIP]
 
-[Connecting to Apple](Sub-READMEs/ConnectingToApple.md)
+[Connecting to Apple](Sub-READMEs/ConnectingToApple.md) [WIP]
 
 ### Cross-plattform
 
-[Cross-plattform (coming soon)](Sub-READMEs/CrossPlattform.md)
+[Cross-plattform (coming soon)](Sub-READMEs/CrossPlattform.md) [WIP]
 
 ## Credits
 
