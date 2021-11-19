@@ -59,3 +59,17 @@ All of them are using `fatalError()`, since none of those issues should happen w
 The `Awards` struct conforms to identifiable and has an `id` (using the objects unique name) for easier use with SwiftUI. Additionally it has a static `allAwards` property that loads from the `Awards.json` file, using the previously mentioned extension, and astatic `example` property for preview and testing purposes.
 
 Finally an `AwardsView` was added as a tab in the tab bar, to show the user which awards have been earned so far and which not, using a `LazyVGrid` view.
+
+## Counting Core Data results
+
+A simple way to count with core data is to ask the view context for the count of a fetch request, this is quite fast since Core Data doesn't actually need to retrieve all the attributes for every object it stores.
+
+This is useful for the `hasEarned(award:)` function, which evaluates is a user has earned a certain award. Based on the criterion of the award it creates a fetch requests, gets the count for said requests and returns either true if the criterion is fullfilled, false otherwise.
+
+With the use of the `hasEarned(award:)` function (via the data controller) it is now possible to color the awards in the `AwardsView` with the `.foregroundColor()` modifier and a simply ternary check.
+
+Additionally, when tapping an award, the user is shown an alert, either congratulating the user on unlocking the award, or telling them what they need to do to unlock it. 
+
+Usually showing the alert on the change of a single optional, identifiable, property would be good enough, but in this case there are two properties, `selectedAward`, which contains the awards the user tapped and `showingAwardDetails`, a boolean which triggers the alert. This approach was used for future functions that need the selected awards after the alert is dismissed. An optional identifiable property would've been reset to nil after the award was dismissed.
+
+Showing the alert itself is trivial, the awards are all buttons, so they can set the `selectedAward` property and toggle `showingAwardDetails`, the only thing left then is the `.alert(isPresented:)` modifier, which checks if the award has been earned and then presents the corrosponding message.
