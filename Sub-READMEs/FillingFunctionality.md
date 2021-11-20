@@ -73,3 +73,19 @@ Additionally, when tapping an award, the user is shown an alert, either congratu
 Usually showing the alert on the change of a single optional, identifiable, property would be good enough, but in this case there are two properties, `selectedAward`, which contains the awards the user tapped and `showingAwardDetails`, a boolean which triggers the alert. This approach was used for future functions that need the selected awards after the alert is dismissed. An optional identifiable property would've been reset to nil after the award was dismissed.
 
 Showing the alert itself is trivial, the awards are all buttons, so they can set the `selectedAward` property and toggle `showingAwardDetails`, the only thing left then is the `.alert(isPresented:)` modifier, which checks if the award has been earned and then presents the corrosponding message.
+
+## Creating the Home View
+
+Instead of using a simple view from SwiftUI, the `HomeView` gets a bit more custom. 
+
+A small extension `Colour-Additions` wrapping UIKit's values for `.systemGroupedBackground` and `.secondarySystemGroupedBackground`, which have the bonus of being dark mode aware. 
+
+Multiple fetch requests, to show open projects with their completion amounts as well as 10 items that are incomplete and have high priority. The second requests is a custom one, so instead of getting all matching rows and then only using 10, the fetch requests will only get 10 rows. 
+
+For this, the `HomeView` gets a new `items` property, to store the custom fetch request and an initialiser where it is created. The fetch requests gets created as usual, assigned a predicate and sort descriptors and in addition to that a `.fetchLimit` to accomplish the goal of only fetching 10 items. 
+
+It's noteworthy that this doesn't actually increase performance, since Core Data still needs to read all rows so it can sort. Without the sort descriptors it would be a performance enhancement though.
+
+The projects themselves are displayed in a simple `LazyHGrid` at the top of the `HomeView`, using the secondary background color mentioned earlier and the `.fixedSize()` modifier, since SwiftUI got the dividing of space between grid and lists below pretty wrong without it.
+
+The 10 high priority items are listed below in two sections, "Up next" and "More to explore". For this a method that just returns a slice of the fetched results, which are then given to a method with the `@ViewBuilder` attribute, so whatever calls the method can position them. Finally, each item returned will be a navigation link to an `EditItemView`, so the users can get right to editing them if they feel like it.
