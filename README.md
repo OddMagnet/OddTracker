@@ -20,7 +20,7 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 [Editing data](Sub-READMEs/EditingData.md)
 
-[Filling out functionality](Sub-READMEs/FillingFunctionality.md) [WIP]
+[Filling out functionality](Sub-READMEs/FillingFunctionality.md)
 
 [Cleaning Up](Sub-READMEs/CleanUp.md) [WIP]
 
