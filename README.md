@@ -22,6 +22,8 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 [Filling out functionality](Sub-READMEs/FillingFunctionality.md)
 
+[Internationalization and localization](Sub-READMEs/Localization.md)
+
 [Cleaning Up](Sub-READMEs/CleanUp.md) [WIP]
 
 [Testing](Sub-READMEs/Testing.md) [WIP]
