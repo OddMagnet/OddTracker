@@ -12,4 +12,19 @@ Finally, to fix some small labeling problems the award buttons in `AwardsView` g
 
 ## Cleaning up view code 
 
-coming soon...
+Before SwiftUI, View Controllers in the MVC design pattern were troublesome, since they'd often amass such amounts of code that people started joking about MVC standing for 'Massive View Controller', now in SwiftUI the same can be said about the views, not only are they used to organize the apps layout, they're often also packed with functionality to bring said layouts to life. Just as 'Massive View Controllers' were undesirable in the MVC pattern, so are huge views in SwiftUI.
+
+To remedy this, the views get trimmed by splitting up the `body` property:
+
+- performing calculations outside of it, so it remains fixed (seperating layout logic from computation logic)
+- splitting the layout inside the `body` property into multiple standalone views
+
+Specifically this means that the `HomeView` gets a computed property `label` for the accessibility label, the `list()` method gets extracted to its own  `ItemListView` and the cards that summarize projects to the `ProjectSummaryView`.
+
+`ProjectsView` gets several functions for actions attached to buttons and tap gestures, `addItem(to:)` for the button to add new items to projects, `delete(_:from:)` for the `onDelete()` modifier that is attached to the `ForEach` view and `addProject()` for the new project button. Additionally the layout in the `if` statement at the top of `body` gets moved into a computed property `projectsList`, clearing up its functionality. Finally the toolbar items get computed properties for their layout, `addProjectToolbarItem` and `sortOrderToolbarItem`.
+
+`EditProjectView` also get a change, the `LazyVGrid` showing possible colors for a project is turned into a `colorButton(for:)` function. This is chosen over a concrete view, the later would mean syncing state and making sure `update()` gets called correctly, which doesn't necessary make the code clearer / easier to read.
+
+## Cleaning up Core Data
+
+Coming soon ...
