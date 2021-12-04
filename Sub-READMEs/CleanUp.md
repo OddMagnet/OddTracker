@@ -58,4 +58,23 @@ This way its impossible to mistype a string and every localized string is in one
 
 ## Cleaning up Core Data
 
-Coming soon ...
+To this point the app had a serious bug. Deleting projects worked fine, but when viewing the Home view, the items from the deleted projects still show up. This happens because so far deleting a project only deletes the project, but not the items belonging to that project.
+
+For this purpose, Core Data has **delete cascase**, which is disabled by default to prevent accidental data loss. For this app however, it makes sense. Enabling it is done by simply selecting the `items` relationship of the `Project` entity in the Core Data model and setting the Delete Rule in the Data Model Inspector to 'Cascade'. The `project` relationship of the `Item` entity however remains as 'Nullify', otherwise deleting an item would also delete the project and all other items in it.
+
+Another problem in the Home View is that is might show high-priority items from closed projects, this happens because closing a project doesn't mean its items will be completed. To fix this another predicate needs to be added, the item must *not* be completed and the project must *not* be closed. It's possible to accomplish this with one predicate: 
+
+```swift
+request.predicate = NSPredicate(format: "isCompleted = false AND project.isClosed = false")
+```
+
+But for this app, a `NSCompoundPredicate` is used, because its easier to change parts of the predicates or add another one and it makes the intention clearer
+
+```swift
+let completedPredicate = NSPredicate(format: "isCompleted = false")
+let openPredicate = NSPredicate(format: "project.isClosed = false")
+let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
+
+request.predicate = compoundPredicate
+```
+
