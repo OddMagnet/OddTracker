@@ -25,6 +25,37 @@ Specifically this means that the `HomeView` gets a computed property `label` for
 
 `EditProjectView` also get a change, the `LazyVGrid` showing possible colors for a project is turned into a `colorButton(for:)` function. This is chosen over a concrete view, the later would mean syncing state and making sure `update()` gets called correctly, which doesn't necessary make the code clearer / easier to read.
 
+## Handling localized strings
+
+Just some notes and examples on how to possible handle localized strings in a bigger app. 
+
+For the process of generating strings, it's possible to make use of the `tableName` and `comment` parameters of `Text`'s initializer. `tableName` is used to specify which strings file the localized string should be read from, by default SwiftUI chooses `Localizable.strings`, `comment` is used to add comments to describe the string, which will then appear in the generated files.
+
+One very simple solution to improve localized strings would be to use screaming snake case, e.g. `WELCOME_MSG` and then use that string in the `Localizable.strings` files, this clearly makes text as not translated when it's visible in the app, while also shortening the strings, reducing errors in the localization files.
+
+A better solution would be to remove strings entirely from the code by switching to enums, held in their own file, so all strings are in the same place.
+
+```swift
+// Strings.swift
+import SwiftUI
+
+enum Strings: LocalizedStringKey {
+  case appWelcomeMessage
+  case updateSettings
+}
+
+extension Text {
+  init(_ localizedString: Strings, tableName: String? = nil) {
+    self.init(localizedString.rawValue, tableName: tableName)
+  }
+}
+
+// Usage:
+Text(.appWelcomeMessage)
+```
+
+This way its impossible to mistype a string and every localized string is in one place. 
+
 ## Cleaning up Core Data
 
 Coming soon ...
