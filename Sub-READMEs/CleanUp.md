@@ -78,3 +78,23 @@ let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [complete
 request.predicate = compoundPredicate
 ```
 
+## Adding a linter
+
+Clean code is much nicer to look at and can also be easier to read. To ensure that the code style stays consistent a linter is installed and added to the project. Installation is handled with [brew](https://brew.sh): `brew install swiftlint`, then a `.swiftlint.yml` file is created and the rules for the linter are adjusted for personal preferences.
+
+Then Xcode is configured to run SwiftLint automatically on every build, via a custom build phase. This is done by selected the project in the Project Navigator, selecting the `OddTracker` target and then the Build Phases tab. A new 'Run Script' phase is now added via the '+' button, named 'SwiftLint' and containing the following script:
+
+```shell
+# On Apple Silicon Macs SwiftLint is installed in /opt/homebrew/bin instead of /usr/local/bin, hence the alias
+alias swiftlint="/opt/homebrew/bin/swiftlint"
+
+# This is the main script to run SwiftLint on every build
+if which swiftlint >/dev/null; then
+  swiftlint
+else
+  echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+fi
+```
+
+
+
