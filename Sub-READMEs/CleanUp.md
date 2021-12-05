@@ -96,5 +96,21 @@ else
 fi
 ```
 
+## Some words on comments and project structure
 
+There are lots of opinions on commenting, so I thought I'd use this section to add some of mine:
 
+- Even if the code is easy to read and "self-explanatory", it should still have "summary comments", to give a quick overview of what a block of code does
+- If there was a choice between multiple solution, it's a good idea to add "context comments", to explain why one solution was chosen over the other(s)
+- If there are any points where the code does something unexpected or weird, e.g. as a workaround for a bug in some framework, there should be a comment explaining it, ideally also containing a link to where the bug is being tracked
+
+**Documentation comments**, while being designed for people who use your code, can still be very helpful over time and especially in larger projects. Being able to quickly get an overview of a function instead of having to look into the file its in is quite helpful. They should contain a short explanation of what the code is used for and any assumptions that might be made.
+
+**Project structure**, after this point in time the project is structured as follows
+
+- In the `Activities` group Views are split by what they do in the app, it has groups for `Home`, `Projects` and  `Awards`, all containing the files that make up their respective sections in the app. Additionally the `Activities` group contains `ContentView.swift`
+  - The `Awards` group also contains the model and data, this is intentional, so adding new awards/features and fixing bugs can be done without jumping between different parts of the project. 
+- The `Extensions` group contains all extensions and a `CoreData` subgroup for the Core Data model and extensions
+- For now `DataController.swift` does not have a group and instead sits at the top level next to `OddTrackerApp.swift`
+- `Localization` and `Configuration` contain their respective files
+- Later on there will be a group for `DataControllers` (since the original DataController will be extended and also split up into different files) and one for `ViewModels`
