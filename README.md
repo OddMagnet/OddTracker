@@ -24,7 +24,7 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 [Internationalization and localization](Sub-READMEs/Localization.md)
 
-[Cleaning Up](Sub-READMEs/CleanUp.md) [WIP]
+[Cleaning Up](Sub-READMEs/CleanUp.md)
 
 [Testing](Sub-READMEs/Testing.md) [WIP]
 
