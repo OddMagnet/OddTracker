@@ -34,33 +34,38 @@ class OddTrackerUITests: XCTestCase {
         app.buttons["Open"].tap()
         XCTAssertEqual(app.tables.cells.count, 0, "There should be 0 rows in the app initially.")
 
-        for tapCount in 1...5 {
-            app.buttons["add"].tap()
-            XCTAssertEqual(app.tables.cells.count, tapCount, "There should now be \(tapCount) rows\(tapCount > 1 ? "s" : "") in the list.")
+        for tapCount in 1...3 {
+            app.buttons["Add New Project"].tap()
+            XCTAssertEqual(app.tables.cells.count, tapCount, "There should now be \(tapCount) rows in the list.")
         }
     }
 
     // NOTE: This is also called by other tests, but should not be problematic since there is a complete reset between tests
-    func testHomeViewShowsProjects() {
+    func testAddingItemInsertsRows() {
         app.buttons["Open"].tap()
         XCTAssertEqual(app.tables.cells.count, 0, "There should be no list rows initially.")
 
-        app.buttons["add"].tap()
+        app.buttons["Add New Project"].tap()
         XCTAssertEqual(app.tables.cells.count, 1, "There should be 1 list row after adding a project.")
 
+        // When debugging and stepping through, this test is always successfull,
+        // adding a pause here seems to fix the problem of the test running "too fast"
+        sleep(1)
         app.buttons["Add New Item"].tap()
         XCTAssertEqual(app.tables.cells.count, 2, "There should be 2 list rows after adding an item.")
     }
 
     func testEditingProjectUpdatesCorrectly() {
         // Go to Open Projects and add one project and one item.
-        testHomeViewShowsProjects()
+        testAddingItemInsertsRows()
 
         // Test editing projects
-        app.buttons["NEW PROJECT"].tap()        // tap the newly added project, all caps since the title in the row is capitalized
+        app.buttons["EDIT PROJECT"].tap()       // "compose" is the name of the sf-symbol used to indicate editing the project
         app.textFields["Project name"].tap()    // tap the text field
 
         // Type some text. NOTE: The simulator must use the software keyboard and it has to use the english keyboard
+        // As further above, the UI tests seems to go "too fast" without the pause
+        sleep(1)
         app.keys["space"].tap()
         app.keys["more"].tap()
         app.keys["2"].tap()
@@ -68,18 +73,20 @@ class OddTrackerUITests: XCTestCase {
 
         // Finally, go back and check if the name of the edited project is properly updated
         app.buttons["Open Projects"].tap()
-        XCTAssertTrue(app.buttons["NEW PROJECT 2"].exists, "The new project name should be visible in the list.")
+        XCTAssertTrue(app.staticTexts["New Project 2"].exists, "The new project name should be visible in the list.")
     }
 
     func testEditingItemUpdatesCorrectly() {
         // Go to Open Projects and add one project and one item.
-        testHomeViewShowsProjects()
+        testAddingItemInsertsRows()
 
         // Test editing items
         app.buttons["New Item"].tap()
         app.textFields["Item name"].tap()
 
         // Type some text. NOTE: The simulator must use the software keyboard and it has to use the english keyboard
+        // As further above, the UI tests seems to go "too fast" without the pause
+        sleep(1)
         app.keys["space"].tap()
         app.keys["more"].tap()
         app.keys["2"].tap()
@@ -92,7 +99,7 @@ class OddTrackerUITests: XCTestCase {
 
     func testClosedProjectMovesToClosedTab() {
         // Go to Open Projects and add one project and one item.
-        testHomeViewShowsProjects()
+        testAddingItemInsertsRows()
 
         // ensure the closed projects tab has no items, then go back
         app.buttons["Closed"].tap()
@@ -100,9 +107,11 @@ class OddTrackerUITests: XCTestCase {
         app.buttons["Open"].tap()
 
         // Close the Project and return
-        app.buttons["NEW PROJECT"].tap()            // tap the newly added project
+        app.buttons["EDIT PROJECT"].tap()            // tap the newly added project
         app.buttons["Close this project"].tap()     // close the project
-        app.buttons["Open Projects"].tap()          // and return with the navigation button
+        // Previously closing/opening a project would not return to the previous view, this was changed.
+        // For future reference the code below remains commented out
+//        app.buttons["Open Projects"].tap()          // and return with the navigation button
 
         // Then check the open and closed projects tabs
         XCTAssertEqual(app.tables.cells.count, 0, "There should no list rows in the open tab.")
@@ -112,7 +121,7 @@ class OddTrackerUITests: XCTestCase {
 
     func testSwipeToDelete() {
         // Go to Open Projects and add one project and one item.
-        testHomeViewShowsProjects()
+        testAddingItemInsertsRows()
 
         // delete an item
         app.buttons["New Item"].swipeLeft()
@@ -125,12 +134,14 @@ class OddTrackerUITests: XCTestCase {
     // MARK: - Closed Projects Tab
     func testOpenedProjectMovesToOpenTab() {
         // Go to Open Projects and add one project and one item.
-        testHomeViewShowsProjects()
+        testAddingItemInsertsRows()
 
         // close the project
-        app.buttons["NEW PROJECT"].tap()
+        app.buttons["EDIT PROJECT"].tap()
         app.buttons["Close this project"].tap()
-        app.buttons["Open Projects"].tap()
+        // Previously closing/opening a project would not return to the previous view, this was changed.
+        // For future reference the code below remains commented out
+//        app.buttons["Open Projects"].tap()
 
         // ensure the open projects tab has no items, then go back
         app.buttons["Open"].tap()
@@ -138,9 +149,11 @@ class OddTrackerUITests: XCTestCase {
         app.buttons["Closed"].tap()
 
         // reopen the project and return
-        app.buttons["NEW PROJECT"].tap()
+        app.buttons["EDIT PROJECT"].tap()
         app.buttons["Reopen this project"].tap()
-        app.buttons["Closed Projects"].tap()
+        // Previously closing/opening a project would not return to the previous view, this was changed.
+        // For future reference the code below remains commented out
+//        app.buttons["Closed Projects"].tap()
 
         // Then check the open and closed projects tabs
         XCTAssertEqual(app.tables.cells.count, 0, "There should no list rows in the closed tab.")
@@ -163,7 +176,7 @@ class OddTrackerUITests: XCTestCase {
 
     func testUnlockingAwardsShowsDifferentAlert() {
         // Go to Open Projects and add one project and one item so an Award gets unlocked
-        testHomeViewShowsProjects()
+        testAddingItemInsertsRows()
 
         // Go to the awards tab
         app.buttons["Awards"].tap()
