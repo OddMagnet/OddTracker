@@ -45,3 +45,31 @@ Even non-public parts (e.g. parts of the code only used for development of the a
 An interesting side-note: When writing the tests a problem appeared. Internally `DataController` creates an `NSPersistentCloudKitContainer` for the Core Data work. Both the `BaseTestCase` as well as the main app create their own instance of `DataController`, which means `NSPersistentCloudKitContainer` starts up twice, tries to find the model file, loads the entities from it and then gets 'confused' since there are now two `Item` entities, both claiming they should own the `Item` class.
 
 To fix this problem a new static `model` property is added to `DataController`, which is used to load the model, only loading it once, and returns an `NSManagedObjectModel` instance. This is then used in `DataControllers` initializer, with the longer `NSPersistentCloudKitContainer(name:managedObjectModel:)` initializer.
+
+## Extensions
+
+The project has a couple of extensions that add functionality to Apple's own code, since that code can potentially change in the future, the extensions need to be tested to ensure they keep working as intended.
+
+- In `ExtensionTests`
+  - `testSequenceKeyPathSortingSelf()` tests that the `\.self` keypath sorting works correctly
+  - `testSequenceKeyPathSortingCustom()` tests that sorting with a custom comparator function works correctly
+  - `testBundleDecodingAwards()` tests that the decoding of the `awards.json` file works correctly
+  - `testDecodingString()` and `testDecodingDictionary()` both test the `decode()` function in the extension on `Bundle`, to ensure it works correctly
+  - `testBindingOnChangeCallsFunction()` tests the `onChange()` function in the extension on `Binding`, to ensure it works correctly
+
+The tests for decoding both use so called "test fixtures", files specifically created for testing that contain predetermined content, instead of testing with files belonging to the main app.
+
+The `testBindingOnChangeCallsFunction()` tests the `onChange()` function by using a function that captures a boolean variable and changes it to 'true' when it's run. That function is then set to be called in `onChange()` and the binding is changed. The test is successfull when the boolean variable changed to 'true'.
+
+## Performance
+
+For performance testing the following is done in `PerformanceTests`:
+
+- Creating a huge amount of sample data (x100)
+- Creating a huge amount of awards (x25)
+- Then measure how fast the app can check which awards are earned
+
+At the time of writing this tests for 500 projects with 25x the amount of awards.
+
+## UI
+
