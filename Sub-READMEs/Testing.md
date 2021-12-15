@@ -37,8 +37,8 @@ For Core Data the following initial tests were added;
 Even non-public parts (e.g. parts of the code only used for development of the app itself) need to be testes.
 
 - In `DevelopmentTests`
-  - `testSampleDataCreationWorks()` tests that the sample data is created and as expected
-  - `testDeleteAllClearsEverything()` tests that the `deleteAll()` function works as intended 
+  - `testSampleDataCreationWorks()` tests the creation of sample data
+  - `testDeleteAllClearsEverything()` tests the `deleteAll()` function 
   - `testExampleProjectIsClosed()` tests that the example project is closed
   - `testExampleItemIsHighPriority()` tests that the example item is high priority
 
@@ -51,11 +51,11 @@ To fix this problem a new static `model` property is added to `DataController`, 
 The project has a couple of extensions that add functionality to Apple's own code, since that code can potentially change in the future, the extensions need to be tested to ensure they keep working as intended.
 
 - In `ExtensionTests`
-  - `testSequenceKeyPathSortingSelf()` tests that the `\.self` keypath sorting works correctly
-  - `testSequenceKeyPathSortingCustom()` tests that sorting with a custom comparator function works correctly
-  - `testBundleDecodingAwards()` tests that the decoding of the `awards.json` file works correctly
-  - `testDecodingString()` and `testDecodingDictionary()` both test the `decode()` function in the extension on `Bundle`, to ensure it works correctly
-  - `testBindingOnChangeCallsFunction()` tests the `onChange()` function in the extension on `Binding`, to ensure it works correctly
+  - `testSequenceKeyPathSortingSelf()` tests the `\.self` keypath sorting
+  - `testSequenceKeyPathSortingCustom()` tests sorting with a custom comparator function
+  - `testBundleDecodingAwards()` tests the decoding of the `awards.json` file
+  - `testDecodingString()` and `testDecodingDictionary()` both test the `decode()` function in the extension on `Bundle`
+  - `testBindingOnChangeCallsFunction()` tests the `onChange()` function in the extension on `Binding`
 
 The tests for decoding both use so called "test fixtures", files specifically created for testing that contain predetermined content, instead of testing with files belonging to the main app.
 
@@ -73,3 +73,36 @@ At the time of writing this tests for 500 projects with 25x the amount of awards
 
 ## UI
 
+To add UI tests to the project a new `UI Testing Bundle` target needs to be added, for this app it's named `OddTrackerUITests`. Compared to normal tests, UI tests can't directly interact with the code of the project, instead they launch the app and "tap" buttons etc. like a user would. Another difference to normal tests is that they're a lot slower, nonetheless they're usefull to ensure the UI doesn't break in any place.
+
+To ensure a clean state for every test some extra configuration is passed to the app. This is done by setting the `launchArguments` of the `app` variable in the `setupWithError()` function. For the app to recognize the passed argument(s), in this case this is done by adding the following code in the initializer of the `DataController`:
+
+```swift
+init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
+  /* earlier code omitted for brevity */
+  container.loadPersistentStores { _, error in 
+		if let error = error { /* omitted for brevity */ }
+		
+		#if DEBUG
+		if CommandLine.arguments.contains("enable-testing") {
+      self.deleteAll()
+    }
+		#endif
+	}
+}
+```
+
+This ensures that for every app launch (which happens before every test), the existing data gets deleted, making for a clean state.
+
+Now for the actual tests: 
+
+- `testTabbarButtonCount()` tests that the correct amount of tabs is visible
+- `testOpenTabAddsProjects()` tests the "Add Project" button
+- `testAddingItemInsertsRows()` tests that adding items to a project adds rows in the UI
+- `testEditingProjectUpdatesCorrectly()` tests that editing a project updates the UI
+- `testEditingItemUpdatesCorrectly()` tests that editing an item updates the UI
+- `testClosedProjectMovesToClosedTab()` tests that closing a project moves it to the closed tab
+- `testSwipeToDelete()` tests the "swipe to delete" function of item rows
+- `testOpenedProjectMovesToOpenTab()` tests that opening a project moves it to the open tab
+- `testAllAwardsShowLockedAlert()` tests that awards show the correct alert when locked
+- `testUnlockingAwardsShowsDifferentAlert()` tests awards show the correct alert when unlocked
