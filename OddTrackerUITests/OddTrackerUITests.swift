@@ -30,7 +30,7 @@ class OddTrackerUITests: XCTestCase {
     }
 
     // MARK: - Open Projects Tab
-    func testOpenTabAddsItems() {
+    func testOpenTabAddsProjects() {
         app.buttons["Open"].tap()
         XCTAssertEqual(app.tables.cells.count, 0, "There should be 0 rows in the app initially.")
 
