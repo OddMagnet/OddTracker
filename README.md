@@ -28,7 +28,7 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 [Testing](Sub-READMEs/Testing.md)
 
-[MVVM](Sub-READMEs/MVVM.md) [WIP]
+[MVVM](Sub-READMEs/MVVM.md)
 
 ### Integrating with the system
 
