@@ -26,7 +26,7 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 [Cleaning Up](Sub-READMEs/CleanUp.md)
 
-[Testing](Sub-READMEs/Testing.md) [WIP]
+[Testing](Sub-READMEs/Testing.md)
 
 [MVVM](Sub-READMEs/MVVM.md) [WIP]
 
