@@ -81,14 +81,14 @@ To ensure a clean state for every test some extra configuration is passed to the
 init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
   /* earlier code omitted for brevity */
   container.loadPersistentStores { _, error in 
-		if let error = error { /* omitted for brevity */ }
-		
-		#if DEBUG
-		if CommandLine.arguments.contains("enable-testing") {
+    if let error = error { /* omitted for brevity */ }
+    
+    #if DEBUG
+    if CommandLine.arguments.contains("enable-testing") {
       self.deleteAll()
     }
-		#endif
-	}
+    #endif
+  }
 }
 ```
 
