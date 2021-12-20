@@ -36,15 +36,15 @@ struct HomeView: View {
                         // Check if the user opened the app by selected an item in Spotlight
                         if let item = viewModel.selectedItem {
                             // if so, create a NavigationLink to the item in EditItemView
-                            // the `selection` binding ensures it only triggers when the the binding changes
-                            // `tag` ensures that, if the item changes while the destination view is showing,
-                            // it will be refreshed
+                            // `selection` and `tag` ensures the view only triggers when the the binding changes
+                            // the `.id()` modifier ensures the view is refrshed when the item changes
                             NavigationLink(
                                 destination: EditItemView(item: item),
                                 tag: item,
                                 selection: $viewModel.selectedItem,
                                 label: EmptyView.init
                             )
+                            .id(item)
                         }
                         VStack(alignment: .leading) {
                             ScrollView(.horizontal, showsIndicators: false) {
