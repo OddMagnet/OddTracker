@@ -626,7 +626,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "alias swiftlint=\"/opt/homebrew/bin/swiftlint\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "alias swiftlint=\"/opt/homebrew/bin/swiftlint\"\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n if which swiftlint >/dev/null; then\n  swiftlint\n else\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n fi\nelse\n echo \"Not running SwiftLint/swiftlint because we are building for Release\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -941,6 +941,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=250 -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.oddmagnet.OddTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -967,6 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=250 -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.oddmagnet.OddTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
