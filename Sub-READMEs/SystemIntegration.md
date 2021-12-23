@@ -151,7 +151,32 @@ Finally, a computed property `canMakePayments` was added, which returns a boolea
 
 ### UI (Step 6)
 
+To properly display the prices an extension on `SKProduct` is added, containing a computed property `localizedPrice`, which returns  `String` with a correctly formatted localized price.
 
+Next a custom button style is added, which is used for the 'Purchase' and 'Restore' button, so they stand out from the rest of the app.
+
+The last views added for this are `ProductView`, which shows the product purchasing screen and `UnlockView`, which shows the various states of the purchase. Currently neither of them can be used in SwiftUI previews since it's not possible to simulate a product in there.
+
+Up to this point there was no reason to buy the product, since the user could create unlimited projects, this is changed by adding a check in the `addProject()` function of `ProjectsViewModel`. If the user hasn't unlocked the full version and wants to create a fourth project a sheet is toggled that asks to purchase the full version.
+
+Finally a `appLaunched()` function is added to `DataController`, which is called on app launch by adding the `.onAppear(perform: dataController.appLaunched)` modifier in `ContentView`. This function checks that the user has used the app for a while, then proceeds to request a review
+
+```swift
+func appLaunched() {
+  guard count(for: Project.fetchRequest()) >= 5 else { return }
+
+  let allScenes = UIApplication.shared.connectedScenes
+  let scene = allScenes.first { $0.activationState == .foregroundActive }
+
+  if let windowScene = scene as? UIWindowScene {
+    SKStoreReviewController.requestReview(in: windowScene)
+  }
+}
+```
+
+
+
+And of course new localization for the changes is added.
 
 ## Quick Actions
 
