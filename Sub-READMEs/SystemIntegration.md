@@ -174,8 +174,6 @@ func appLaunched() {
 }
 ```
 
-
-
 And of course new localization for the changes is added.
 
 ## Quick Actions
