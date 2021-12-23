@@ -64,11 +64,94 @@ Lastly, old data needs to be removed from spotlight when the user removes an ite
 
 ## Local Notifications
 
-Lorem ipsum
+To enable local notifications a few steps were needed:
+
+1. Update the UI and Core Data to enable selecting times for notification and storing them
+
+   1. Adding a date attribute to the project entity in the Core Data model, this additional attribute is automatically added to all existing data with a value of nil
+
+   2. Adding two `@State` properties in `EditProjectView`
+
+      - ``remindMe`, as a toggle for the switch that turns notifications on/off
+      - `reminderTime`, to store the time when the notification should be triggered
+
+   3. Updating the initializer of `EditProjectView` to set the above properties
+
+      - Adding a section to the form to display the `Toggle` and `DatePicker` views
+
+      - Updating the `update()` method to include `reminderTime`
+
+2. Adding notifications
+
+   1. Adding an import to `UserNotifications` in `DataController` then adding the following methods
+
+      - `addReminders(for:completion:)` which adds a reminder for a given project
+
+      - `requestNotifications(completion)`, a private function that asks for permission for notifications
+      - `removerReminders(for:)` which removes all reminders for a given project
+
+      - `placeReminders(for:completion)`, another private function that placed the notification
+
+   2. They're called in the order above, `addReminders()` first checks the permissions and calls `requestNotifications()` if needed. If permissions are granted `placeReminders()` is called next, which actually adds the request to the `UNUserNotificationCenter`. 
+
+3. Adding error handling
+
+   1. If the whole process fails at any point, the completion closure propagates back up to the `update()` method in `EditProjectView`, where it resets the state for reminders and shows an error message
+   2. The error message also provides a button that links the user directly to the settings for the app, so the user can enable notifications
+
+4. Adding localization for the new changes
+
+Currently every change in a project re-sets the notification (if one is set), but this is intentional, since otherwise the user might get a notification that contains the old project name. And since the notifications get added with the same identifier they just replace the old one instead of creating a duplicate.
 
 ## In-App Purchases
 
-Lorem ipsum
+For IAP its extremely important that every one of the following steps is implemented and works correctly, to implement IAP these steps were needed
+
+1. Adding products to buy, this means telling Apple which products should be offered and how much they cost
+2. Monitoring the transaction queue. At any point a purchase can happen, so its necessary that the queue is monitored at all times
+3. Requesting available products, basically asking Apple for the list of products to show, some products from step 1 might have been rejected from Apple or are not available for other reasons
+4. Handling a transaction, when the user has completed a purchase, whether successfull or not, it needs to be handled
+5. Handling restoring purchases, to allow the user to share purchases across all his devices, or get them back after reinstalling the app
+6. Creating a UI, this is only relevant once all other steps are completed and working properly
+
+### Logic (Steps 1-5)
+
+Luckily this doesn't require nearly as much code as it sounds like, since most of the functionality is provided by `StoreKit`. Like with `DataController` all the code is going to have one central place in `UnlockManager.swift`, which is also created and stored in the main app struct.
+
+For real apps the products would have to be create in 'App Store Connect', for now this app only uses the method used for testing IAPs, which is creating a `Configuration.storekit` file, where new products are simply added via the '+' button. To use this configuration file it needs to be enable in the "Run..." options (⌥⌘R), where it is enable in the 'Options' tab by changing the Storekit configuration from 'None' to `Configuration.storekit`
+
+`UnlockManager` is a class that inherits from `NSObject`, so it can act as `StoreKit` delegates, and conforms to `ObservableObject`, so purchases can be instantly reflected in the UI. Inside it has one nested enum which represents the current state of the purchase as well as a `@Published` property `requestState` to store the current request state and another nested enum for error states.
+
+To watch for purchases on a particular product the following things are needed: 
+
+- Watching for any kind of purchase
+- Looking for the (previously added) product
+- Preparing and storing the purchase information, for this App this happens in `DataController`, since it is data it should by managed by `DataController`
+
+For this `UnlockManager` has three properties `dataController`, to store purchase information, `request`, to store a request for a product, and `loadedProducts` to store loaded products.
+
+Inside its initializer it store the data controller instance, creates a request to look out for, starts watching the payment queue, sets itself as a delegate for the request and starts it. Additionally a deinitializer is added to remove its own object from the payment queue observer when the app is terminated. Finally, to actually use the `UnlockManager` an instance of it is create in `OddTrackerApp`, stored as a `@StateObject` and injected into the environment.
+
+To store the unlock state a new property is added to `DataController`, `fullVersionUnlocked`, which returns a true or false, depending on if the full version is unlocked. Additonally a check for the unlock state is added to the initializer of `UnlockManager` to avoid watching the queue when the full version is already unlocked.
+
+For it to work as a delegate `UnlockManager` needs to conform to both `SKPaymentTransactionObserver` (to watch for purchases) and `SKProductRequestDelegate` (to request products from Apple), which require the following methods
+
+- `productsRequest(_:didReceive:)`, which is called when the request finishes successfully. It stores the returned products, ensures they were not empty and the product(s) are not invalid. If everything worked out it sets the request state to loaded with an associated value of the  product. This all happens on the main thread, since it adjusts a published property (`requestState`)
+- `paymentQueue(_:updatedTransactions:)`, which
+  - if the transaction succeeds or is restored: unlocks the purchase and updates the request state to 'purchased'
+  - if the transaction fails: attempts to go back to the 'loaded' state if possible, otherwise goes to 'failed' with whatever error occurred
+  - if the transaction is deferred (e.g. user needs to ask a parent to authorize), set the state to 'deferred' 
+
+Additionally the following two methods were added: 
+
+- `buy(product:)`, which puts the `SKProduct` into an `SKPayment` that is then added to the `SKPaymentQueue`. iOS then takes over to validate the payment, including the UI for the process
+- `restore()`, which simply calls the dedicated `restoreCompletedTransactions()` function on the default `SKPaymentQueue`
+
+Finally, a computed property `canMakePayments` was added, which returns a boolean on whether the user is able to buy IAPs.
+
+### UI (Step 6)
+
+
 
 ## Quick Actions
 
