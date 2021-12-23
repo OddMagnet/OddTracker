@@ -20,6 +20,16 @@ class DataController: ObservableObject {
     /// The UserDefaults suite where user data is saved in
     let defaults: UserDefaults
 
+    /// Loads and saves whether the premium unlock has been purchased
+    var fullVersionUnlocked: Bool {
+        get {
+            defaults.bool(forKey: "fullVersionUnlocked")
+        }
+        set {
+            defaults.set(newValue, forKey: "fullVersionUnlocked")
+        }
+    }
+
     static var preview: DataController = {
         let dataController = DataController(inMemory: true)
         let viewContext = dataController.container.viewContext
