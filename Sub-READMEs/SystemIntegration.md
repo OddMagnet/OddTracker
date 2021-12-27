@@ -215,4 +215,43 @@ With the code that's already written adding shortcuts is basically childs play. 
 
 ## Widgets
 
-Lorem ipsum
+### Preparation
+
+In order to add a widget to the app a new target was added "OddTrackerWidget", the _Embed in Application_ setting ties the two targets into one app. The "Configuration Intent" box was not checked since the widget currently does not need to provide customizable properties.
+
+The Widget needs a few files from the main app, namely the Core Data model from `Main.xcdatamodel`, its extension from `Item-CoreDataHelpers.swift` and the data controller from  `DataController.swift`. All those files get a membership in the `OddTrackerWidget` target.
+
+Since the current setup would cause Xcode to throw errors about not finding `Award` and `projectTitle` from the data controller, its file is being split up into multiple files (`DataController-Reminders.swift` and `DataController-Awards.swift`) and moving the respective code into them.
+
+To share the user data between different parts of the app **app groups** are utilized. This is accomploshed by adding the "App Groups" capability in the "Signing & Capabilities" tab of the "OddTracker" targets settings. In the newly added section a new group is added: "group.io.github.oddmagnet.OddTracker". This process is then repeated with the widget extension target. this time however selecting the existing group instead of adding a new one. Now both parts of the app can read and write from shared data.
+
+Next Core Data needs to save its live data into the shared data area of the app group. In `DataController` the initializer is changed to redirect Core Data to use the app group's container.
+
+```swift
+let groupID = "group.io.github.oddmagnet.OddTracker"
+if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID) {
+	container.persistentStoreDescriptions.first?.url = url.appendingPathComponent("Main.sqlite")
+}
+```
+
+Now the last change in `DataController` is to tell it to automaticall refresh widgets when data has changed. An import for `WidgetKit` is added and the `save()` method is updated to call `WidgetCenter.shared.reloadAllTimelines()` after data is saved.
+
+### The first widget
+
+Now the actual widget can be coded. The template file already provides some things:
+
+- `Provider`, a struct conforming to `TimeLineProvider`, it determines how data for the widget is fetched
+- `SimpleEntry`, a struct conforming to `TimeLineEntry`, it determines how data for the widget is stores
+- `OddTrackerWidgetEntryView`, the view that determines how the widget looks
+- `OddTrackerWidget`. a strict conforming to `Widget`, it determines how the widget should be configured
+- `OddTrackerWidget_Previews`, so the widget can be previewed in Xcode
+
+The first widgets `SimpleEntry` only contains two properties, one for a `Date` and the other for an array of `Item`. The date isn't relevant to the widget, since it always shows the next item from _Up next_, but it is a requirement of the `TimelineEntry` protocol. The preview provider and the `placeholder(_:)` function simply use the example item via `Item.example`.
+
+The `getSnapshot()` and `getTimeline()` functions on the other hand need actual `Item` data. The first one is called when iOS needs the current status of the widget, the later when iOS wants to know the future statuses. For the first widget both methods practically will be doing the same, providing the current higest item from _Up next_.
+
+For this a new function is added in `DataController`: `fetchRequestForTopItems(count: Int) -> NSFetchRequest<Item>`. From `HomeViewModel` the code for creating a fetchrequest is moved over and replaced by a call to the newly added function. 
+
+Since the widget itself should know as little as possible about `DataController` - meaning it should not be the one executing the fetch request - another function is added, which simply returns a generic array `results<T: NSManagedObject>(_:) -> [T]`. Now the widget can create an instance of `DataController`, get the fetchrequest and let the datacontroller instance execute it to get the items it needs. This is done in the `loadItems() -> [Item]` function that is added to the widgets `Provider` struct.
+
+Now both `getSnapshot()` and `getTimeline()` can make use of the new `loadItems()` function. The later one is by default called again and again by iOS to automatically reload the timeline, but since this isn't needed a reload policy of `.never` is used. The last step for this first widget was the creation of a simple UI to show the first item from _Up next_, or "Nothing!", when there is none.
