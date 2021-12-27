@@ -178,7 +178,28 @@ And of course new localization for the changes is added.
 
 ## Quick Actions
 
-Lorem ipsum
+To add quick actions the app needs an URL type, which is added in the projects configuration, under the main apps target (**OddTracker**), in the **Info** tab under the **URL Types** section.
+
+Next a quick action is registered in the **Info.plist** file by adding a new row with the content of `UIApplicationShortcutItems`, changing it to an array and adding the desired items to it. 3 Keys are added to this array `UIApplicationShortcutItemTitle` for the shortcuts title: 'New Project', `UIApplicationShortcutItemType` with the value that is send to the app 'oddtracker://newProject' and `UIApplicationShortcutItemTitle` for the icon the shortcut should have ' rectangle.stack.badge.plus'.
+
+At the time of writing SwiftUI doesn't have much support for quick actions, so some UIKit is needed. Thanks to the `@UIApplicationDelegateAdaptor` property wrapper it's possible to handle UIKit delegates that SwiftUI can't handle yet. Two classes are created, `AppDelegate` for app-wide announcements and `SceneDelegate` for callbacks in the current scene. Both are then connected toegether with SwiftUI.
+
+`AppDelegate` conforms to the `UIApplicationDelegate` protocol and `SceneDelegate` to the `UIWindowSceneDelegate`. In **OddTrackerApp.swift** a new property is added: `@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate`, so SwiftUI can make use of the classes that were just added.
+
+Next the application delegate needs to know about the scene delegate so it can create a new scene when necessary. This is done with the `application(_:configurationForConnecting:options:)` method of the `UIApplicationDelegate` protocol. It creates a new `UISceneConfiguration` instance, sets the delegate of the instance to `SceneDelegate.self` and returns the configuration.
+
+To access the url that is passed when using the quick action the `SceneDelegate` class gets a new property: `@Environment(\\.openURL) var openURL`. and two functions:
+
+- `windowScene(_:performActionFor:completionHandler:)`. This function gets handed the shortcut that has been triggered and needs to call the associated completion handler with true (for a correctly handled URL) or false (when the URL couldn't be handled). If the URL was handled the `openURL(_:completion:)` function is called.
+- `scene(_:willConnectTo:options)`, which is called when the scene is being created. It also checks the URL but has no completion handler. After checking the URL it also calls `openURL()`
+
+In `ContentView` a new function `openURL(_:)` is added, which simply changes the app's tab to the open projects tab, then calls `addProject()` on the data controller. Additionally the `TabView` needs a new modifier `.onOpenURL(perform: openURL)` to call the new function.
+
+Next most of the `addProject()` function which is still in `ProjectsViewModel` is being moved to `DataController`, so it can be called from anywhere. It also gets the `@DiscardableResult` wrapper, so its return value - a boolean, whether or not the `UnlockView` should be shown - can be ignored if needed.
+
+In `ProjectsViewModel` the function is changed to simple call the version of the data controller and check the returned value.
+
+**Note:** this might seem like quite the workaround, since it would've been possible to just call the old (= in `ProjectsViewModel`) function, but when using the quick action while the app is completely closed this can lead to a race condition, where `SceneDelegates` `windowScene(_:performActionFor:completionHandler:)` is called before the scene is created. This is the reason for its second function `scene(_:willConnectTo:options)`, which itself has a problem too: it happens before the actual UI connection has taken place, meaning SwiftUI might or might not have finished its work by the time the function is called. This is the reason the `onOpenURL()` modifier needs to be in `ContentView` and that it needs to call the `addProject()` function in the data controller.
 
 ## Shortcuts
 
