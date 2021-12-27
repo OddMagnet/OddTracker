@@ -203,7 +203,15 @@ In `ProjectsViewModel` the function is changed to simple call the version of the
 
 ## Shortcuts
 
-Lorem ipsum
+With the code that's already written adding shortcuts is basically childs play. It only takes 3 steps:
+
+1. Telling iOS that the app can handle certain kinds of activity
+   - Activities are unique identifiers, they are declared in the **Info.plist** file with a key of `NSUserActivityTypes`, a type of array and a unique idenfitifer, 'io.github.oddmagnet.newProject' for this project
+2. Telling iOS what data belongs to that activity
+   - This is done by simply adding the `.userActivity()` modifier in `ContentView`, passing the unique identifier defined above. In the closure the eligibility for prediction is set to true and the activities title as to 'New Project'
+3. Responding to the activity being triggered
+   - For this a new function is added in `ContentView`. `createProject(_:)`. which takes an `NSUserActivity`. It changes the apps tab and calls `dataController.openProject()`
+   - Also added is the `.onContinueUserActivity(_:perform:)` passing the uinique identifier and calling the `createProject(_:)` function
 
 ## Widgets
 
