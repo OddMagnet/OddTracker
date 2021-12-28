@@ -64,8 +64,8 @@ struct OddTrackerWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             OddTrackerWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("OddTracker: Up Next")
-        .description("Shows upcoming tasks.")
+        .configurationDisplayName("Up Next…")
+        .description("Your #1 top-priority item.")
     }
 }
 

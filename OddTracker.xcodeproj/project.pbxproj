@@ -13,6 +13,7 @@
 		4C0512E8256BF37300167684 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0512E7256BF37300167684 /* ItemRowView.swift */; };
 		4C088C42256FF7E100684D19 /* EditProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C41256FF7E100684D19 /* EditProjectView.swift */; };
 		4C088C4A256FFA9B00684D19 /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */; };
+		4C0A31FF277AFA69004661D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA392577CC77009F94C0 /* Localizable.strings */; };
 		4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0172573951F00F532C9 /* SelectSomethingView.swift */; };
 		4C152DC425DAD41E00D5269A /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C152DC325DAD41E00D5269A /* PerformanceTests.swift */; };
 		4C172D2A2678ECF3007BF71F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C172D292678ECF3007BF71F /* WidgetKit.framework */; };
@@ -575,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C172D322678ECF8007BF71F /* Assets.xcassets in Resources */,
+				4C0A31FF277AFA69004661D9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
