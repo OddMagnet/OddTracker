@@ -91,6 +91,9 @@ class DataController: ObservableObject {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
 
+            // automatically merge any changes from other devices
+            self.container.viewContext.automaticallyMergesChangesFromParent = true
+
             // using `#if DEBUG` to ensure this code will never get executed in a live app
             #if DEBUG
             if CommandLine.arguments.contains("enable-testing") {
