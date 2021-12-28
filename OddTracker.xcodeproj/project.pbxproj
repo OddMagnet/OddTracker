@@ -52,6 +52,9 @@
 		4C9DCB4225C1BA1C000252C6 /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */; };
 		4CA7E0A0277B043B00EF5CDE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC7B376256EA1B20036E5AF /* Colors.xcassets */; };
 		4CA7E0A1277B043F00EF5CDE /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */; };
+		4CA7E0A5277B2E4000EF5CDE /* SimpleOddTrackerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7E0A4277B2E4000EF5CDE /* SimpleOddTrackerWidget.swift */; };
+		4CA7E0A6277B2E4D00EF5CDE /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7E0A2277B2DA600EF5CDE /* DataProvider.swift */; };
+		4CA7E0A8277B2EBE00EF5CDE /* ComplexOddTrackerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7E0A7277B2EBE00EF5CDE /* ComplexOddTrackerWidget.swift */; };
 		4CAB9C1A25BA1C81000FB4C1 /* OddTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */; };
 		4CAB9C2425BA1DEF000FB4C1 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB9C2325BA1DEF000FB4C1 /* AssetTests.swift */; };
 		4CB3BA372577CC77009F94C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3BA392577CC77009F94C0 /* Localizable.strings */; };
@@ -155,6 +158,9 @@
 		4C9BE366265559A40006F776 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		4C9BE36826555AB60006F776 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		4C9DCB4125C1BA1C000252C6 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
+		4CA7E0A2277B2DA600EF5CDE /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		4CA7E0A4277B2E4000EF5CDE /* SimpleOddTrackerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleOddTrackerWidget.swift; sourceTree = "<group>"; };
+		4CA7E0A7277B2EBE00EF5CDE /* ComplexOddTrackerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexOddTrackerWidget.swift; sourceTree = "<group>"; };
 		4CAB9C1725BA1C81000FB4C1 /* OddTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OddTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAB9C1925BA1C81000FB4C1 /* OddTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTrackerTests.swift; sourceTree = "<group>"; };
 		4CAB9C1B25BA1C81000FB4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -230,6 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				4C172D2E2678ECF3007BF71F /* OddTrackerWidget.swift */,
+				4CA7E0A2277B2DA600EF5CDE /* DataProvider.swift */,
+				4CA7E0A4277B2E4000EF5CDE /* SimpleOddTrackerWidget.swift */,
+				4CA7E0A7277B2EBE00EF5CDE /* ComplexOddTrackerWidget.swift */,
 				4C172D312678ECF8007BF71F /* Assets.xcassets */,
 				4C172D332678ECF8007BF71F /* Info.plist */,
 			);
@@ -640,10 +649,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA7E0A8277B2EBE00EF5CDE /* ComplexOddTrackerWidget.swift in Sources */,
 				4C172D462678F48F007BF71F /* Project-CoreDataHelpers.swift in Sources */,
 				4C172D3F2678EEAC007BF71F /* DataController.swift in Sources */,
+				4CA7E0A6277B2E4D00EF5CDE /* DataProvider.swift in Sources */,
 				4C172D3E2678EE9A007BF71F /* Item-CoreDataHelpers.swift.swift in Sources */,
 				4CA7E0A1277B043F00EF5CDE /* Sequence-Sorting.swift in Sources */,
+				4CA7E0A5277B2E4000EF5CDE /* SimpleOddTrackerWidget.swift in Sources */,
 				4C172D3D2678EE8F007BF71F /* Main.xcdatamodeld in Sources */,
 				4C172D2F2678ECF3007BF71F /* OddTrackerWidget.swift in Sources */,
 			);
