@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 extension Project {
     /// Returns the Label for  the project
@@ -20,6 +21,8 @@ extension Project {
     var projectColor: Color { Color(color ?? "Light Blue") }
     /// Returns the projects color string, or 'Light Blue' as a default if the color string was nil
     var projectColorString: String { color ?? "Light Blue" }
+    /// Returns the projects isClosed status
+    var projectIsClosed: Bool { isClosed }
 
     /// Provides example data for previewing purposes
     static var example: Project {
@@ -79,5 +82,41 @@ extension Project {
 
         let completedItems = allItems.filter(\.isCompleted)
         return Double(completedItems.count) / Double(allItems.count)
+    }
+
+    /// Prepares the project's data for sending it into the Cloud via CloudKit
+    /// - Returns: An array of `CKRecords` containing all items belonging to the project and the project itself
+    func prepareCloudRecords() -> [CKRecord] {
+        // use Core Data object IDs for the CloudKit IDs unique identifiers
+        let parentName = objectID.uriRepresentation().absoluteString
+        let parentID = CKRecord.ID(recordName: parentName)
+
+        // each Core Data entity is identified by a record type string
+        let parent = CKRecord(recordType: "Project", recordID: parentID)
+
+        // the projects data is written using a dictionary syntax, with key strings for the values being saved
+        parent["title"] = projectTitle
+        parent["detail"] = projectDetail
+        parent["owner"] = "PLACEHOLDER"     // TODO: remove placeholder name
+        parent["isClosed"] = projectIsClosed
+
+        // records for the items of a project are created the same way as the projects record
+        // the exception to this is the "project" field, which is a `CKRecord.Reference`,
+        // so every item knows the project that owns it, the `.deleteSelf` action means that
+        // when the project gets deleted, so do its items. Once created all items get attacched to a `CKRecord` array
+        var records = projectItemsDefaultSorted.map { item -> CKRecord in
+            let childName = item.objectID.uriRepresentation().absoluteString
+            let childID = CKRecord.ID(recordName: childName)
+            let child = CKRecord(recordType: "Item", recordID: childID)
+            child["title"] = item.itemTitle
+            child["detail"] = item.itemDetail
+            child["isCompleted"] = item.isCompleted
+            child["project"] = CKRecord.Reference(recordID: parentID, action: .deleteSelf)
+            return child
+        }
+
+        // Lastly the project itself gets added to the array and send back with all its items
+        records.append(parent)
+        return records
     }
 }
