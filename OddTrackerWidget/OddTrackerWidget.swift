@@ -57,8 +57,15 @@ struct OddTrackerWidgetEntryView: View {
 }
 
 @main
-struct OddTrackerWidget: Widget {
-    let kind: String = "OddTrackerWidget"
+struct OddTrackerWidgets: WidgetBundle {
+    var body: some Widget {
+        SimpleOddTrackerWidget()
+    }
+}
+
+// MARK: Simple Widget
+struct SimpleOddTrackerWidget: Widget {
+    let kind: String = "SimpleOddTrackerWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
