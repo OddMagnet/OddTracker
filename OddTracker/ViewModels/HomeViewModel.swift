@@ -85,16 +85,15 @@ extension HomeView {
         }
 
         // MARK: - NSFetchedResultsController delegate methods
+        // the `controller` is not used in the delegate method, but is still needed in order for Core Data to call it
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-            // check if the controller got new items or projects, then update the correct property
-            if let newItems = controller.fetchedObjects as? [Item] {
-                items = newItems
-                // update `upNext` and `moreToExplore`
-                upNext = items.prefix(3)
-                moreToExplore = items.dropFirst(3)
-            } else if let newProjects = controller.fetchedObjects as? [Project] {
-                projects = newProjects
-            }
+            items = itemsController.fetchedObjects ?? []
+
+            // update `upNext` and `moreToExplore`
+            upNext = items.prefix(3)
+            moreToExplore = items.dropFirst(3)
+
+            projects = projectsController.fetchedObjects ?? []
         }
     }
 }

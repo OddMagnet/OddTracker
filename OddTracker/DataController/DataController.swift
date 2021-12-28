@@ -173,15 +173,30 @@ class DataController: ObservableObject {
         container.viewContext.delete(object)
     }
 
-    /// Deletes all items on projects
+    /// Deletes objects based on a fetch request and merges the changes into the current viewContext
+    /// - Parameter fetchRequest: The fetch request for all objects to be deleted
+    private func delete(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        // set the batch requests result type to get back all object IDs that are being deleted
+        batchDeleteRequest.resultType = .resultTypeObjectIDs
+
+        // if the execute was successfull, take the result
+        if let delete = try? container.viewContext.execute(batchDeleteRequest) as? NSBatchDeleteResult {
+            // put the object IDs into a dictionary with a key of `NSDeletedObjectsKey`. Use an empty array if they can't be read
+            let changes = [NSDeletedObjectsKey: delete.result as? [NSManagedObjectID] ?? []]
+            // the dictionary is then used to merge the changes to the view context
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [container.viewContext])
+        }
+    }
+
+    /// Deletes all items and projects
     func deleteAll() {
         let fetchAllItems: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
-        let batchDeleteAllItems = NSBatchDeleteRequest(fetchRequest: fetchAllItems)
-        _ = try? container.viewContext.execute(batchDeleteAllItems)
+        delete(fetchAllItems)
 
         let fetchAllProjects: NSFetchRequest<NSFetchRequestResult> = Project.fetchRequest()
-        let batchDeleteAllProjects = NSBatchDeleteRequest(fetchRequest: fetchAllProjects)
-        _ = try? container.viewContext.execute(batchDeleteAllProjects)
+        delete(fetchAllProjects)
     }
 
     /// Returns the amount of items a given fetchRequest would return
