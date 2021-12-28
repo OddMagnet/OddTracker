@@ -10,7 +10,7 @@ import SwiftUI
 /// A View that shows a list of Items
 struct ItemListView: View {
     let title: LocalizedStringKey
-    let items: ArraySlice<Item>
+    @Binding var items: ArraySlice<Item>
 
     var body: some View {
         if items.isEmpty {
@@ -59,7 +59,7 @@ struct ItemListView_Previews: PreviewProvider {
             VStack(alignment: .leading) {
                 ItemListView(
                     title: "Preview",
-                    items: items.prefix(3)
+                    items: Binding.constant(items.prefix(3))
                 )
             }
             .padding(.horizontal)
