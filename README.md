@@ -32,7 +32,7 @@ Additionally this repo contains reasons for some of the choices made as well as 
 
 ### Integrating with the system
 
-[Integrating with the system](Sub-READMEs/SystemIntegration.md) [WIP]
+[Integrating with the system](Sub-READMEs/SystemIntegration.md)
 
 [Connecting to Apple](Sub-READMEs/ConnectingToApple.md) [WIP]
 
