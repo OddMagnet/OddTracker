@@ -255,3 +255,11 @@ For this a new function is added in `DataController`: `fetchRequestForTopItems(c
 Since the widget itself should know as little as possible about `DataController` - meaning it should not be the one executing the fetch request - another function is added, which simply returns a generic array `results<T: NSManagedObject>(_:) -> [T]`. Now the widget can create an instance of `DataController`, get the fetchrequest and let the datacontroller instance execute it to get the items it needs. This is done in the `loadItems() -> [Item]` function that is added to the widgets `Provider` struct.
 
 Now both `getSnapshot()` and `getTimeline()` can make use of the new `loadItems()` function. The later one is by default called again and again by iOS to automatically reload the timeline, but since this isn't needed a reload policy of `.never` is used. The last step for this first widget was the creation of a simple UI to show the first item from _Up next_, or "Nothing!", when there is none.
+
+### Another widget
+
+Since the current widget has the `@main` entry point it is the only one supported currently. To be able to add multiple widgets a new type that describes several widgets at the same time is needed.
+
+This is done by adding a new 'OddTrackerWidgets' struct that conforms to `WidgetBundle` and moving the `@main` attribute to it. Inside the new struct then is a `body` property, similiar to what a `View` usually has, but this time of the type `some Widget`. The body then contains all widgets the app supports.
+
+To prepare for the next widget the `Item` fetch limit was increased, the `Colors.xcassets`, `Project-CoreDataHelpers` and `Sequence-Sorting` files were added to the widgets target. The new widget itself then just made use of the same `Provider` and `SimpleEntry` structs as the first widgets, but with a different UI, so it could show more entries. The new widget also utilizes the `widgetFamily` and `sizeCategory` environment variables to dynamically adjust how many entries it shows. Lastly the code was separated, `Provider` and `SimpleEntry` were moved into their own file `DataProvider.swift` and both of the widgets got their own files as well, `SimpleOddTrackerWidget.swift` and `ComplexOddTrackerWidget.swift`.
