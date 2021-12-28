@@ -26,7 +26,7 @@
 		4C172D3F2678EEAC007BF71F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91DD0A2561825F00A0A108 /* DataController.swift */; };
 		4C172D412678EFC6007BF71F /* DataController-Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D402678EFC6007BF71F /* DataController-Reminders.swift */; };
 		4C172D432678F0A3007BF71F /* DataController-Awards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D422678F0A3007BF71F /* DataController-Awards.swift */; };
-		4C172D452678F40D007BF71F /* DataController-IAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D442678F40D007BF71F /* DataController-IAP.swift */; };
+		4C172D452678F40D007BF71F /* DataController-StoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C172D442678F40D007BF71F /* DataController-StoreKit.swift */; };
 		4C172D462678F48F007BF71F /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C088C49256FFA9B00684D19 /* Project-CoreDataHelpers.swift */; };
 		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C376B2562D3DB00D3EA28 /* HomeView.swift */; };
@@ -130,7 +130,7 @@
 		4C172D332678ECF8007BF71F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C172D402678EFC6007BF71F /* DataController-Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Reminders.swift"; sourceTree = "<group>"; };
 		4C172D422678F0A3007BF71F /* DataController-Awards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Awards.swift"; sourceTree = "<group>"; };
-		4C172D442678F40D007BF71F /* DataController-IAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-IAP.swift"; sourceTree = "<group>"; };
+		4C172D442678F40D007BF71F /* DataController-StoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-StoreKit.swift"; sourceTree = "<group>"; };
 		4C172D482678F5DF007BF71F /* OddTrackerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OddTrackerWidgetExtension.entitlements; sourceTree = "<group>"; };
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 				4C91DD0A2561825F00A0A108 /* DataController.swift */,
 				4C172D402678EFC6007BF71F /* DataController-Reminders.swift */,
 				4C172D422678F0A3007BF71F /* DataController-Awards.swift */,
-				4C172D442678F40D007BF71F /* DataController-IAP.swift */,
+				4C172D442678F40D007BF71F /* DataController-StoreKit.swift */,
 			);
 			path = DataController;
 			sourceTree = "<group>";
@@ -676,7 +676,7 @@
 				4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */,
 				4CB7B4E12652A9450059A9A4 /* UnlockManager.swift in Sources */,
 				4CFAAA50257E5EFC0072DA26 /* ItemListView.swift in Sources */,
-				4C172D452678F40D007BF71F /* DataController-IAP.swift in Sources */,
+				4C172D452678F40D007BF71F /* DataController-StoreKit.swift in Sources */,
 				4C12D0182573951F00F532C9 /* SelectSomethingView.swift in Sources */,
 				4C810BE32573A8BF00008F53 /* Award.swift in Sources */,
 				4C810BE62573A92100008F53 /* AwardsView.swift in Sources */,
