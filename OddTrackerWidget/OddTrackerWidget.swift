@@ -18,7 +18,7 @@ struct Provider: TimelineProvider {
     /// - Returns: An array of the top items
     func loadItems() -> [Item] {
         let dataController = DataController()
-        let itemRequest = dataController.fetchRequestForTopItems(count: 1)
+        let itemRequest = dataController.fetchRequestForTopItems(count: 5)
         return dataController.results(for: itemRequest)
     }
 
@@ -39,6 +39,16 @@ struct SimpleEntry: TimelineEntry {
     let items: [Item]
 }
 
+// MARK: - WidgetBundle
+@main
+struct OddTrackerWidgets: WidgetBundle {
+    var body: some Widget {
+        SimpleOddTrackerWidget()
+        ComplexOddTrackerWidget()
+    }
+}
+
+// MARK: - Simple Widget
 struct OddTrackerWidgetEntryView: View {
     var entry: Provider.Entry
 
@@ -56,14 +66,6 @@ struct OddTrackerWidgetEntryView: View {
     }
 }
 
-@main
-struct OddTrackerWidgets: WidgetBundle {
-    var body: some Widget {
-        SimpleOddTrackerWidget()
-    }
-}
-
-// MARK: Simple Widget
 struct SimpleOddTrackerWidget: Widget {
     let kind: String = "SimpleOddTrackerWidget"
 
@@ -73,6 +75,27 @@ struct SimpleOddTrackerWidget: Widget {
         }
         .configurationDisplayName("Up Next…")
         .description("Your #1 top-priority item.")
+    }
+}
+
+// MARK: - Multiple Items Widget
+struct OddTrackerWidgetMultipleEntryView: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        Text("Hello, world!")
+    }
+}
+
+struct ComplexOddTrackerWidget: Widget {
+    let kind: String = "ComplexOddTrackerWidget"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            OddTrackerWidgetMultipleEntryView(entry: entry)
+        }
+        .configurationDisplayName("Up next…")
+        .description("Your most important items.")
     }
 }
 
