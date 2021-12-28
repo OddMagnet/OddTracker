@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreHaptics
+import CloudKit
 
 /// A View that shows the editing options for a Project
 struct EditProjectView: View {
@@ -92,6 +93,23 @@ struct EditProjectView: View {
             }
         }
         .navigationTitle("Edit Project")
+        .toolbar {
+            Button {
+                let records = project.prepareCloudRecords()
+                let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+                operation.savePolicy = .allKeys
+
+                operation.modifyRecordsCompletionBlock = { _, _, error in
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
+
+                CKContainer.default().publicCloudDatabase.add(operation)
+            } label: {
+                Label("Upload to iCloud", systemImage: "icloud.and.arrow.up")
+            }
+        }
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingNotificationsError) {
             Alert(
