@@ -19,6 +19,9 @@ struct EditProjectView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.presentationMode) var presentationMode
 
+    @AppStorage("username") var username: String?
+    @State private var showingSignIn = false
+
     @State private var title: String
     @State private var detail: String
     @State private var color: String
@@ -94,19 +97,7 @@ struct EditProjectView: View {
         }
         .navigationTitle("Edit Project")
         .toolbar {
-            Button {
-                let records = project.prepareCloudRecords()
-                let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
-                operation.savePolicy = .allKeys
-
-                operation.modifyRecordsCompletionBlock = { _, _, error in
-                    if let error = error {
-                        print("Error: \(error.localizedDescription)")
-                    }
-                }
-
-                CKContainer.default().publicCloudDatabase.add(operation)
-            } label: {
+            Button(action: uploadToCloud) {
                 Label("Upload to iCloud", systemImage: "icloud.and.arrow.up")
             }
         }
@@ -119,6 +110,7 @@ struct EditProjectView: View {
                 secondaryButton: .cancel()
             )
         }
+        .sheet(isPresented: $showingSignIn, content: SignInView.init)
     }
 
     func colorButton(for item: String) -> some View {
@@ -197,6 +189,24 @@ struct EditProjectView: View {
             } catch {
                 // realistically, the haptic engine should not fail, and if it does it doesn't cause any issues
             }
+        }
+    }
+
+    func uploadToCloud() {
+        if let username = username {
+            let records = project.prepareCloudRecords(owner: username)
+            let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+            operation.savePolicy = .allKeys
+
+            operation.modifyRecordsCompletionBlock = { _, _, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+
+            CKContainer.default().publicCloudDatabase.add(operation)
+        } else {
+            showingSignIn = true
         }
     }
 
