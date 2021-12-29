@@ -51,11 +51,30 @@ Now the data is ready and it's time to start communicating with iCloud, this mea
 
 First the app gets a simple toolbar button in `EditProjectView`, since users are already reading/changing theprojects data in that view. The button prepares the records with the previously added function, creates a `CKModifyRecordsOperation`, sets the operations `savePolicy` and `modifyRecordsCompletionBlock`, then adds it to `CKContainer.default().publicCloudDatabase.add(operation)`.
 
-
-
 ## Querying data from iCloud
 
+Before any data can be queried from iCloud a few models are created, `Loadstate` to represent the current state of the request for data as well as `SharedProject` and `SharedItem` to store the received data.
 
+Next a rudimentory view, `SharedProjectsView` is created, currently is doesn't do much more than store loaded projects, the loading state and show either a `ProgessView`, some text or a `List` view for the loaded projects, where the `NavigationLink`'s are currently placeholders. 
+
+With the `.onAppear()` modifier a function `fetchSharedProjects()` is called, which does exactly what the name implies. It:
+
+- checks that the `loadState` was `.inActive` first, this is to ensure the function doesn't run constantly when the user tabs through the app
+- creates a `CKQuery` that gets all Project records, sorted by their creation date (**Note**: the "creationTimestamp" had to be manually added and set to "Sortable" in the iCloud Dashboard)
+- creates a `CKQueryOperation`, filled with the above query and sets the `desiredKeys` and `resultsLimit` properties of the operation
+- sets a closure for the `recordFetchedBlock` property of the operation
+  - The closure takes the data from the record and converts it to a `SharedProject`, then adds it to the `projects` property of the view and sets the loading state to `.success`
+- sets a closure for the `queryCompletionBlock` property of the operation
+  - The closure simply checks if the `projects` property of the view is empty and if it is sets the loading state to `.noResults`
+- sends off the operation to iCloud
+
+Next another rudimentory view, `SharedItemsView` is created, it works much the same as the `SharedProjectsView`, displaying Items instead of Projects. The `NavigationLink`s in are now updated to link towards the `SharedItemsView`. The view itself also has a function to fetch items, much like the previous function to fetch projects. Where it differs is in the creation of the query, since it adds a predicate to only fetch items belonging to a project, like this:
+
+```swift
+let recordID = CKRecord.ID(recordName: project.id)
+let reference = CKRecord.Reference(recordID: recordID, action: .none)
+let predicate = NSPredicate(format: "project == %@", reference)	
+```
 
 ## Adding Sign in with Apple
 
