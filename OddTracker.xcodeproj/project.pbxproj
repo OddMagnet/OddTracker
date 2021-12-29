@@ -34,6 +34,7 @@
 		4C5134E3277C871100FDF37D /* SharedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134E2277C871100FDF37D /* SharedProject.swift */; };
 		4C5134E5277C878B00FDF37D /* SharedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134E4277C878B00FDF37D /* SharedItem.swift */; };
 		4C5134E8277C880B00FDF37D /* LoadStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134E7277C880B00FDF37D /* LoadStates.swift */; };
+		4C5134EC277C899000FDF37D /* SharedProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134EB277C899000FDF37D /* SharedProjectsView.swift */; };
 		4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51934025FD048500C5F858 /* HomeViewModel.swift */; };
 		4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */; };
 		4C7F24FC25AC7F87003C4FDA /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */; };
@@ -141,6 +142,7 @@
 		4C5134E2277C871100FDF37D /* SharedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProject.swift; sourceTree = "<group>"; };
 		4C5134E4277C878B00FDF37D /* SharedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedItem.swift; sourceTree = "<group>"; };
 		4C5134E7277C880B00FDF37D /* LoadStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStates.swift; sourceTree = "<group>"; };
+		4C5134EB277C899000FDF37D /* SharedProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProjectsView.swift; sourceTree = "<group>"; };
 		4C51934025FD048500C5F858 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift.swift"; sourceTree = "<group>"; };
 		4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5134E6277C87B700FDF37D /* Model */,
+				4C5134EB277C899000FDF37D /* SharedProjectsView.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				4C9BE367265559A40006F776 /* ProductView.swift in Sources */,
 				4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */,
 				4C5134E8277C880B00FDF37D /* LoadStates.swift in Sources */,
+				4C5134EC277C899000FDF37D /* SharedProjectsView.swift in Sources */,
 				4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */,
 				4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */,
 				4CB7B4E12652A9450059A9A4 /* UnlockManager.swift in Sources */,

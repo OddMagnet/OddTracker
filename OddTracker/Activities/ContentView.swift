@@ -37,6 +37,13 @@ struct ContentView: View {
                     Text("Closed")
                 }
 
+            SharedProjectsView()
+                .tag(SharedProjectsView.tag)
+                .tabItem {
+                    Image(systemName: "person.3")
+                    Text("Community")
+                }
+
             AwardsView()
                 .tag(AwardsView.tag)
                 .tabItem {
