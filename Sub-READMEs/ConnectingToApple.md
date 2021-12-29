@@ -78,7 +78,27 @@ let predicate = NSPredicate(format: "project == %@", reference)
 
 ## Adding Sign in with Apple
 
+The following things are needed to add "Sign in with Apple":
 
+1. Telling the system what data the app wants to read
+2. Responding to a successfull sign in by storing the user's data
+3. Responding to a failed sign in
+4. Building some UI that explains the sign in button
+5. Presenting the sign in button at an appropriate time
+
+First a view, `SignInView` is added, it displays information based on the current sign in state. The `presentationMode` environment variable is used to dismiss it, the `colorScheme` environment variable is used to ensure the "Sign In with Apple" button also looks good in dark mode.
+
+Next two functions are added:
+
+- `configureSignIn(_:)`, which (currently) only sets the `.requestedScopes` property of the request
+- `completeSignIn(_:)`, which takes the result, checks for success or failure
+  - on success it tries to create the username from the data it got, if there is no name data it creates a random username
+  - if the sign in was successfull, but the Apple ID could not be typecasted, it sets the status to `.failure(nil)`
+  - on failure it checks if the user cancelled, if so it sets the status to `.unknown` and returns. If there is another reason it sets the status to `failure(error)`
+
+A few more changes were made to finish this step. `EditProjectView` got properties read the username from `@AppStorage` and to show the `SignInView` as a sheet. The `prepareCloudRecords()` function from `Project-CoreDataHelpers` now takes a string argument for the owner/username. Last but not least the button for the iCloud upload in `EditProjectView` has its code moved to a seperate function `uploadToCloud()`, with an added check for the username, showing the `SignInView` sheet if there is none, otherwise uploading the data to the cloud.
+
+To better test the app in the simulator an environment check was added in `OddTrackerApp`, which ensures there always is a username if the app runs in the simulator.
 
 ## Posting comments through Cloudkit
 
