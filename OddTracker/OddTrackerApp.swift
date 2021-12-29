@@ -24,6 +24,10 @@ struct OddTrackerApp: App {
         // the `_value = ...` is needed to assign property wrapper itself instead of assigning to the wrapped value
         _dataController = StateObject(wrappedValue: dataController)
         _unlockManager = StateObject(wrappedValue: unlockManager)
+
+        #if targetEnvironment(simulator)
+        UserDefaults.standard.set("OddMagnet", forKey: "username")
+        #endif
     }
 
     var body: some Scene {
