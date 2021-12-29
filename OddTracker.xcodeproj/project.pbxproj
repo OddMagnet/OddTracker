@@ -31,6 +31,9 @@
 		4C4C37692562D0C000D3EA28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C37682562D0C000D3EA28 /* CloudKit.framework */; };
 		4C4C376C2562D3DB00D3EA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C376B2562D3DB00D3EA28 /* HomeView.swift */; };
 		4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */; };
+		4C5134E3277C871100FDF37D /* SharedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134E2277C871100FDF37D /* SharedProject.swift */; };
+		4C5134E5277C878B00FDF37D /* SharedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134E4277C878B00FDF37D /* SharedItem.swift */; };
+		4C5134E8277C880B00FDF37D /* LoadStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134E7277C880B00FDF37D /* LoadStates.swift */; };
 		4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51934025FD048500C5F858 /* HomeViewModel.swift */; };
 		4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */; };
 		4C7F24FC25AC7F87003C4FDA /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */; };
@@ -135,6 +138,9 @@
 		4C4C37682562D0C000D3EA28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4C4C376B2562D3DB00D3EA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C4C37722562D6FD00D3EA28 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		4C5134E2277C871100FDF37D /* SharedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProject.swift; sourceTree = "<group>"; };
+		4C5134E4277C878B00FDF37D /* SharedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedItem.swift; sourceTree = "<group>"; };
+		4C5134E7277C880B00FDF37D /* LoadStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStates.swift; sourceTree = "<group>"; };
 		4C51934025FD048500C5F858 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift.swift"; sourceTree = "<group>"; };
 		4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
@@ -275,6 +281,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C5134E1277C86F700FDF37D /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				4C5134E6277C87B700FDF37D /* Model */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		4C5134E6277C87B700FDF37D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C5134E2277C871100FDF37D /* SharedProject.swift */,
+				4C5134E4277C878B00FDF37D /* SharedItem.swift */,
+				4C5134E7277C880B00FDF37D /* LoadStates.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4C7F24F925AC771D003C4FDA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +328,7 @@
 				4C91DCF825617BB300A0A108 /* ContentView.swift */,
 				4C7F250225AC846E003C4FDA /* Home */,
 				4C7F250325AC8474003C4FDA /* Project */,
+				4C5134E1277C86F700FDF37D /* Community */,
 				4C7F250425AC847E003C4FDA /* Awards */,
 				4C9BE363265557FE0006F776 /* Unlock */,
 			);
@@ -670,8 +695,10 @@
 				4C01CACE2666C39E00536EAC /* SceneDelegate.swift in Sources */,
 				4C9BE3652655583D0006F776 /* PurchaseButton.swift in Sources */,
 				4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */,
+				4C5134E5277C878B00FDF37D /* SharedItem.swift in Sources */,
 				4C9BE367265559A40006F776 /* ProductView.swift in Sources */,
 				4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */,
+				4C5134E8277C880B00FDF37D /* LoadStates.swift in Sources */,
 				4C91DD0825617FDD00A0A108 /* Main.xcdatamodeld in Sources */,
 				4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */,
 				4CB7B4E12652A9450059A9A4 /* UnlockManager.swift in Sources */,
@@ -681,6 +708,7 @@
 				4C810BE32573A8BF00008F53 /* Award.swift in Sources */,
 				4C810BE62573A92100008F53 /* AwardsView.swift in Sources */,
 				4C7F24FC25AC7F87003C4FDA /* Sequence-Sorting.swift in Sources */,
+				4C5134E3277C871100FDF37D /* SharedProject.swift in Sources */,
 				4C0512E8256BF37300167684 /* ItemRowView.swift in Sources */,
 				4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */,
 				4C9BE36926555AB60006F776 /* UnlockView.swift in Sources */,
