@@ -11,8 +11,14 @@ import CloudKit
 struct SharedItemsView: View {
     let project: SharedProject
 
+    // items
     @State private var items = [SharedItem]()
     @State private var itemsLoadState = LoadState.inactive
+    // messages
+    @State private var messages = [ChatMesssage]()
+    @AppStorage("username") var username: String?
+    @State private var showingSignIn = false
+    @State private var newChatText = ""
 
     var body: some View {
         List {
@@ -39,6 +45,7 @@ struct SharedItemsView: View {
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(project.title)
         .onAppear(perform: fetchSharedItems)
+        .sheet(isPresented: $showingSignIn, content: SignInView.init)
     }
 
     func fetchSharedItems() {
@@ -87,6 +94,43 @@ struct SharedItemsView: View {
 
         // send off the operation
         CKContainer.default().publicCloudDatabase.add(operation)
+    }
+
+    func signIn() {
+        showingSignIn = true
+    }
+
+    func sendChatMessage() {
+        // ensure there is a message and username
+        let text = newChatText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard text.count > 2 else { return }
+        guard let username = username else { return }
+
+        // create a record with the username and text
+        let message = CKRecord(recordType: "Message")
+        message["from"] = username
+        message["text"] = text
+
+        // add a reference to the project
+        let projectID = CKRecord.ID(recordName: project.id)
+        message["project"] = CKRecord.Reference(recordID: projectID, action: .deleteSelf)
+
+        // backup text in case of error. clear it so the UI instantly updates
+        let backupChatText = newChatText
+        newChatText = ""
+
+        // send off the new record
+        CKContainer.default().publicCloudDatabase.save(message) { record, error in
+            // check for errors, if there was one reset the message box
+            if let error = error {
+                print(error.localizedDescription)
+                newChatText = backupChatText
+            // otherwise create the record locally and add it to the list, so the UI updates immediately
+            } else if let record = record {
+                let message = ChatMesssage(from: record)
+                messages.append(message)
+            }
+        }
     }
 }
 
