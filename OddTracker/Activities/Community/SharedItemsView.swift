@@ -22,6 +22,7 @@ struct SharedItemsView: View {
 
     var body: some View {
         List {
+            // Items
             Section {
                 switch itemsLoadState {
                     case .inactive, .loading:
@@ -41,11 +42,40 @@ struct SharedItemsView: View {
                         }
                 }
             }
+
+            // Comments of the project
+            Section(
+                header: Text("Chat about this project…"),
+                footer: messagesFooter
+            ) {
+                Text("Messages go here")
+            }
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(project.title)
         .onAppear(perform: fetchSharedItems)
         .sheet(isPresented: $showingSignIn, content: SignInView.init)
+    }
+
+    @ViewBuilder var messagesFooter: some View {
+        if username == nil {
+            Button("Sign in to comment", action: signIn)
+                .frame(maxWidth: .infinity)
+        } else {
+            VStack {
+                TextField("Enter your message", text: $newChatText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textCase(nil)
+                Button(action: sendChatMessage) {
+                    Text("Send")
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .contentShape(Capsule())
+                }
+            }
+        }
     }
 
     func fetchSharedItems() {
