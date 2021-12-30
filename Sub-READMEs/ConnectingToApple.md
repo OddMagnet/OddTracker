@@ -102,7 +102,15 @@ To better test the app in the simulator an environment check was added in `OddTr
 
 ## Posting comments through Cloudkit
 
+As with `SharedProject`/`SharedItem` messages also need a model, this is added with `ChatMessage`, with an additional initializer that takes a `CKRecord`, since messages will always be created from one.
 
+Then a few new properties are added to `SharedItemsView`, an array to store the messages, a `@AppStorage` property to access the username and two `@State` properties, one to store the new message text before it is send off and the other to toggle the `SignInView`, with the needed `.sheet()` modifier.
 
-### Cleaning up Cloudkit
+Next a function `sendChatMessage()` is added, which checks that there is text and username, create a record from it, adds a reference to the project and sends it all off to the cloud. Should there be an error the text for the new message is reset, otherwise it is simply emptied. On success it also create a `ChatMessage` from the record, so that it can be added to the array of messages and the UI can update instantly.
+
+For now there is only a rudimentary UI added to display chat messages (or a sign in button if the user isn't so far), as a footer section to the list of items of the project.
+
+The last step of this part is adding a bit more UI to display messages once they're fetched. To get the messages a function `fetchChatMessages()` is added, which works much likes the `fetchSharedItems()` message. It checks and sets the loading state, creates a `CKQuery`, a `CKQueryOperation` from that query, adds the `recordFetchedBlock` and `queryCompletionBlock` and sends it off to the cloud.
+
+## Cleaning up Cloudkit
 
