@@ -290,7 +290,7 @@
 		4C5134E1277C86F700FDF37D /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				4C5134E6277C87B700FDF37D /* Model */,
+				4C5134E6277C87B700FDF37D /* Models */,
 				4C5134EB277C899000FDF37D /* SharedProjectsView.swift */,
 				4C5134ED277C994500FDF37D /* SharedItemsView.swift */,
 				4C5134EF277CABE600FDF37D /* SignInView.swift */,
@@ -298,14 +298,14 @@
 			path = Community;
 			sourceTree = "<group>";
 		};
-		4C5134E6277C87B700FDF37D /* Model */ = {
+		4C5134E6277C87B700FDF37D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4C5134E2277C871100FDF37D /* SharedProject.swift */,
 				4C5134E4277C878B00FDF37D /* SharedItem.swift */,
 				4C5134E7277C880B00FDF37D /* LoadStates.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4C7F24F925AC771D003C4FDA /* Extensions */ = {
