@@ -131,3 +131,20 @@ This is handled by the `checkCloudStatus` in the extension `NSManagedObject-Chec
 To change the status of a project in the cloud some preparation is needed. First the `EditProjectsView` gets an enum for the possible states (`checking`, `exists`, `absent`) and a property `cloudStatus` to keep track of the state. A function `updateCloudStatus()` is added to update the property. `uploadToCloud()` is changed to include a call to the `updateCloudStatus` function. `removeFromCloud()` is added and does what the name implies, in addition to also calling the `updateCloudStatus()` function.
 
 The last change needed was adding the UI to make use of the new functionality.
+
+### Error handling
+
+Last but not least, the handling of errors. Network operations are far more likely to throw errors than most other things, but luckily, baked into the API, there are errors being thrown, making it easy for developers to start handling them. 
+
+First a new extension on `Error` is added, `Error-CloudKitMessage`, with a function `getCloudKitError()` which really is just a simply switch-case to go over different possible error codes and return a more helpful string to display for the user.
+
+Next both the `uploadToCloud()` and `removeFromCloud()` functions are updated to use the previously added `getCloudKitError()` function to set a new `@State` property, `cloudError`. 
+
+Sadly just showing an `Alert` with the `.alert()` modifier doesn't work, this is because `String` doesn't conform to `Identifiable`. It's possible to make it conform, but that would likely not be worth the effort and could even cause problems in the future.
+
+Instead a wrapper for the error string is created with `CloudError` which now conforms to `Identifiable` and `ExpressibleByStringInterpolation`, which means that it can be used for the `Alert` since it has a computed `id` property that just returns the `message` property.
+
+Additionally the from the previously mentioned extension is used to create a second initialiser, so it's now possible to create a `CloudError` instance from just an `Error`.
+
+With all this in place, it can now be used in the various places where such an error might occur: `removeFromCloud()`, `uploadToCloud()`, `fetchSharedItems()`, `fetchChatMessages()`, `sendChatMessage()` and probably some more in the future.
+
