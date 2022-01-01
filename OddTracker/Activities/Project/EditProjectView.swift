@@ -11,6 +11,10 @@ import CloudKit
 
 /// A View that shows the editing options for a Project
 struct EditProjectView: View {
+    enum CloudStatus {
+        case checking, exists, absent
+    }
+
     @ObservedObject var project: Project
     let colorColumns = [
         GridItem(.adaptive(minimum: 44))
@@ -21,6 +25,7 @@ struct EditProjectView: View {
 
     @AppStorage("username") var username: String?
     @State private var showingSignIn = false
+    @State private var cloudStatus = CloudStatus.checking
 
     @State private var title: String
     @State private var detail: String
@@ -113,6 +118,7 @@ struct EditProjectView: View {
         .sheet(isPresented: $showingSignIn, content: SignInView.init)
     }
 
+    // MARK: - Helper Views
     func colorButton(for item: String) -> some View {
         ZStack {
             Color(item)
@@ -138,6 +144,7 @@ struct EditProjectView: View {
         .accessibilityHint(LocalizedStringKey(item))
     }
 
+    // MARK: - Project changes
     func toggleClosed() {
         project.isClosed.toggle()
         // on project close, play haptics effect
@@ -192,24 +199,6 @@ struct EditProjectView: View {
         }
     }
 
-    func uploadToCloud() {
-        if let username = username {
-            let records = project.prepareCloudRecords(owner: username)
-            let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
-            operation.savePolicy = .allKeys
-
-            operation.modifyRecordsCompletionBlock = { _, _, error in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                }
-            }
-
-            CKContainer.default().publicCloudDatabase.add(operation)
-        } else {
-            showingSignIn = true
-        }
-    }
-
     func update() {
         project.title = title
         project.detail = detail
@@ -246,6 +235,53 @@ struct EditProjectView: View {
         if UIApplication.shared.canOpenURL(settingsUrl) {
             UIApplication.shared.open(settingsUrl)
         }
+    }
+
+    // MARK: - iCloud
+    func updateCloudStatus() {
+        project.checkCloudStatus { exists in
+            cloudStatus = exists ? .exists : .absent
+        }
+    }
+
+    func uploadToCloud() {
+        if let username = username {
+            let records = project.prepareCloudRecords(owner: username)
+            let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+            operation.savePolicy = .allKeys
+
+            operation.modifyRecordsCompletionBlock = { _, _, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                }
+                // re-check status upon completion, so the toolbar icon can update
+                updateCloudStatus()
+            }
+
+            // set to checking before starting the operation
+            // on completion the `updateCloudStatus()` function is called to set it again
+            cloudStatus = .checking
+            CKContainer.default().publicCloudDatabase.add(operation)
+        } else {
+            showingSignIn = true
+        }
+    }
+
+    func removeFromCloud() {
+        let name = project.objectID.uriRepresentation().absoluteString
+        let id = CKRecord.ID(recordName: name)
+
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [id])
+
+        operation.modifyRecordsCompletionBlock = { _, _, _ in
+            // re-check status upon completion, so the toolbar icon can update
+            updateCloudStatus()
+        }
+
+        // set to checking before starting the operation
+        // on completion the `updateCloudStatus()` function is called to set it again
+        cloudStatus = .checking
+        CKContainer.default().publicCloudDatabase.add(operation)
     }
 }
 
