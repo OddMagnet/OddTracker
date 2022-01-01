@@ -20,6 +20,8 @@ struct SharedItemsView: View {
     @AppStorage("username") var username: String?
     @State private var showingSignIn = false
     @State private var newChatText = ""
+    // error alert
+    @State private var cloudError: CloudError?
 
     var body: some View {
         List {
@@ -64,6 +66,12 @@ struct SharedItemsView: View {
         .onAppear {
             fetchSharedItems()
             fetchChatMessages()
+        }
+        .alert(item: $cloudError) { error in
+            Alert(
+                title: Text("There was an error"),
+                message: Text(error.message)
+            )
         }
         .sheet(isPresented: $showingSignIn, content: SignInView.init)
     }
@@ -127,46 +135,17 @@ struct SharedItemsView: View {
         // and 'error', if there were any errors
         // they're both optional, for now they're not needed here, since this just checks
         // if there are items and sets the loadState to `.noRecords` if there are none
-        operation.queryCompletionBlock = { _, _ in
+        operation.queryCompletionBlock = { _, error in
+            if let error = error {
+                cloudError = CloudError(from: error)
+            }
+
             if items.isEmpty {
                 itemsLoadState = .noResults
             }
         }
 
         // send off the operation
-        CKContainer.default().publicCloudDatabase.add(operation)
-    }
-
-    func fetchChatMessages() {
-        // ensure this function isn't called over and over by only running it from an .inactive loading state
-        guard messagesLoadState == .inactive else { return }
-        messagesLoadState = .loading
-
-        // create the query for messages for a project, sort by creation date
-        let recordID = CKRecord.ID(recordName: project.id)
-        let reference = CKRecord.Reference(recordID: recordID, action: .none)
-        let predicate = NSPredicate(format: "project == %@", reference)
-        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
-        let query = CKQuery(recordType: "Message", predicate: predicate)
-        query.sortDescriptors = [sortDescriptor]
-
-        // create the query
-        let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["from", "text"]
-
-        // add the fetch and completion blocks
-        operation.recordFetchedBlock = { record in
-            let message = ChatMesssage(from: record)
-            messages.append(message)
-            messagesLoadState = .success
-        }
-        operation.queryCompletionBlock = { _, _ in
-            if messages.isEmpty {
-                messagesLoadState = .noResults
-            }
-        }
-
-        // send the query off to the cloud
         CKContainer.default().publicCloudDatabase.add(operation)
     }
 
@@ -197,7 +176,7 @@ struct SharedItemsView: View {
         CKContainer.default().publicCloudDatabase.save(message) { record, error in
             // check for errors, if there was one reset the message box
             if let error = error {
-                print(error.localizedDescription)
+                cloudError = CloudError(from: error)
                 newChatText = backupChatText
             // otherwise create the record locally and add it to the list, so the UI updates immediately
             } else if let record = record {
@@ -205,6 +184,43 @@ struct SharedItemsView: View {
                 messages.append(message)
             }
         }
+    }
+
+    func fetchChatMessages() {
+        // ensure this function isn't called over and over by only running it from an .inactive loading state
+        guard messagesLoadState == .inactive else { return }
+        messagesLoadState = .loading
+
+        // create the query for messages for a project, sort by creation date
+        let recordID = CKRecord.ID(recordName: project.id)
+        let reference = CKRecord.Reference(recordID: recordID, action: .none)
+        let predicate = NSPredicate(format: "project == %@", reference)
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        let query = CKQuery(recordType: "Message", predicate: predicate)
+        query.sortDescriptors = [sortDescriptor]
+
+        // create the query
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["from", "text"]
+
+        // add the fetch and completion blocks
+        operation.recordFetchedBlock = { record in
+            let message = ChatMesssage(from: record)
+            messages.append(message)
+            messagesLoadState = .success
+        }
+        operation.queryCompletionBlock = { _, error in
+            if let error = error {
+                cloudError = CloudError(from: error)
+            }
+
+            if messages.isEmpty {
+                messagesLoadState = .noResults
+            }
+        }
+
+        // send the query off to the cloud
+        CKContainer.default().publicCloudDatabase.add(operation)
     }
 }
 

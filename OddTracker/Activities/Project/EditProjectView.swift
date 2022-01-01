@@ -26,6 +26,7 @@ struct EditProjectView: View {
     @AppStorage("username") var username: String?
     @State private var showingSignIn = false
     @State private var cloudStatus = CloudStatus.checking
+    @State private var cloudError: CloudError?
 
     @State private var title: String
     @State private var detail: String
@@ -122,6 +123,12 @@ struct EditProjectView: View {
                 message: Text("There was a problem. Please check you have notifications enabled."),
                 primaryButton: .default(Text("Check Settings"), action: showAppSettings),
                 secondaryButton: .cancel()
+            )
+        }
+        .alert(item: $cloudError) { error in
+            Alert(
+                title: Text("There was an error!"),
+                message: Text(error.message)
             )
         }
         .onAppear(perform: updateCloudStatus)
@@ -262,7 +269,7 @@ struct EditProjectView: View {
 
             operation.modifyRecordsCompletionBlock = { _, _, error in
                 if let error = error {
-                    print("Error: \(error.localizedDescription)")
+                    cloudError = CloudError(from: error)
                 }
                 // re-check status upon completion, so the toolbar icon can update
                 updateCloudStatus()
@@ -283,7 +290,10 @@ struct EditProjectView: View {
 
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [id])
 
-        operation.modifyRecordsCompletionBlock = { _, _, _ in
+        operation.modifyRecordsCompletionBlock = { _, _, error in
+            if let error = error {
+                cloudError = CloudError(from: error)
+            }
             // re-check status upon completion, so the toolbar icon can update
             updateCloudStatus()
         }
