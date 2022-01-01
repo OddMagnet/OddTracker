@@ -106,11 +106,28 @@ As with `SharedProject`/`SharedItem` messages also need a model, this is added w
 
 Then a few new properties are added to `SharedItemsView`, an array to store the messages, a `@AppStorage` property to access the username and two `@State` properties, one to store the new message text before it is send off and the other to toggle the `SignInView`, with the needed `.sheet()` modifier.
 
-Next a function `sendChatMessage()` is added, which checks that there is text and username, create a record from it, adds a reference to the project and sends it all off to the cloud. Should there be an error the text for the new message is reset, otherwise it is simply emptied. On success it also create a `ChatMessage` from the record, so that it can be added to the array of messages and the UI can update instantly.
+Next a function `sendChatMessage()` is added, which checks that there is text and username, create a record from it, adds a reference to the project and sends it all off to the cloud. Should there be an error the text for the new message is reset, otherwise it is simply emptied. On success it also creates a `ChatMessage` from the record, so that it can be added to the array of messages and the UI can update instantly.
 
 For now there is only a rudimentary UI added to display chat messages (or a sign in button if the user isn't so far), as a footer section to the list of items of the project.
 
 The last step of this part is adding a bit more UI to display messages once they're fetched. To get the messages a function `fetchChatMessages()` is added, which works much likes the `fetchSharedItems()` message. It checks and sets the loading state, creates a `CKQuery`, a `CKQueryOperation` from that query, adds the `recordFetchedBlock` and `queryCompletionBlock` and sends it off to the cloud.
 
-## Cleaning up Cloudkit
+## Cleaning up CloudKit
 
+As usual, first comes making the new functionality work, then comes making it work well and cleaning out bugs.
+
+One thing that doesn't work well is that the upload icon keeps showing for projects that are already in the cloud. It's also not possible to remove projects from the cloud yet. So the next steps are to write something that checks whether a project already exists in the cloud, something to remove a project and its items from the cloud and something to update the button, depending on the projects status in the cloud.
+
+### Checking an objects cloud status
+
+One possible way of checking for a projects existence in the cloud would be `fetch(withRecordID:)`, but this method runs as a low-priority task, so it's not the best fit for a quick check. Instead a `CKFetchRecordsOperation` is used, it works similar to `CKQueryOperation`, but instead of a filter it searches by a given record ID. The reason this is faster is that iCloud is automatically adding a queryable index for records, meaning they can be found by their ID very quickly. Another optimisation possible with `CKFetchRecordOperation` is the `desiredKey` property, setting it to `recordID` means that CloudKit will return nothing but the ID.
+
+Another thing that can be changed is the way the data that is being received is handled. Instead of providing a closure for `recordFetchedBlock` it's possible to simply use a completion block for the whole operation. This isn't possible with `CKQueryOperation` since it can send back lots of data, but `CKFetchRecordsOperation` will only send back requested IDs, or in the case of this app, just a single one.
+
+This is handled by the `checkCloudStatus` in the extension `NSManagedObject-CheckCloudStatus`.
+
+### Changing a projects cloud status
+
+To change the status of a project in the cloud some preparation is needed. First the `EditProjectsView` gets an enum for the possible states (`checking`, `exists`, `absent`) and a property `cloudStatus` to keep track of the state. A function `updateCloudStatus()` is added to update the property. `uploadToCloud()` is changed to include a call to the `updateCloudStatus` function. `removeFromCloud()` is added and does what the name implies, in addition to also calling the `updateCloudStatus()` function.
+
+The last change needed was adding the UI to make use of the new functionality.
