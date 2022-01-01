@@ -39,6 +39,7 @@
 		4C5134F0277CABE600FDF37D /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134EF277CABE600FDF37D /* SignInView.swift */; };
 		4C5134F2277E020200FDF37D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5134F1277E020200FDF37D /* ChatMessage.swift */; };
 		4C51934125FD048500C5F858 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51934025FD048500C5F858 /* HomeViewModel.swift */; };
+		4C664AE22780B28000634638 /* NSManagedObject-CheckCloudStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C664AE12780B28000634638 /* NSManagedObject-CheckCloudStatus.swift */; };
 		4C6DA8B1256DBC7300879910 /* Binding-OnChange.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */; };
 		4C7F24FC25AC7F87003C4FDA /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */; };
 		4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C810BDC2573A5B700008F53 /* Bundle-Decodable.swift */; };
@@ -150,6 +151,7 @@
 		4C5134EF277CABE600FDF37D /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		4C5134F1277E020200FDF37D /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		4C51934025FD048500C5F858 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4C664AE12780B28000634638 /* NSManagedObject-CheckCloudStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject-CheckCloudStatus.swift"; sourceTree = "<group>"; };
 		4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift.swift"; sourceTree = "<group>"; };
 		4C7F24FB25AC7F87003C4FDA /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
 		4C810BDC2573A5B700008F53 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				4C6DA8B0256DBC7300879910 /* Binding-OnChange.swift.swift */,
 				4C92274D2576C1FE00048FB8 /* Color-Additions.swift */,
 				4C9BE361265557090006F776 /* SKProduct-LocalizedPrice.swift */,
+				4C664AE12780B28000634638 /* NSManagedObject-CheckCloudStatus.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				4C9BE3652655583D0006F776 /* PurchaseButton.swift in Sources */,
 				4C4C37732562D6FD00D3EA28 /* ProjectsView.swift in Sources */,
 				4C5134E5277C878B00FDF37D /* SharedItem.swift in Sources */,
+				4C664AE22780B28000634638 /* NSManagedObject-CheckCloudStatus.swift in Sources */,
 				4C9BE367265559A40006F776 /* ProductView.swift in Sources */,
 				4C810BDD2573A5B700008F53 /* Bundle-Decodable.swift in Sources */,
 				4C5134E8277C880B00FDF37D /* LoadStates.swift in Sources */,
