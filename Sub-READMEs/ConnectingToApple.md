@@ -124,7 +124,7 @@ One possible way of checking for a projects existence in the cloud would be `fet
 
 Another thing that can be changed is the way the data that is being received is handled. Instead of providing a closure for `recordFetchedBlock` it's possible to simply use a completion block for the whole operation. This isn't possible with `CKQueryOperation` since it can send back lots of data, but `CKFetchRecordsOperation` will only send back requested IDs, or in the case of this app, just a single one.
 
-This is handled by the `checkCloudStatus` in the extension `NSManagedObject-CheckCloudStatus`.
+This is handled by the `checkCloudStatus` in the extension `NSManagedObject-CheckCloudStatus`, this could've been done in the extension to `Project` in `ProjectCoreDataHelpers`, but since this is a generally helpful functionality it gets its own extension.
 
 ### Changing a projects cloud status
 
