@@ -43,8 +43,11 @@ struct SharedProjectsView: View {
     func fetchSharedProjects() {
         // ensure this function is only run from an inactive loading state
         // this avoids constant calls when tabbing through the app
-        guard loadState == .inactive else { return }
+        guard loadState != .loading else { return }
         loadState = .loading
+
+        // TODO: figure out how to avoid duplicates AND not keep deleted projects. Additionally only refreshing when there are changes
+        projects = []
 
         // create the query
         let predicate = NSPredicate(value: true)    // it's not possible to omit the predicate, so this just gets everything
