@@ -683,7 +683,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "alias swiftlint=\"/opt/homebrew/bin/swiftlint\"\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n if which swiftlint >/dev/null; then\n  swiftlint\n else\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n fi\nelse\n echo \"Not running SwiftLint/swiftlint because we are building for Release\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n if which swiftlint >/dev/null; then\n  swiftlint\n else\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n fi\nelse\n echo \"Not running SwiftLint/swiftlint because we are building for Release\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
