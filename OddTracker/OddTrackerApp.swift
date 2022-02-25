@@ -25,6 +25,8 @@ struct OddTrackerApp: App {
         _dataController = StateObject(wrappedValue: dataController)
         _unlockManager = StateObject(wrappedValue: unlockManager)
 
+        // Sign in with Apple is not available in the simulator
+        // to avoid problems when testing this workaround is used
         #if targetEnvironment(simulator)
         UserDefaults.standard.set("OddMagnet", forKey: "username")
         #endif
