@@ -107,7 +107,9 @@ struct EditProjectView: View {
                 case .checking:
                     ProgressView()
                 case .exists:
-                    Button(action: removeFromCloud) {
+                    Button {
+                        removeFromCloud(deleteLocal: false) // only remove from cloud
+                    } label: {
                         Label("Remove from iCloud", systemImage: "icloud.slash")
                     }
                 case .absent:
@@ -239,7 +241,13 @@ struct EditProjectView: View {
     }
 
     func delete() {
-        dataController.delete(project)
+        // if it exists, delete cloud first and also let it delete local as well
+        if cloudStatus == .exists {
+            removeFromCloud(deleteLocal: true)
+        } else {
+        // if not, then only delete local data
+            dataController.delete(project)
+        }
         presentationMode.wrappedValue.dismiss()
     }
 
@@ -284,7 +292,7 @@ struct EditProjectView: View {
         }
     }
 
-    func removeFromCloud() {
+    func removeFromCloud(deleteLocal: Bool) {
         let name = project.objectID.uriRepresentation().absoluteString
         let id = CKRecord.ID(recordName: name)
 
@@ -293,7 +301,13 @@ struct EditProjectView: View {
         operation.modifyRecordsCompletionBlock = { _, _, error in
             if let error = error {
                 cloudError = CloudError(from: error)
+            } else {
+                if deleteLocal {
+                    dataController.delete(project)
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
+
             // re-check status upon completion, so the toolbar icon can update
             updateCloudStatus()
         }
