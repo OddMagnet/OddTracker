@@ -20,6 +20,7 @@ struct SharedItemsView: View {
     @AppStorage("username") var username: String?
     @State private var showingSignIn = false
     @State private var newChatText = ""
+    @AppStorage("chatCount") var chatCount = 0  // Track how many messages the user has posted
     // error alert
     @State private var cloudError: CloudError?
 
@@ -182,6 +183,7 @@ struct SharedItemsView: View {
             } else if let record = record {
                 let message = ChatMesssage(from: record)
                 messages.append(message)
+                chatCount += 1
             }
         }
     }
