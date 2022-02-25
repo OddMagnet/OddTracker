@@ -5,12 +5,16 @@
 //  Created by Michael Brünen on 01.01.22.
 //
 
-import Foundation
+import SwiftUI  // instead of Foundation, to get access to LocalizedStringKey
 import CloudKit
 
 struct CloudError: Identifiable, ExpressibleByStringInterpolation {
     var id: String { message }
-    var message: String
+    private var message: String
+
+    var localizedMessage: LocalizedStringKey {
+        LocalizedStringKey(message)
+    }
 
     init(stringLiteral value: String) {
         self.message = value
