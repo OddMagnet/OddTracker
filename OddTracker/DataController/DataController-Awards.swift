@@ -32,8 +32,7 @@ extension DataController {
 
             default:
                 // an unknown award criterion; this should never be allowed
-                // fatalError("Unknown award criterion \(award.criterion).")
-                print("TODO: Implement Awards for 'Chat' criterion")
+                print("TODO: Implement Awards for '\(award.criterion)' criterion")
                 return false
         }
     }
