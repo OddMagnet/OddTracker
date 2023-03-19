@@ -1,3 +1,7 @@
+## **Current Status**
+
+On indefinite hold. This has been a great journey with a lot of learning, but after getting a Job in the industry I simply don't have the will to use so much of my free time for more learning, when I already have a great workplace where learning while working is promited. 
+
 # OddTracker
 
 An App to track projects and tasks, written in SwiftUI, for the purpose of demonstrating my skills and knowledge.
